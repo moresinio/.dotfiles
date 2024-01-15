@@ -6,7 +6,7 @@ map('n', '<F2>', '<Plug>(cokeline-switch-next)', { silent = true })
 local get_hl_attr = require("cokeline.hlgroups").get_hl_attr
 
 --require("buffers")
---local bg_color = get_hl_attr('Normal', 'fg')
+local bg_color = get_hl_attr('Normal', 'fg')
 local bg_color_active = get_hl_attr('Visual', 'bg')
 local fg_color_active = get_hl_attr('Title', 'fg')
 local bg_color_inactive = get_hl_attr('Normal', 'bg')
@@ -16,6 +16,13 @@ require('cokeline').setup({
 	mappings = {
 		cycle_prev_next = true
 	},
+	---@type table | false
+	sidebar = {
+		---@type string | string[]
+		filetype = { "NvimTree", "NnnExplorer", "neo-tree", "SidebarNvim" },
+		---@type Component[]
+		components = {},
+	},
 	default_hl = {
 		bg = function(buffer)
 			if buffer.is_focused then
@@ -23,6 +30,7 @@ require('cokeline').setup({
 			end
 		end,
 	},
+	-- The highlight group used to fill the tabline space
 	fill_hl = "Normal",
 	components = {
 		--separator
@@ -83,10 +91,20 @@ require('cokeline').setup({
 				return buffer.unique_prefix .. buffer.filename
 			end,
 			fg = function(buffer)
-				if (buffer.diagnostics.errors > 0) then
+				if (buffer.diagnostics.warnings > 0) then
 					return '#c9515b'
 				else
 					return fg_color_active
+				end
+			end,
+			bold = function(buffer)
+				if buffer.is_focused then
+					return true
+				end
+			end,
+			underline = function(buffer)
+				if buffer.is_focused then
+					return true
 				end
 			end,
 			style = function(buffer)
@@ -94,7 +112,7 @@ require('cokeline').setup({
 				if buffer.is_focused then
 					text_style = 'bold'
 				end
-				if buffer.diagnostics.errors > 0 then
+				if buffer.diagnostics.warnings > 0 then
 					if text_style ~= 'NONE' then
 						text_style = text_style .. ',underline'
 					else

@@ -256,6 +256,14 @@ require("lazy").setup({
 		end,
 	},
 	--------------------------------------------------------------------------------->
+--	{
+--		"lewis6991/satellite.nvim",
+--		event = "VeryLazy",
+--		lazy = true,
+--		config = function()
+--			require("sattelite").setup()
+--		end
+--	},
 	{
 		"petertriho/nvim-scrollbar",
 		event = "VeryLazy",

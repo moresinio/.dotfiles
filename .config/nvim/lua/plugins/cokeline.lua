@@ -7,8 +7,8 @@ local get_hl_attr = require("cokeline.hlgroups").get_hl_attr
 
 --require("buffers")
 --local bg_color = get_hl_attr('Normal', 'fg')
-local bg_color_active = get_hl_attr('TabLine', 'fg')
-local fg_color_active = get_hl_attr('lualine_a_normal', 'fg')
+local bg_color_active = get_hl_attr('Visual', 'bg')
+local fg_color_active = get_hl_attr('Title', 'fg')
 local bg_color_inactive = get_hl_attr('Normal', 'bg')
 local bg_color = get_hl_attr('Normal', 'bg')
 require('cokeline').setup({
@@ -85,6 +85,8 @@ require('cokeline').setup({
 			fg = function(buffer)
 				if (buffer.diagnostics.errors > 0) then
 					return '#c9515b'
+				else
+					return fg_color_active
 				end
 			end,
 			style = function(buffer)
@@ -112,7 +114,7 @@ require('cokeline').setup({
 					return " 󰅙"
 				end
 				return " 󰅖"
-			end, 
+			end,
 			fg = function(buffer)
 				if buffer.is_modified then
 					return '#5cc951' --'#c9515b'

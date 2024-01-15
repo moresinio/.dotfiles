@@ -1,0 +1,69 @@
+set default-bg   "#0B1B2C"
+set inputbar-bg  "#0B1B2C"
+set statusbar-bg "#0B1B2C"
+
+set default-fg   "#e6a15a"
+set inputbar-fg  "#61afef"
+set statusbar-fg "#940094"
+
+set inputbar-fg "#c90096"
+
+set highlight-color "#d19a66"
+set completion-bg   "#98c379"
+
+set index-bg "#3c042e"
+set index-fg "#c90096"
+set index-active-bg "#c90096"
+
+set completion-bg "#3c042e"
+set completion-fg "#c90096"
+set completion-highlight-bg "#c90096"
+set completion-highlight-fg "#3c042e"
+set completion-group-bg "#2e042b"
+set completion-group-fg "#883582"
+
+# Invert color
+set recolor true
+set recolor-darkcolor "#e6a15a"
+set recolor-lightcolor "#0B1B2C"
+set recolor-keephue true
+set recolor-reverse-video false
+
+set font "Terminus 10"
+set adjust-open best-fit
+set advance-pages-per-row true
+set page-padding 5
+
+set statusbar-home-tilde true
+
+map <F1> set "pages-per-row 1"
+map <F2> set "pages-per-row 2"
+
+map <F3> feedkeys ":set scroll-step 100<Return>"
+map <F4> feedkeys ":set scroll-step 40<Return>"
+
+set selection-clipboard clipboard
+
+# Odd pages (1, 3...) on the left side
+map D set "first-page-column 1:1"
+map <C-d> set "first-page-column 1:2"
+
+# Step size of scrolling/horizontal scroll
+set scroll-step 40
+set scroll-hstep 5
+
+# ??? Остаток видимой части страницы после перелистывания
+set scroll-full-overlap 50
+
+# Переход между посл и первой стр
+set scroll-wrap false
+
+# ?? Остановка прокрутки на границе стр
+set scroll-page-aware true
+
+set statusbar-page-percent true
+
+set vertical-center true
+
+
+set window-title-basename true

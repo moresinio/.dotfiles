@@ -17,10 +17,11 @@ fi
 
 run nm-applet &
 run blueman-applet &
-# run udiskie --tray &
+run udiskie --tray &
 # run redshift &
 
 run light -S 50 &
+run safeeyes &
 xrdb -merge ~/.Xresources &
 run setxkbmap -option grp:alt_shift_toggle us,ru & 
 xrandr --output VGA-0 --mode 1280x1024 --rate 75 --right-of LVDS &

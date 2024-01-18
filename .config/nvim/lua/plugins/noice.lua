@@ -52,9 +52,25 @@ require('noice').setup({
 				winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
 			},
 		},
+		commands = {
+			history = {
+				-- options for the message history that you get with `:Noice`
+				view = "popup",
+				opts = { enter = true, format = "details" },
+				filter = {
+					any = {
+						{ event = "notify" },
+						{ error = true },
+						{ warning = true },
+						{ event = "msg_show", kind = { "" } },
+						{ event = "lsp",      kind = "message" },
+					},
+				},
+			},
+		},
 		markdown = {
 			hover = {
-				["|(%S-)|"] = vim.cmd.help,                     -- vim help links
+				["|(%S-)|"] = vim.cmd.help,                   -- vim help links
 				["%[.-%]%((%S-)%)"] = require("noice.util").open, -- markdown links
 			},
 			highlights = {

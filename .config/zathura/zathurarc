@@ -45,8 +45,8 @@ map <F4> feedkeys ":set scroll-step 40<Return>"
 set selection-clipboard clipboard
 
 # Odd pages (1, 3...) on the left side
-map D set "first-page-column 1:1"
-map <C-d> set "first-page-column 1:2"
+#map D set "first-page-column 1:1"
+#map <C-d> set "first-page-column 1:2"
 
 # Step size of scrolling/horizontal scroll
 set scroll-step 40

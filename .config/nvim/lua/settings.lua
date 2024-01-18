@@ -1,4 +1,3 @@
-
 --[[ Переменные ]]
 --
 local opt = vim.opt
@@ -7,6 +6,11 @@ local opt = vim.opt
 local g = vim.g
 local cmd = vim.cmd            -- execute Vim commands
 local exec = vim.api.nvim_exec -- execute Vimscript
+
+vim.o.mousemoveevent = true
+--vim.keymap.set('n', '<MouseMove>', function()
+--	print(vim.inspect(vim.fn.getmousepos()))
+--end)
 
 --[[ Поиск ]]
 --
@@ -93,6 +97,6 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 exec([[
 augroup YankHighlight
 autocmd!
-autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=600}
+autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
 augroup end
 ]], false)

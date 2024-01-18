@@ -1,28 +1,35 @@
 local map = vim.api.nvim_set_keymap
-map('n', '<S-Tab>', '<Plug>(cokeline-focus-prev)', { silent = false })
-map('n', '<Tab>', '<Plug>(cokeline-focus-next)', { silent = false })
-map('n', '<F1>', '<Plug>(cokeline-switch-prev)', { silent = true })
-map('n', '<F2>', '<Plug>(cokeline-switch-next)', { silent = true })
 local get_hl_attr = require("cokeline.hlgroups").get_hl_attr
-
---require("buffers")
 local bg_color = get_hl_attr('Normal', 'fg')
 local bg_color_active = get_hl_attr('Visual', 'bg')
 local fg_color_active = get_hl_attr('Title', 'fg')
 local bg_color_inactive = get_hl_attr('Normal', 'bg')
 local bg_color = get_hl_attr('Normal', 'bg')
+
 require('cokeline').setup({
 	show_if_buffers_are_at_least = 1,
 	mappings = {
-		cycle_prev_next = true
+		cycle_prev_next = true,
+		map('n', '<S-Tab>', '<Plug>(cokeline-focus-prev)', { silent = false }),
+		map('n', '<Tab>', '<Plug>(cokeline-focus-next)', { silent = false }),
+		map('n', '<F1>', '<Plug>(cokeline-switch-prev)', { silent = true }),
+		map('n', '<F2>', '<Plug>(cokeline-switch-next)', { silent = true }),
 	},
+
 	---@type table | false
 	sidebar = {
 		---@type string | string[]
-		filetype = { "NvimTree", "NnnExplorer", "neo-tree", "SidebarNvim" },
+		filetype = { "NvimTree", "nnn", "neo-tree", },
 		---@type Component[]
-		components = {},
+		components = { {
+			text =
+					function(buf)
+						return buf.filetype
+					end,
+		},
+		},
 	},
+
 	default_hl = {
 		bg = function(buffer)
 			if buffer.is_focused then
@@ -32,8 +39,29 @@ require('cokeline').setup({
 	},
 	-- The highlight group used to fill the tabline space
 	fill_hl = "Normal",
+
+	rhs = {
+		{
+			text = ''
+		},
+	},
+	tabs = {
+		placement = "right", --'left" | "right",
+		components = {
+			{
+				text = function(tabpage)
+					return '[' .. tabpage.number .. ']'
+				end,
+				bg = function(tabpage)
+					if tabpage.is_focused then
+						return fg_color
+					end
+				end,
+			},
+		}
+	},
+
 	components = {
-		--separator
 		{
 			text = function(buffer)
 				local _text = ''
@@ -91,7 +119,7 @@ require('cokeline').setup({
 				return buffer.unique_prefix .. buffer.filename
 			end,
 			fg = function(buffer)
-				if (buffer.diagnostics.warnings > 0) then
+				if (buffer.diagnostics.errors > 0) then
 					return '#c9515b'
 				else
 					return fg_color_active

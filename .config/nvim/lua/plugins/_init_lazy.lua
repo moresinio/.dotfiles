@@ -19,13 +19,14 @@ require("lazy").setup({
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd([[colorscheme dracula]])
+			--vim.cmd([[colorscheme dracula]])
 		end,
 	},
 	--------------------------------------------------------------------------------->
 	{
 		"EdenEast/nightfox.nvim",
 		config = function()
+			vim.cmd([[colorscheme nightfox]])
 			require('nightfox').setup({
 				options = {
 					dim_inactive = true,
@@ -89,7 +90,7 @@ require("lazy").setup({
 	{
 		"folke/neoconf.nvim",
 		event = "VeryLazy",
-		lazy = true,
+		lazy = false,
 		cmd = "Neoconf",
 	},
 	--------------------------------------------------------------------------------->
@@ -111,21 +112,21 @@ require("lazy").setup({
 		end,
 	},
 	--------------------------------------------------------------------------------->
---	{
---		'akinsho/bufferline.nvim',
---		event = "VeryLazy",
---		lazy = true,
---		keys = {
---			{ "<Tab>",     "<cmd>BufferLineCycleNext<cr>", desc = "Buffer Next" },
---			{ "<leader>Q", "<cmd>BufferLinePick<cr>",      desc = "Buffer Pick" },
---			{ "<S-Tab>",   "<cmd>BufferLineCyclePrev<cr>", desc = "Buff Prev" },
---			{ "<F4>",      "<cmd>bd<cr>",                  desc = "BuffClose" },
---		},
---		dependencies = { 'kyazdani42/nvim-web-devicons' },
---		config = function()
---			require('plugins/bufferline')
---		end,
---	},
+	--	{
+	--		'akinsho/bufferline.nvim',
+	--		event = "VeryLazy",
+	--		lazy = true,
+	--		keys = {
+	--			{ "<Tab>",     "<cmd>BufferLineCycleNext<cr>", desc = "Buffer Next" },
+	--			{ "<leader>Q", "<cmd>BufferLinePick<cr>",      desc = "Buffer Pick" },
+	--			{ "<S-Tab>",   "<cmd>BufferLineCyclePrev<cr>", desc = "Buff Prev" },
+	--			{ "<F4>",      "<cmd>bd<cr>",                  desc = "BuffClose" },
+	--		},
+	--		dependencies = { 'kyazdani42/nvim-web-devicons' },
+	--		config = function()
+	--			require('plugins/bufferline')
+	--		end,
+	--	},
 	--------------------------------------------------------------------------------->
 	{
 		"luukvbaal/nnn.nvim",
@@ -137,11 +138,22 @@ require("lazy").setup({
 			require("plugins.nnn")
 		end,
 	},
+	-------------------------------------	
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+		}
+	},
 	--------------------------------------------------------------------------------->
 	{
 		'ray-x/navigator.lua',
-		event = "VeryLazy",
-		lazy = true,
+		--event = "VeryLazy",
+		lazy = false,
 		dependencies = {
 			{ 'ray-x/guihua.lua',               run = 'cd lua/fzy && make' },
 			{ 'neovim/nvim-lspconfig' },
@@ -150,19 +162,23 @@ require("lazy").setup({
 		config = function()
 			require 'navigator'.setup({
 				mason = true,
+				width = 0.75,      -- max width ratio (number of cols for the floating window) / (window width)
+				height = 0.3,      -- max list window height, 0.3 by default
+				preview_height = 0.35, -- max height of preview windows
+				border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
 			})
 		end
 	},
 	--------------------------------------------------------------------------------->
-	{
-		"folke/trouble.nvim",
-		event = "VeryLazy",
-		lazy = true,
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("trouble").setup {}
-		end,
-	},
+	--	{
+	--		"folke/trouble.nvim",
+	--		event = "VeryLazy",
+	--		lazy = true,
+	--		dependencies = { "nvim-tree/nvim-web-devicons" },
+	--		config = function()
+	--			require("trouble").setup {}
+	--		end,
+	--	},
 	--------------------------------------------------------------------------------->
 	{
 		'hrsh7th/nvim-cmp',
@@ -238,32 +254,32 @@ require("lazy").setup({
 	--------------------------------------------------------------------------------->
 	{ 'powerman/vim-plugin-ruscmd', },
 	--------------------------------------------------------------------------------->
-	{
-		'ggandor/leap.nvim',
-		event = "VeryLazy",
-		lazy = true,
-		config = function()
-			require('leap').create_default_mappings()
-		end,
-	},
+	--	{
+	--		'ggandor/leap.nvim',
+	--		event = "VeryLazy",
+	--		lazy = true,
+	--		config = function()
+	--			require('leap').create_default_mappings()
+	--		end,
+	--	},
 	--------------------------------------------------------------------------------->
 	{
 		"shellRaining/hlchunk.nvim",
-		event = "VeryLazy",
+		event = "UIEnter",
 		lazy = true,
 		config = function()
 			require("plugins.hlchunk")
 		end,
 	},
 	--------------------------------------------------------------------------------->
---	{
---		"lewis6991/satellite.nvim",
---		event = "VeryLazy",
---		lazy = true,
---		config = function()
---			require("sattelite").setup()
---		end
---	},
+	--	{
+	--		"lewis6991/satellite.nvim",
+	--		event = "VeryLazy",
+	--		lazy = true,
+	--		config = function()
+	--			require("sattelite").setup()
+	--		end
+	--	},
 	{
 		"petertriho/nvim-scrollbar",
 		event = "VeryLazy",
@@ -306,7 +322,7 @@ require("lazy").setup({
 		lazy = false,
 		keys = {
 			{ "<leader>p", "<cmd>Telescope oldfiles<cr>", desc = "OldFiles" },
-			{ "<leader>q", "<cmd>Telescope buffers<cr>",  desc = "Buffers" },
+			{ "<leader>b", "<cmd>Telescope buffers<cr>",  desc = "Buffers" },
 			{ '<leader>E', '<cmd>Telescope noice<CR>',    desc = "Errors" },
 		},
 		dependencies = { { 'nvim-lua/plenary.nvim' } },
@@ -318,35 +334,39 @@ require("lazy").setup({
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
+		keys = {
+			{ "<leader>n", "<cmd>NoiceHistory<cr>", desc = "Notification" },
+		},
 		dependencies = { { "MunifTanjim/nui.nvim" }, },
 		config = function()
 			require('plugins.noice')
 		end,
 	},
+	--------------------------------------------------------------------------------->
 	{
 		"utilyre/barbecue.nvim",
 		event = "VeryLazy",
 		name = "barbecue",
 		version = "*",
 		dependencies = {
-			event = "VeryLazy",
 			"SmiteshP/nvim-navic",
 			"nvim-tree/nvim-web-devicons", -- optional dependency
 		},
 		opts = {
 			-- configurations go here
+			exclude_filetypes = { "netrw", "nnn", "toggleterm" },
 		},
 	},
 	---------------------------------------------------------------------------->
-	{ 'willothy/nvim-cokeline',
+	{
+		'willothy/nvim-cokeline',
 		event = "VeryLazy",
 		dependencies = {
-				"nvim-lua/plenary.nvim",      -- Required for v0.4.0+
-				"kyazdani42/nvim-web-devicons", -- If you want devicons
-			},
-		config = true,
+			"nvim-lua/plenary.nvim",     -- Required for v0.4.0+
+			"kyazdani42/nvim-web-devicons", -- If you want devicons
+		},
 		keys = {
-			{ "<F4>", "<cmd>bd<cr>", desc = "BuffClose" },
+			{ "<F4>", "<cmd>bd<cr>", desc = "Buffer Close" }, -- other binds see in conf
 		},
 		config = function()
 			require("plugins.cokeline")

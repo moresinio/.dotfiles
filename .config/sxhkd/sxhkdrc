@@ -1,0 +1,111 @@
+#restart sxhkd
+super + Escape
+	pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'
+ 
+# quit or restart bspwm
+super + ctrl + {q,r}
+	bspc {quit,wm -r}; notify-send 'bspwm' 'Reloaded config'
+
+# Show help
+super + slash
+    './.config/sxhkd/scripts/sxhkd-help.sh'
+ 
+# create a new terminal window or swap the current one to the biggest one in the screen 
+super + {_,shift + }Return
+	{urxvt, bspc node -s biggest.local}
+
+# browser
+super + {_,shift + }F1
+	{firefox, torbrowser-launcher}
+
+# file manager
+super + {F2}
+	{urxvt -e ranger, bspc node -s biggest.local}
+# neovim
+super + {F3}
+	{urxvt -e nvim, bspc node -s biggest.local}
+
+# power menu
+super + Pause
+	"./.config/rofi/powermenu/type-6_new/powermenu.sh"
+
+# launcher
+super + z
+	rofi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -show combi -modes combi -combi-modes
+
+# Brighness control
+XF86MonBrightness{Down,Up}
+	light {-U 20, -A 20}
+
+# Lock screen
+XF86ScreenSaver
+	betterlockscreen -l
+
+#bspwm
+
+# Toggle beetwen floating and resize (need "wmutils-core" packet)& tiled
+super + ctrl + space
+    bspc node -t "~"{floating && wtp 15 15 720 480 "$(pfw)",tiled}
+
+# swap the current node and the biggest window
+super + g
+	bspc node -s biggest.window
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+ 
+# close or kill a window
+super + {_,shift + }q
+	bspc node -{c,k}
+
+# set the node flags
+super + ctrl + {m,x,y,z}
+	bspc node -g {marked,locked,sticky,private}
+ 
+# set the window state
+super + {t,shift + t,s,f}
+SF	bspc node -t {tiled && polybar-msg cmd show,pseudo\_tiled,floating,fullscreen && polybar-msg cmd hide}
+
+
+# 	FOCUS / SWAP
+# Focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+  	bspc desktop -f {prev,next}.local
+
+# expand a window by moving one of its side outward
+alt  {Left,Down,Up,Right}
+    STEP=20; SELECTION={1,2,3,4}; \
+    bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
+    bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)
+
+# focus or send a window to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous window in the current desktop
+super + {_,Tab}
+	bspc node -f {next,prev}.local.!hidden.window
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Screenshot
+@Print
+	flameshot gui
+
+# Swap desktops
+super + shift + s
+	bspc node @^1:focused:/ -s @^2:focused:/ || \
+	bspc node @^1:focused:/ -d ^2:focused || \
+	bspc node @^2:focused:/ -d ^1:focused 
+

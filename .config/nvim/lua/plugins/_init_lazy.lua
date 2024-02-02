@@ -19,14 +19,14 @@ require("lazy").setup({
 		lazy = false,
 		priority = 1000,
 		config = function()
-			--vim.cmd([[colorscheme dracula]])
+			vim.cmd([[colorscheme dracula]])
 		end,
 	},
 	--------------------------------------------------------------------------------->
 	{
 		"EdenEast/nightfox.nvim",
 		config = function()
-			vim.cmd([[colorscheme nightfox]])
+			--vim.cmd([[colorscheme carbonfox]])
 			require('nightfox').setup({
 				options = {
 					dim_inactive = true,
@@ -44,6 +44,10 @@ require("lazy").setup({
 		config = function()
 			require('plugins.alpha')
 		end,
+	},
+	--------------------------------------------------------------------------------->
+	{
+		"chaoren/vim-wordmotion",
 	},
 	--------------------------------------------------------------------------------->
 	{
@@ -263,6 +267,12 @@ require("lazy").setup({
 	--		end,
 	--	},
 	--------------------------------------------------------------------------------->
+--	{ 
+--		"lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {},
+--		config = function()
+--			require('plugins.ibl')
+--		end,
+--	},
 	{
 		"shellRaining/hlchunk.nvim",
 		event = "UIEnter",

@@ -14,4 +14,5 @@ export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|l
 export VISUAL=ewrap
 export NNN_PLUG='s:suedit'
 
-
+export XDG_DATA_DIRS="/usr/local/share:/usr/share:$XDG_DATA_DIRS"
+export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_DIRS"

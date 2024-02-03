@@ -337,7 +337,7 @@ globalkeys = gears.table.join(
 		{ description = "select next", group = "layout" }),
 	awful.key({ modkey, "Shift" }, "space", function() awful.layout.inc(-1) end,
 		{ description = "select previous", group = "layout" }),
-	awful.key({ "Mod4" }, "F1", function() awful.util.spawn_with_shell("~/.librewolf/LibreWolf.x86_64.AppImage") end,
+	awful.key({ "Mod4" }, "F1", function() awful.util.spawn_with_shell("~/.appimage/librewolf/LibreWolf.x86_64.AppImage") end,
 		{ description = "Run LibreWolf", group = "Application" }),
 	awful.key({ "Mod4" }, "F2", function() awful.util.spawn_with_shell("urxvt -e nnn &") end,
 		{ description = "Run Nnn", group = "Application" }),

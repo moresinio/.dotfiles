@@ -12,7 +12,8 @@ export NNN_COLORS="2136"
 export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
 export VISUAL=ewrap
-export NNN_PLUG='s:suedit'
 
 export XDG_DATA_DIRS="/usr/local/share:/usr/share:$XDG_DATA_DIRS"
 export XDG_CONFIG_DIRS="/etc/xdg:$XDG_CONFIG_DIRS"
+
+export XDG_RUNTIME_DIR=/tmp/users/$(id -u)

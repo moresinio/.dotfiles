@@ -1,106 +1,220 @@
 {
-     "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 25, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
-    "modules-left": ["sway/workspaces"],
-    "modules-center": ["sway/window", "sway/mode"],
-    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "clock", "tray"],
-    // Modules configuration
-     "sway/workspaces": {
-         "disable-scroll": false,
-         "all-outputs": true,
-         "warp-on-scroll": false,
-         "format": "{name}: {icon}",
-         "format-icons": {
-             "1": "",
-             "2": "",
-             "3": "",
-             "4": "",
-             "5": "",
-             "urgent": "",
-             "focused": "",
-             "default": ""
-         }
-     },
-	//	"river/tags": {
-  //      "num-tags": 5,
-  //      "tag-labels": ["a", "s", "d", "f", "g"]
-  //  },
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
+    "layer": "top",
+    "position": "top",
+    "height": 5,
+    "spacing": 1,
+    // "start_hidden": true,
+    "modules-left": ["sway/workspaces", "sway/scratchpad", "sway/mode"],
+     "modules-center": ["sway/window"],
+     "modules-right": [ "group/group_2", "group/group_1"],
+		 	
+	"group/group_1": {
+		"orientation": "horizontal",
+    "drawer": {
+        "transition-duration": 500,
+        "transition-left-to-right": true,
     },
-    "idle_inhibitor": {
+			"modules": [
+				"custom/lock",
+				"user",
+			],
+	},
+
+	"group/group_2": {
+		"orientation": "horizontal",
+			"modules": [
+"idle_inhibitor", "cpu", "memory", "network", "tray", "sway/language", "clock",
+			],
+	},
+	"custom/lock": {
+    "format": "  󰍁  ",
+    "tooltip": false,
+    "on-click": "swaylock",
+	},
+
+	"user": {
+					"format": "{user} {work_H}:{work_M} 🥵",
+					"interval": 60,
+					"height": 30,
+					"width": 30,
+					"icon": true,
+	},
+
+	"custom/spotify": {
+	    "format": "{icon} {}",
+	    "escape": true,
+	    "return-type": "json",
+	    "max-length": 40,
+	    "interval": 30, // Remove this if your script is endless and write in loop
+	    "on-click": "playerctl -p spotify play-pause",
+	    "on-click-right": "killall spotify",
+	    "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
+	    "on-scroll-up" : "playerctl -p spotify next",
+	    "on-scroll-down" : "playerctl -p spotify previous",
+	    "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources/custom_modules folder
+	    "exec-if": "pgrep spotify"
+	},
+
+	"idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
             "activated": "",
-            "deactivated": ""
+            "deactivated": "",
+				"timeout": 30
         }
     },
+
+	"custom/menu": {
+		"format": "Artix",
+		"tooltip": false,
+		"on-click": "nwg-drawer -nocats -nofs -d -c 9 -spacing 12 -mb -100 -ml 150 -mr 150 -mt 100 -nofs -nocats -c 8 -is 84"	
+	},
+	
+		"cava": {
+	 	"framerate": 30,
+	    "autosens": 1,
+	    "sensitivity": 100,
+	    "bars": 14,
+	    "lower_cutoff_freq": 50,
+	    "higher_cutoff_freq": 10000,
+	    "method": "pulse",
+	    "source": "auto",
+	    "stereo": true,
+	    "reverse": false,
+	    "bar_delimiter": 0,
+	    "monstercat": false,
+	    "waves": false,
+	    "noise_reduction": 0.77,
+	    "input_delay": 2,
+	    "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+	    "actions": {
+	    	"on-click-right": "mode"
+	        }
+	    },
+	
+	"sway/workspaces": {
+		"spacing": 4,
+		"disable-scroll": false,
+		"all-outputs": false,
+		"warp-on-scroll": false,
+		"format": "{icon}",
+		"disable-scroll-wraparound": true,
+		"format-icons": {
+		"11": "1",
+		"12": "2",
+		"13": "3",
+		"14": "4",
+		"15": "5",
+		"16": "6",
+		"17": "7",
+		"18": "8",
+		"19": "9",
+		"21": "1",
+		"22": "2",
+		"23": "3",
+		"24": "4",
+		"25": "5",
+		"26": "6",
+		"27": "7",
+		"28": "8",
+		"29": "9",
+		"urgent": "",
+    "focused": "🌻",
+		},
+		"persistent-workspaces": {
+        "13": ["LVDS-1"],
+		}
+	},
+    
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    
+    "sway/window": {
+				"max-length": 50,
+				"min-length": 5,
+    },
+    
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    
     "tray": {
         // "icon-size": 12,
-        "spacing": 10
+        "spacing": 10,
+        "tooltip": false,
     },
-    "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+    
+        "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%A, %B %d, %Y (%R)} 󰃭 ",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+			"calendar": {
+									"mode"          : "year",
+									"mode-mon-col"  : 3,
+									"weeks-pos"     : "right",
+									"on-scroll"     : 1,
+									"on-click-right": "mode",
+									"format": {
+														"months":     "<span color='#ffead3'><b>{}</b></span>",
+														"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+														"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+														"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+														"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+														}
+									},
+			"actions":  {
+									"on-click-right": "mode",
+									"on-click-forward": "tz_up",
+									"on-click-backward": "tz_down",
+									"on-scroll-up": "shift_up",
+									"on-scroll-down": "shift_down"
+									}
     },
+    
+    "pulseaudio": {
+        "scroll-step": 10, // %, can be a float
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": "{format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+       	"on-click-middle": "pamixer -t",
+       	"tooltip": false,
+    },
+
+		"network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "",
+        "format-ethernet": "",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
     "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
+				"interval": 7,
+        "format": "{usage}% 󰻠",
+        "tooltip": true
     },
     "memory": {
-        "format": "{}% "
+        "format": "{avail}G 󰍛"
     },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
-    },
-    "backlight": {
+		"backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-     //   "format-wifi": ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} 󰈀",
-        "tooltip-format": "{ifname} via {gwaddr} 󱦂",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": "󰝟 {icon} {format_source}",
-        "format-muted": "󰝟 {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "󱆏",
-            "headset": "󰥰",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
-    },
+
 }
 

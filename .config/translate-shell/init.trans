@@ -1,0 +1,8 @@
+{
+ :translate-shell "0.9.0"
+ :verbose         false
+ :hl              "en"
+ :tl              "ru"
+ :engine          "google"
+ :theme           "random"
+}

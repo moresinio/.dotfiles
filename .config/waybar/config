@@ -1,39 +1,57 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 5,
+    "height": 3,
     "spacing": 1,
     // "start_hidden": true,
-    "modules-left": ["sway/workspaces", "sway/scratchpad", "sway/mode"],
+    "modules-left": ["sway/workspaces", "sway/mode"],
      "modules-center": ["sway/window"],
-     "modules-right": [ "group/group_2", "group/group_1"],
+     "modules-right": [ "group/group_2", "group/group_1",],
 		 	
 	"group/group_1": {
 		"orientation": "horizontal",
     "drawer": {
         "transition-duration": 500,
-        "transition-left-to-right": true,
+       // "transition-left-to-right": false,
+        "transition-right-to-left": false,
     },
 			"modules": [
 				"custom/lock",
 				"user",
+				"idle_inhibitor",
 			],
 	},
 
 	"group/group_2": {
 		"orientation": "horizontal",
-			"modules": [
-"idle_inhibitor", "cpu", "memory", "network", "tray", "sway/language", "clock",
+			"modules": ["sway/scratchpad", "memory", "custom/vpn", 
+									"cpu", "network", "tray",
+									"sway/language", "clock",
 			],
 	},
-	"custom/lock": {
-    "format": "  󰍁  ",
+
+"custom/vpn": {
+    "format": " VPN ",
+    "exec": "echo '{\"class\": \"connected\"}'",
+    "exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
+    "return-type": "json",
+    "interval": 5
+},
+
+"custom/space": {
+    "format": "",
     "tooltip": false,
-    "on-click": "swaylock",
+	},
+
+	"custom/lock": {
+    "format": "  ",
+    "tooltip": true,
+    "on-click": "$HOME/.config/sway/scripts/swaylock.sh",
+    "on-click-right": "wlogout",
 	},
 
 	"user": {
-					"format": "{user} {work_H}:{work_M} 🥵",
+					"format": "{user} {work_H}:{work_M} up 🥵",
 					"interval": 60,
 					"height": 30,
 					"width": 30,
@@ -60,15 +78,9 @@
         "format-icons": {
             "activated": "",
             "deactivated": "",
-				"timeout": 30
+				"timeout": "60",
         }
     },
-
-	"custom/menu": {
-		"format": "Artix",
-		"tooltip": false,
-		"on-click": "nwg-drawer -nocats -nofs -d -c 9 -spacing 12 -mb -100 -ml 150 -mr 150 -mt 100 -nofs -nocats -c 8 -is 84"	
-	},
 	
 		"cava": {
 	 	"framerate": 30,
@@ -127,7 +139,8 @@
 	},
     
     "sway/mode": {
-        "format": "<span style=\"italic\">{}</span>"
+        "format": "<span style=\"italic\">{}</span>",
+				"min-length": 8,
     },
     
     "sway/window": {
@@ -136,16 +149,17 @@
     },
     
     "sway/scratchpad": {
-        "format": "{icon} {count}",
+        "format": "{icon}  {count}",
         "show-empty": false,
         "format-icons": ["", ""],
+				"min-length": 3,
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
     
     "tray": {
         // "icon-size": 12,
-        "spacing": 10,
+        "spacing": 5,
         "tooltip": false,
     },
     

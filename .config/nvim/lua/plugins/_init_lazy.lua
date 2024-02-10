@@ -23,6 +23,7 @@ require("lazy").setup({
 		end,
 	},
 	--------------------------------------------------------------------------------->
+	{ 'rcarriga/nvim-notify' },
 	{
 		"EdenEast/nightfox.nvim",
 		config = function()
@@ -267,12 +268,12 @@ require("lazy").setup({
 	--		end,
 	--	},
 	--------------------------------------------------------------------------------->
---	{ 
---		"lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {},
---		config = function()
---			require('plugins.ibl')
---		end,
---	},
+	--	{
+	--		"lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {},
+	--		config = function()
+	--			require('plugins.ibl')
+	--		end,
+	--	},
 	{
 		"shellRaining/hlchunk.nvim",
 		event = "UIEnter",

@@ -1,0 +1,87 @@
+	--inside-color <color>           Sets the color of the inside of the indicator.
+  --inside-clear-color <color>     Sets the color of the inside of the indicator when cleared.
+  --inside-caps-lock-color <color> Sets the color of the inside of the indicator when Caps Lock is active.
+  --inside-ver-color <color>       Sets the color of the inside of the indicator when verifying.
+  --inside-wrong-color <color>     Sets the color of the inside of the indicator when invalid.
+  --key-hl-color <color>           Sets the color of the key press highlight segments.
+  --layout-bg-color <color>        Sets the background color of the box containing the layout text.
+  --layout-border-color <color>    Sets the color of the border of the box containing the layout text.
+  --layout-text-color <color>      Sets the color of the layout text.
+  --line-color <color>             Sets the color of the line between the inside and ring.
+  --line-clear-color <color>       Sets the color of the line between the inside and ring when cleared.
+  --line-caps-lock-color <color>   Sets the color of the line between the inside and ring when Caps Lock is active.
+  --line-ver-color <color>         Sets the color of the line between the inside and ring when verifying.
+  --line-wrong-color <color>       Sets the color of the line between the inside and ring when invalid.
+  --ring-color <color>             Sets the color of the ring of the indicator.
+  --ring-clear-color <color>       Sets the color of the ring of the indicator when cleared.
+  --ring-caps-lock-color <color>   Sets the color of the ring of the indicator when Caps Lock is active.
+  --ring-ver-color <color>         Sets the color of the ring of the indicator when verifying.
+  --ring-wrong-color <color>       Sets the color of the ring of the indicator when invalid.
+  --separator-color <color>        Sets the color of the lines that separate highlight segments.
+  --text-color <color>             Sets the color of the text.
+  --text-clear-color <color>       Sets the color of the text when cleared.
+  --text-caps-lock-color <color>   Sets the color of the text when Caps Lock is active.
+  --text-ver-color <color>         Sets the color of the text when verifying.
+  --text-wrong-color <color>       Sets the color of the text when invalid.
+
+
+--inside-color                                      
+--inside-clear-color                                      
+--inside-caps-lock-color                                      
+--inside-ver-color                                      
+--inside-wrong-color                                      
+--key-hl-color                                      
+--layout-bg-color                                      
+--layout-border-color                                      
+--layout-text-color                                      
+--line-color                                      
+--line-clear-color                                      
+--line-caps-lock-color                                      
+--line-ver-color                                      
+--line-wrong-color                                      
+--ring-color                                      
+--ring-clear-color                                      
+--ring-caps-lock-color                                      
+--ring-ver-color                                      
+--ring-wrong-color                                      
+--separator-color                                      
+--text-color                                      
+--text-clear-color                                      
+--text-caps-lock-color                                      
+--text-ver-color                                      
+--text-wrong-color                                      
+
+
+#041F3C
+#3F7ABA
+#498AC4
+#5198C5
+#59A2C6
+#6FACCC
+#6BA4DA
+#c8d7e4
+#8c969f
+#3F7ABA
+#498AC4
+#5198C5
+#59A2C6
+#6FACCC
+#6BA4DA
+#c8d7e4
+
+#121212
+#524E72
+#3E4088
+#5C5698
+#5E67D8
+#9A5E9E
+#AD6ABA
+#b9b5d9
+#817e97
+#524E72
+#3E4088
+#5C5698
+#5E67D8
+#9A5E9E
+#AD6ABA
+#b9b5d9

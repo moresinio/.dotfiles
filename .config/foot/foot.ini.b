@@ -20,7 +20,7 @@
  underline-offset=1
 # underline-thickness=2px
  box-drawings-uses-font-glyphs=no
- dpi-aware=no
+ dpi-aware=yes
 
 # initial-window-size-pixels=700x500  # Or,
 # initial-window-size-chars=<COLSxROWS>
@@ -74,36 +74,51 @@ lines=10000
 [touch]
 # long-press-delay=400
 
-
-[colors]
-background=282a36
-foreground=f8f8f2
+# [colors]
+# alpha=1
+# background=242424
+# foreground=ffffff
+# flash=7f7f00
+# flash-alpha=0.5
 
 ## Normal/regular colors (color palette 0-7)
-regular0=21222c  # black
-regular1=ff5555  # red
-regular2=50fa7b  # green
-regular3=f1fa8c  # yellow
-regular4=bd93f9  # blue
-regular5=ff79c6  # magenta
-regular6=8be9fd  # cyan
-regular7=f8f8f2  # white
+# regular0=242424  # black
+# regular1=f62b5a  # red
+# regular2=47b413  # green
+# regular3=e3c401  # yellow
+# regular4=24acd4  # blue
+# regular5=f2affd  # magenta
+# regular6=13c299  # cyan
+# regular7=e6e6e6  # white
 
 ## Bright colors (color palette 8-15)
-bright0=6272a4   # bright black
-bright1=ff6e6e   # bright red
-bright2=69ff94   # bright green
-bright3=ffffa5   # bright yellow
-bright4=d6acff   # bright blue
-bright5=ff92df   # bright magenta
-bright6=a4ffff   # bright cyan
-bright7=ffffff   # bright white
+# bright0=616161   # bright black
+# bright1=ff4d51   # bright red
+# bright2=35d450   # bright green
+# bright3=e9e836   # bright yellow
+# bright4=5dc5f8   # bright blue
+# bright5=feabf2   # bright magenta
+# bright6=24dfc4   # bright cyan
+# bright7=ffffff   # bright white
+
+## dimmed colors (see foot.ini(5) man page)
+# dim0=<not set>
+# ...
+# dim7=<not-set>
+
+## The remaining 256-color palette
+# 16 = <256-color palette #16>
+# ...
+# 255 = <256-color palette #255>
 
 ## Misc colors
-selection-foreground=ffffff
-selection-background=44475a
-
-
+# selection-foreground=<inverse foreground/background>
+# selection-background=<inverse foreground/background>
+# jump-labels=<regular0> <regular3>          # black-on-yellow
+# scrollback-indicator=<regular0> <bright4>  # black-on-bright-blue
+# search-box-no-match=<regular0> <regular1>  # black-on-red
+# search-box-match=<regular0> <regular3>     # black-on-yellow
+# urls=<regular3>
 
 [csd]
 # preferred=server

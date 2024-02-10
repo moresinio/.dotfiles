@@ -1,7 +1,7 @@
 * {
 	/* `otf-font-awesome` is required to be installed for icons */
-	font-family: FiraCode Nerd Font Regular;
-	font-size: 12px;
+	font-family: FiraCode Nerd Font;
+	font-size: 13px;
 }
 
 window#waybar {
@@ -35,25 +35,34 @@ button {
 	box-shadow: none;
 }
 
+#workspaces {
+	margin: 3 0 0 3px;
+	padding: 0 9px;
+	border-radius: 0 20 20 0px;
+	background: rgba(0, 0, 0, 0.6);
+}
+
 #workspaces button {
 	padding: 0 5px;
-	border-radius: 35px;
-	margin: 3 3 3 3px;
+	margin: 4px;
+	border-radius: 15px;
 	background-color: transparent;
 	color: #a39a9a;
 }
 
 #workspaces button:hover {
 	background: rgba(0, 0, 0, 0.2);
-	margin: 3 3 3 3px;
+	padding: 0 5px;
+	margin: 4px;
+	border: none;
+	box-shadow: none;
 }
 
 #workspaces button.focused {
+	margin: 4px;
 	padding: 0 5px;
-	margin: 3 3 3 3px;
 	background-color: #000000;
-	border-radius: 35px;
-	border-bottom: 0px;
+	border-radius: 15px;
 	color: #ffffff;
 }
 
@@ -62,63 +71,73 @@ button {
 	margin-bottom: 3px;
 }
 
-#mode {
-	background-color: #64727D;
-	border-bottom: 3px solid #ffffff;
+#group_1 {
+	background: rgba(0, 0, 0, 0.6);
+	border-radius: 0px;
+	padding: 5 5 5 0px;
+	margin: 3 3 0 -1px;
+	color: #ffffff;
 }
 
-#clock,
-#battery,
+#group_2 {
+	background: rgba(0, 0, 0, 0.6);
+	border-radius: 20 0 0 20px;
+	margin: 3 0 0 -1px;
+	color: #ffffff;
+}
+
+#vpn,
+#mode,
 #cpu,
 #memory,
-#disk,
-#temperature,
-#backlight,
 #network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
 #tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#user,
 #language,
-#group_1,
-#group_2,
-#mpd {
-	background: rgba(0, 0, 0, 0.5);
+#clock,
+#idle_inhibitor {
+	padding: 0 5px;
+}
+
+#network.disconnected {
+	color: #eb4d4b;
+}
+
+#mode {
 	padding: 5 5px;
-	margin-left: 0px;
-	margin-right: 0px;
-	border: 1px;
+	margin: 3 0 0 3px;
+	border-radius: 20 20 20 20px;
+	background: #eb4d4b;
+	color: #000000;
+}
+
+#user,
+#scratchpad {
+	padding: 0 9px;
+	margin: 3 0 0 3px;
+	border-radius: 13px;
+	background: rgba(0, 0, 0, 0.3);
 	color: #ffffff;
 }
 
 #window {
-	padding: 5 5px;
-	margin: 3 3 3 3px;
-	border-radius: 30 30 30 30px;
-	background: rgba(0, 0, 0, 0.5);
+	padding: 5 9px;
+	margin: 3 0 0 3px;
+	border-radius: 20 20 20 20px;
+	background: rgba(0, 0, 0, 0.6);
 	color: #ffffff;
 }
 
-#workspaces {
-	margin: 3px 3px 3px 3px;
-	border-radius: 0 30 30 0px;
-	background: rgba(0, 0, 0, 0.5);
-}
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left>widget:first-child>#workspaces {
-	margin-left: 5;
+	margin-left: 3;
 }
 
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right>widget:last-child>#clock {
+/* If workspaces is the rightmost module, omit right margin 
+.modules-right>widget:last-child>#group_2 {
 	margin-right: 5;
 }
-
+*/
 @keyframes blink {
 	to {
 		background-color: #ffffff;
@@ -137,10 +156,6 @@ label:focus {
 #tray>.needs-attention {
 	-gtk-icon-effect: highlight;
 	background-color: #eb4d4b;
-}
-
-#scratchpad {
-	background: rgba(0, 0, 0, 0.2);
 }
 
 #scratchpad.empty {

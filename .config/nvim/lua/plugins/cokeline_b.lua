@@ -42,24 +42,24 @@ require('cokeline').setup({
 
 	rhs = {
 		{
-			text = '󱃢 '
+			text = ''
 		},
 	},
-	 tabs = {
-	 	placement = "right", --'left" | "right",
-	 	components = {
-	 		{
-	 			text = function(tabpage)
-	 				return '[' .. tabpage.number .. ']'
-	 			end,
-	 			bg = function(tabpage)
-	 				if tabpage.is_focused then
-	 					return fg_color
-	 				end
-	 			end,
-	 		},
-	 	}
-	 },
+	tabs = {
+		placement = "right", --'left" | "right",
+		components = {
+			{
+				text = function(tabpage)
+					return '[' .. tabpage.number .. ']'
+				end,
+				bg = function(tabpage)
+					if tabpage.is_focused then
+						return fg_color
+					end
+				end,
+			},
+		}
+	},
 
 	components = {
 		{

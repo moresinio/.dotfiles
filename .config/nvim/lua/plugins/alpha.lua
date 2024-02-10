@@ -7,6 +7,7 @@ local dashboard = require("alpha.themes.dashboard")
 
 -- Set header
 dashboard.section.header.val = {
+
 	[[		` : | | | |:  ||  :     `  :  |  |+|: | : : :|   .        `              . ]],
 	[[				` : | :|  ||  |:  :    `  |  | :| : | : |:   |  .                    : ]],
 	[[					 .' ':  ||  |:  |  '       ` || | : | |: : |   .  `           .   :. ]],
@@ -63,9 +64,9 @@ dashboard.section.footer.val = footer()
 
 --  Set menu
 dashboard.section.buttons.val = {
-	dashboard.button("r", "  > Recent files", ":Telescope oldfiles<CR>"),
-	dashboard.button("R", "  > Restore Session", ":SessionLoadLast<CR>"),
-	dashboard.button("q", "  > Quit NVIM", ":qa<CR>"),
+	dashboard.button("r", "  󰁔 Recent files", ":Telescope oldfiles<CR>"),
+	dashboard.button("R", "  󰁔 Restore Session", ":SessionLoadLast<CR>"),
+	dashboard.button("q", "  󰁔 Quit NVIM", ":qa<CR>"),
 	-- dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
 	-- dashboard.button("f", "  > Browse Files", ":Telescope find_files<CR>"),
 	-- dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),

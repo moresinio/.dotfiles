@@ -16,7 +16,7 @@ set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu wofi --show run 
+set $menu rofi -show run 
 
 ### Output configuration
 #
@@ -33,11 +33,13 @@ set $menu wofi --show run
 
 # Example configuration:
 #
-set $lock_me $HOME/.config/sway/scripts/swaylock.sh
+set $lock_me $HOME/.config/sway/scripts/lock/swaylock.sh
+set $notify $HOME/.config/sway/scripts/lock/notify.sh
  exec swayidle -w \
+ 					timeout 570 'notify-send "LOCKING screen in 30 seconds"'  \
           timeout 600 $lock_me \
-          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep $lock_me
+          timeout 850 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          before-sleep $lock_me  \
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -52,6 +54,10 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
      tap enabled
      natural_scroll disabled
      middle_emulation enabled
+}
+input "4815:341:COOLER_MASTER_CM_STORM_SENTINEL_Z3RO-G" {
+		accel_profile "flat"
+    pointer_accel -0.1
 }
 input * {
   xkb_layout "us,ru"
@@ -69,15 +75,15 @@ input <identifier> xkb_model "pc86"
 ### Key bindings
 #
 # Basics:
-bindsym $mod+Return exec foot
+bindsym --to-code $mod+Return exec foot
 #
     # Start a terminal
 
     # Kill focused window
-    bindsym $mod+q kill
+    bindsym --to-code $mod+q kill
 
     # Start your launcher
-    bindsym $mod+z exec $menu
+    bindsym --to-code $mod+z exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -87,34 +93,34 @@ bindsym $mod+Return exec foot
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+r reload
+    bindsym --to-code $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym --to-code $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
     # Move your focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
+    bindsym --to-code $mod+$left focus left
+    bindsym --to-code $mod+$down focus down
+    bindsym --to-code $mod+$up focus up
+    bindsym --to-code $mod+$right focus right
     # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+    bindsym --to-code $mod+Left focus left
+    bindsym --to-code $mod+Down focus down
+    bindsym --to-code $mod+Up focus up
+    bindsym --to-code $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
+    bindsym --to-code $mod+Shift+$left move left
+    bindsym --to-code $mod+Shift+$down move down
+    bindsym --to-code $mod+Shift+$up move up
+    bindsym --to-code $mod+Shift+$right move right
     # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
+    bindsym --to-code $mod+Shift+Left move left
+    bindsym --to-code $mod+Shift+Down move down
+    bindsym --to-code $mod+Shift+Up move up
+    bindsym --to-code $mod+Shift+Right move right
 #
 # Workspaces:
 #
@@ -148,26 +154,26 @@ bindsym $mod+Return exec foot
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively, $mod+c toggle
-     bindsym $mod+b splith
-     bindsym $mod+v splitv
-     bindsym $mod+c split toggle
+     bindsym --to-code $mod+b splith
+     bindsym --to-code $mod+v splitv
+     bindsym --to-code $mod+c split toggle
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    bindsym --to-code $mod+s layout stacking
+    bindsym --to-code $mod+w layout tabbed
+    bindsym --to-code $mod+e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+    bindsym --to-code $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym --to-code $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym --to-code $mod+space focus mode_toggle
 
     # Move focus to the parent container
-    bindsym $mod+x focus parent
+    bindsym --to-code $mod+x focus parent
 #
 # Scratchpad:
 #
@@ -175,11 +181,11 @@ bindsym $mod+Return exec foot
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+a move scratchpad
+    bindsym --to-code $mod+Shift+a move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+a scratchpad show
+    bindsym --to-code $mod+a scratchpad show
 #
 # Resizing containers:
 #
@@ -236,7 +242,15 @@ bar {
 
 # bindsym XF86ScreenSaver exec $lockman
 
-for_window [class="^.*"] border pixel 1
+#######
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Breeze-Dark'
+    gsettings set $gnome-schema icon-theme 'Faenza-Radiance'
+    gsettings set $gnome-schema cursor-theme 'Adwaita'
+    gsettings set $gnome-schema font-name 'Cantarell 11'
+}
+#######
 gaps inner 3
 gaps outer 2
 smart_gaps off
@@ -250,6 +264,19 @@ smart_borders on
 ################################
 
 focus_follows_mouse yes
+for_window [class="^.*"] border pixel 2
+for_window [app_id="mpv"] floating enable
+for_window [app_id="Color Picker"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_role="dialog"] floating enable
+for_window [window_role = "pop-up"] floating enable
+for_window [window_role = "bubble"] floating enable
+for_window [window_role = "task_dialog"] floating enable
+for_window [window_type = "menu"] floating enable
+for_window [app_id = "floating"] floating enable
+for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
+for_window [class = "(?i)pinentry"] floating enable
+for_window [title = "Administrator privileges required"] floating enable
 # hide_edge_borders smart
 
 bindsym XF86MonBrightnessDown exec light -U 20
@@ -261,6 +288,8 @@ bindsym Print+Shift exec grim -g "$(slurp)"
 bindsym Print exec grim 
 
 exec dunst
+exec pipewire
+exec light -S 50 
 exec wl-paste -t text --watch clipman store --no-persist
 exec way-displays
 exec --no-startup-id python ~/.config/sway/scripts/inactive-windows-transparency.py

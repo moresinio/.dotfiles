@@ -23,7 +23,10 @@ require("lazy").setup({
 		end,
 	},
 	--------------------------------------------------------------------------------->
+	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
+	--------------------------------------------------------------------------------->
 	{ 'rcarriga/nvim-notify' },
+	--------------------------------------------------------------------------------->
 	{
 		"EdenEast/nightfox.nvim",
 		config = function()
@@ -257,7 +260,13 @@ require("lazy").setup({
 		end,
 	},
 	--------------------------------------------------------------------------------->
-	{ 'powerman/vim-plugin-ruscmd', },
+	{
+		"aveplen/ruscmd.nvim",
+		lazy = false,
+		config = function()
+			require('ruscmd').setup {}
+		end,
+	},
 	--------------------------------------------------------------------------------->
 	--	{
 	--		'ggandor/leap.nvim',
@@ -385,3 +394,7 @@ require("lazy").setup({
 	},
 
 })
+-- for telescope-fzf-native.nvim:
+require('telescope').load_extension('fzf')
+-- for langmapper
+--require('langmapper').automapping({ global = true, buffer = true })

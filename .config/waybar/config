@@ -4,7 +4,7 @@
     "height": 3,
     "spacing": 1,
     // "start_hidden": true,
-    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-left": ["sway/workspaces", "mpd", "sway/mode"],
      "modules-center": ["sway/window"],
      "modules-right": [ "group/group_2", "group/group_1",],
 		 	
@@ -24,8 +24,8 @@
 
 	"group/group_2": {
 		"orientation": "horizontal",
-			"modules": ["sway/scratchpad", "memory", "custom/vpn", 
-									"cpu", "network", "tray",
+			"modules": [ "sway/scratchpad", "custom/vpn", 
+									"cpu", "memory", "wireplumber", "network", "tray",
 									"sway/language", "clock",
 			],
 	},
@@ -38,6 +38,42 @@
     "interval": 5
 },
 
+"wireplumber": {
+    "format": "{volume}% {icon}",
+    "format-muted": "",
+    "on-click": "helvum",
+    "format-icons": ["", "", ""]
+},
+
+"mpd": {
+    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+    "format-disconnected": "Disconnected ",
+    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+    "interval": 10,
+		"max-length": 25,
+    "consume-icons": {
+        "on": " " // Icon shows only when "consume" is on
+    },
+    "random-icons": {
+        "off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
+        "on": " "
+    },
+    "repeat-icons": {
+        "on": " "
+    },
+    "single-icons": {
+        "on": "1 "
+    },
+    "state-icons": {
+        "paused": "",
+        "playing": ""
+    },
+    "tooltip-format": "MPD (connected)",
+    "tooltip-format-disconnected": "MPD (disconnected)",
+	  "on-click": "mpc play",
+	  "on-click-right": "mpc stop",
+},
+
 "custom/space": {
     "format": "",
     "tooltip": false,
@@ -46,7 +82,7 @@
 	"custom/lock": {
     "format": "  ",
     "tooltip": true,
-    "on-click": "$HOME/.config/sway/scripts/swaylock.sh",
+    "on-click": "$HOME/.config/sway/scripts/lock/swaylock.sh",
     "on-click-right": "wlogout",
 	},
 
@@ -190,22 +226,6 @@
 									}
     },
     
-    "pulseaudio": {
-        "scroll-step": 10, // %, can be a float
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": "{format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol",
-       	"on-click-middle": "pamixer -t",
-       	"tooltip": false,
-    },
-
 		"network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "",

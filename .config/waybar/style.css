@@ -35,8 +35,16 @@ button {
 	box-shadow: none;
 }
 
+#mpd {
+	margin: 4 0 0 3px;
+	padding: 0 11px;
+	border-radius: 20px;
+	background: rgba(0, 0, 0, 0.6);
+	color: #ffffff;
+}
+
 #workspaces {
-	margin: 3 0 0 3px;
+	margin: 4 0 0 3px;
 	padding: 0 9px;
 	border-radius: 0 20 20 0px;
 	background: rgba(0, 0, 0, 0.6);
@@ -75,25 +83,22 @@ button {
 	background: rgba(0, 0, 0, 0.6);
 	border-radius: 0px;
 	padding: 5 5 5 0px;
-	margin: 3 3 0 -1px;
+	margin: 4 5 0 -1px;
 	color: #ffffff;
 }
 
 #group_2 {
 	background: rgba(0, 0, 0, 0.6);
 	border-radius: 20 0 0 20px;
-	margin: 3 0 0 -1px;
+	margin: 4 0 0 -1px;
 	color: #ffffff;
 }
 
 #vpn,
 #mode,
-#cpu,
 #memory,
 #network,
-#tray,
 #language,
-#clock,
 #idle_inhibitor {
 	padding: 0 5px;
 }
@@ -104,18 +109,28 @@ button {
 
 #mode {
 	padding: 5 5px;
-	margin: 3 0 0 3px;
+	margin: 4 0 0 3px;
 	border-radius: 20 20 20 20px;
 	background: #eb4d4b;
 	color: #000000;
 }
 
-#user,
-#scratchpad {
-	padding: 0 9px;
-	margin: 3 0 0 3px;
+#user {
+	padding: 0 5px;
 	border-radius: 13px;
-	background: rgba(0, 0, 0, 0.3);
+	background: rgba(255, 255, 255, 0.2);
+	color: #ffffff;
+}
+
+#cpu,
+#wireplumber,
+#tray,
+#clock,
+#scratchpad {
+	padding: 0 5px;
+	margin: 4 5px;
+	border-radius: 13px;
+	background: rgba(45, 140, 203, 0.2);
 	color: #ffffff;
 }
 
@@ -130,7 +145,7 @@ button {
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left>widget:first-child>#workspaces {
-	margin-left: 3;
+	margin-left: 5;
 }
 
 /* If workspaces is the rightmost module, omit right margin 

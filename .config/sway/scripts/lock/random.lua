@@ -1,3 +1,5 @@
+#!/usr/bin/env lua
+
 -- Функция для получения списка файлов в директории
 local function get_files_in_directory(directory)
 	local files = {}
@@ -20,6 +22,15 @@ local directory_path = home .. "/Pictures"
 
 -- Получаем список файлов в директории
 local files = get_files_in_directory(directory_path)
-for i = 1,#files do
-	print(files[i])
-end
+
+-- Случайно выбираем один файл
+local random_file = choose_random_file(files)
+
+-- Заменяем часть пути к файлу на '$HOME' и добавляем в начало 'wallpaper='
+local modified_path = 'wallpaper="' .. random_file:gsub(home, "$HOME") .. '"'
+
+-- Записываем результат в другой файл
+local output_file_path = home .. "./config/sway/scripts/lock/wall-source.sh"
+local output_file = io.open(output_file_path, "w")
+output_file:write(modified_path)
+output_file:close()

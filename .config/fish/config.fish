@@ -5,6 +5,8 @@ end
 alias tre='trans -brief '
 alias N='sudo -E nnn -H'
 alias ht='htop'
+alias xr='xbps-query -Rs'
+alias xs='xbps-query -s'
 starship init fish | source
 
 

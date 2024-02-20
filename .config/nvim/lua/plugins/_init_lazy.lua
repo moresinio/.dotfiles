@@ -25,7 +25,14 @@ require("lazy").setup({
 	--------------------------------------------------------------------------------->
 	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
 	--------------------------------------------------------------------------------->
-	{ 'rcarriga/nvim-notify' },
+	{
+		'rcarriga/nvim-notify',
+		lazy = false,
+		config = function()
+			require('plugins.notify')
+		end
+	},
+	--------------------------------------------------------------------------------->
 	--------------------------------------------------------------------------------->
 	{
 		"EdenEast/nightfox.nvim",
@@ -111,10 +118,9 @@ require("lazy").setup({
 	--------------------------------------------------------------------------------->
 	{
 		'nvim-lualine/lualine.nvim',
-		event = "VeryLazy",
-		lazy = true,
+		--lazy = true,
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
-		event = "VeryLazy",
+		--event = "VeryLazy",
 		config = function()
 			require("plugins.lualine")
 		end,

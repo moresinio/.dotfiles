@@ -5,13 +5,14 @@ require('lualine').setup {
 		theme = 'auto',
 		component_separators = '•', --♥
 		section_separators = { left = '', right = '' },
-		disabled_filetypes = { statusline = { "nnn", "dashboard", "packer", "alpha" } },
+		--disabled_filetypes = { statusline = { "nnn", "dashboard", "packer", "alpha" } },
 		always_divide_middle = true,
-		globalstatus = false,
+		globalstatus = true,
 	},
+--extensions = {'lazy', 'mason'},
 	sections = {
 		lualine_a = {
-			{ function() return "🦄" end, separator = { right = 'nil' } }, --♥
+			{ function() return "🦄" end, separator = { right = 'nil' } },
 			{ 'mode', separator = { right = '' }, right_padding = 1 },
 		},
 		lualine_b = {
@@ -26,17 +27,13 @@ require('lualine').setup {
 				},
 			},
 		},
-		lualine_c = { 'lsp_progress',
-			--{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-			{ "filename", symbols = { modified = "  ", readonly = "", unnamed = "" } },
-			{ "require'lsp-status'.status()", separator = { right = '' }, right_padding = 1 },
+		lualine_c = {
+			{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+			--{ "filename", symbols = { modified = "  ", readonly = "", unnamed = "" } },
+			--{ "require'lsp-status'.status()", separator = { right = '' }, right_padding = 1 },
 			{ "filesize" }
 		},
 		lualine_x = {
-		--	{
-		--		require("noice").api.status.message.get_hl,
-		--		cond = require("noice").api.status.message.has,
-		--	},
 			{
 				require("noice").api.status.search.get,
 				cond = require("noice").api.status.search.has,
@@ -48,9 +45,9 @@ require('lualine').setup {
 			{ 'progress' },
 			{ 'location' },
 		},
-		lualine_z = { function() return os.date("%R") end, },
+		lualine_z = { { function() return os.date("%R") end }, },
 	},
---	winbar = {
---		lualine_z = { 'filename'}
---	}
+	--	winbar = {
+	--		lualine_z = { 'filename'}
+	--	}
 }

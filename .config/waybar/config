@@ -1,12 +1,24 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 3,
+    "height": 9,
     "spacing": 1,
     // "start_hidden": true,
-    "modules-left": ["sway/workspaces", "mpd", "sway/mode"],
+    "modules-left": ["group/group_0", "sway/workspaces", "custom/vpn", "sway/mode"],
      "modules-center": ["sway/window"],
      "modules-right": [ "group/group_2", "group/group_1",],
+
+	"group/group_0": {
+		"orientation": "horizontal",
+    "drawer": {
+        "transition-duration": 500,
+       // "transition-left-to-right": false,
+        "transition-right-to-left": false,
+    },
+			"modules": [
+				"custom/menu",
+			],
+	},
 		 	
 	"group/group_1": {
 		"orientation": "horizontal",
@@ -24,11 +36,27 @@
 
 	"group/group_2": {
 		"orientation": "horizontal",
-			"modules": [ "sway/scratchpad", "custom/vpn", 
+			"modules": [ "sway/scratchpad", "temperature", 
 									"cpu", "memory", "wireplumber", "network", "tray",
 									"sway/language", "clock",
 			],
 	},
+
+	"custom/menu": {
+    "format": "  ",
+    "tooltip": true,
+    "tooltip-format": "VOID",
+    "on-click": "rofi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -show drun",
+    "on-click-right": "",
+	},
+
+"custom/pipewire": {
+    "tooltip": false,
+    "max-length": 6,
+    "exec": "$HOME/.config/waybar/scripts/pipewire.sh",
+    "on-click": "pavucontrol",
+    "on-click-right": "qpwgraph"
+},
 
 "custom/vpn": {
     "format": " VPN ",
@@ -39,9 +67,10 @@
 },
 
 "wireplumber": {
-    "format": "{volume}% {icon}",
+    "format": "{icon}",
     "format-muted": "",
     "on-click": "helvum",
+		"tooltip-format": "{volume}%",
     "format-icons": ["", "", ""]
 },
 
@@ -74,16 +103,11 @@
 	  "on-click-right": "mpc stop",
 },
 
-"custom/space": {
-    "format": "",
-    "tooltip": false,
-	},
-
 	"custom/lock": {
     "format": "  ",
     "tooltip": true,
     "on-click": "$HOME/.config/sway/scripts/lock/swaylock.sh",
-    "on-click-right": "wlogout",
+    "on-click-right": "wlogout -p layer-shell",
 	},
 
 	"user": {
@@ -170,7 +194,16 @@
     "focused": "🌻",
 		},
 		"persistent-workspaces": {
+        "11": ["LVDS-1"],
+        "12": ["LVDS-1"],
         "13": ["LVDS-1"],
+        "14": ["LVDS-1"],
+        "15": ["LVDS-1"],
+        "21": ["VGA-1"],
+        "22": ["VGA-1"],
+        "23": ["VGA-1"],
+        "24": ["VGA-1"],
+        "25": ["VGA-1"],
 		}
 	},
     
@@ -180,7 +213,7 @@
     },
     
     "sway/window": {
-				"max-length": 50,
+				"max-length": 35,
 				"min-length": 5,
     },
     
@@ -194,7 +227,7 @@
     },
     
     "tray": {
-        // "icon-size": 12,
+        // "icon-size": 11,
         "spacing": 5,
         "tooltip": false,
     },
@@ -241,9 +274,19 @@
         "format": "{usage}% 󰻠",
         "tooltip": true
     },
+
+		"temperature": {
+				// "thermal-zone": 2,
+				// "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+				// "critical-threshold": 80,
+				// "format-critical": "{temperatureC}°C ",
+				"format": "{temperatureC}°C "
+		},
+
     "memory": {
-        "format": "{avail}G 󰍛"
+        "format": "{percentage}% "
     },
+
 		"backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",

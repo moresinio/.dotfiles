@@ -1,6 +1,6 @@
 include ~/.cache/wal/colors-sway
 # Read `man 5 sway` for a complete reference.
-xwayland enable
+xwayland disable
 
 ### Variables
 #
@@ -16,14 +16,16 @@ set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu rofi -show run 
+set $menu rofi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -show combi -modes combi -combi-modes 
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
- set $wallpapers_path $HOME/Pictures
- output * bg $(find $wallpapers_path -type f | shuf -n 1) fill
+## set $wallpapers_path $HOME/Pictures
+## output * bg $(find $wallpapers_path -type f | shuf -n 1) fill
+output * bg $wallpaper fill
+
 #
 # Example configuration:
 #
@@ -33,10 +35,12 @@ set $menu rofi -show run
 
 # Example configuration:
 #
+#timeout 570 'notify-send "LOCKING screen in 30 seconds"'  
+#notify-send -h string:bgcolor:#900000 -h string:fgcolor:#ffffff -h string:frcolor:#ff0000 
 set $lock_me $HOME/.config/sway/scripts/lock/swaylock.sh
 set $notify $HOME/.config/sway/scripts/lock/notify.sh
  exec swayidle -w \
- 					timeout 570 'notify-send "LOCKING screen in 30 seconds"'  \
+ 					timeout 570 'notify-send -h string:bgcolor:#900000 -h string:fgcolor:#ffffff -h string:frcolor:#ff0000 "LOCKING screen in 30 seconds"'  \
           timeout 600 $lock_me \
           timeout 850 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
           before-sleep $lock_me  \
@@ -246,9 +250,9 @@ bar {
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Breeze-Dark'
-    gsettings set $gnome-schema icon-theme 'Faenza-Radiance'
+    gsettings set $gnome-schema icon-theme 'breeze-dark'
     gsettings set $gnome-schema cursor-theme 'Adwaita'
-    gsettings set $gnome-schema font-name 'Cantarell 11'
+    gsettings set $gnome-schema font-name 'FiraCode Nerd Font 11'
 }
 #######
 gaps inner 3
@@ -286,6 +290,7 @@ bindsym $mod+F2 exec foot -T nnn nnn
 bindsym $mod+F3 exec foot -T Neovim nvim
 bindsym Print+Shift exec grim -g "$(slurp)"
 bindsym Print exec grim 
+bindsym $mod+Shift+x exec wlogout -p layer-shell
 
 exec dunst
 exec pipewire

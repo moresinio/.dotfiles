@@ -1,3 +1,10 @@
+# General
+set selection-clipboard "clipboard"
+set window-title-home-tilde "true"
+set window-title-basename "true"
+set statusbar-basename "true"
+set adjust-open "best-fit"  # Open document in fit-width mode by default
+
 set default-bg   "#0B1B2C"
 set inputbar-bg  "#0B1B2C"
 set statusbar-bg "#0B1B2C"

@@ -1,10 +1,12 @@
 local map = vim.api.nvim_set_keymap
 local get_hl_attr = require("cokeline.hlgroups").get_hl_attr
-local bg_color = get_hl_attr('Normal', 'fg')
-local bg_color_active = get_hl_attr('Visual', 'bg')
+local bg_color = get_hl_attr('Comment', 'fg')
+local bg_color_active = get_hl_attr('CursorLine', 'bg')
 local fg_color_active = get_hl_attr('Title', 'fg')
 local bg_color_inactive = get_hl_attr('Normal', 'bg')
 local bg_color = get_hl_attr('Normal', 'bg')
+local error_color = get_hl_attr('DiagnosticError', 'fg')
+local ok_color = get_hl_attr('DiagnosticOk', 'fg')
 
 require('cokeline').setup({
 	show_if_buffers_are_at_least = 1,
@@ -21,12 +23,18 @@ require('cokeline').setup({
 		---@type string | string[]
 		filetype = { "NvimTree", "nnn", "neo-tree", },
 		---@type Component[]
-		components = { {
-			text =
-					function(buf)
-						return buf.filetype
-					end,
-		},
+		components = {
+			{
+				text =
+						function(buf)
+							return buf.filetype
+						end,
+				fg =
+						function(buffer)
+							return fg_color_active
+						end
+			},
+
 		},
 	},
 
@@ -42,32 +50,53 @@ require('cokeline').setup({
 
 	rhs = {
 		{
-			text = '󱃢 '
+			text = "",
+			fg = bg_color_active,
+		},
+		{
+			text = 'Tabs ',
+			fg = fg_color_active,
+			bg = bg_color_active,
 		},
 	},
-	 tabs = {
-	 	placement = "right", --'left" | "right",
-	 	components = {
-	 		{
-	 			text = function(tabpage)
-	 				return '[' .. tabpage.number .. ']'
-	 			end,
-	 			bg = function(tabpage)
-	 				if tabpage.is_focused then
-	 					return fg_color
-	 				end
-	 			end,
-	 		},
-	 	}
-	 },
+
+	tabs = {
+		placement = "right", --'left" | "right",
+		components = {
+			{
+				text = function(tabpage)
+					return '[' .. tabpage.number .. '] |'
+				end,
+				fg =
+						function(tabpage)
+							if tabpage.is_active then
+								return fg_color_active
+							end
+						end,
+				bg = function(tabpage)
+					if tabpage.is_active then
+						return bg_color_active
+					end
+				end,
+			},
+			--	{
+			--		text = "/",
+			--		fg = bg_color_active,
+			--	},
+		}
+	},
 
 	components = {
 		{
 			text = function(buffer)
 				local _text = ''
-				if buffer.index > 1 then _text = ' ' end
-				if buffer.is_focused or buffer.is_first then
-					_text = _text .. ''
+				-- if buffer.index > 1 then _text = ' ' end
+				if buffer.is_focused then
+					if buffer.is_first then
+						_text = _text .. ''
+					else
+						_text = _text .. ''
+					end
 				end
 				return _text
 			end,
@@ -120,55 +149,52 @@ require('cokeline').setup({
 			end,
 			fg = function(buffer)
 				if (buffer.diagnostics.errors > 0) then
-					return '#c9515b'
+					return error_color
+				elseif buffer.is_modified then
+					return ok_color
 				else
 					return fg_color_active
 				end
 			end,
-			bold = function(buffer)
-				if buffer.is_focused then
-					return true
-				end
-			end,
+			--bold = function(buffer)
+			--	if buffer.is_focused then
+			--		return true
+			--	end
+			--end,
 			underline = function(buffer)
-				if buffer.is_focused then
+				if buffer.is_focused or buffer.is_hovered then
 					return true
 				end
 			end,
-			style = function(buffer)
-				local text_style = 'NONE'
-				if buffer.is_focused then
-					text_style = 'bold'
-				end
-				if buffer.diagnostics.warnings > 0 then
-					if text_style ~= 'NONE' then
-						text_style = text_style .. ',underline'
-					else
-						text_style = 'underline'
-					end
-				end
-				return text_style
-			end
 		},
 		{
 			---@param buffer Buffer
 			text = function(buffer)
 				if buffer.is_modified then
-					return " "
+					if buffer.is_hovered then
+						return " "
+					end
+					--		if (buffer.diagnostics.errors > 0) then
+					--			return " 󰈸"
+					--		end
+					return " 󰌪"
 				end
 				if buffer.is_hovered then
-					return " 󰅙"
+					return " " --󰅙 󰅚 󰲡 󱤆 󱤅 󰌪 󰲠 󰪥  󰝥  󰧞 󰧟󰗖  󱠇
 				end
-				return " 󰅖"
+				return " 󰅖" --  󰅖
 			end,
 			fg = function(buffer)
 				if buffer.is_modified then
-					return '#5cc951' --'#c9515b'
-				elseif (buffer.diagnostics.errors > 0) then
-					return '#c9515b'
-				else
-					return bg_color_inactive
+				--	if (buffer.diagnostics.errors > 0) then
+				--		return error_color
+				--	end
+					return ok_color
 				end
+			--	if (buffer.diagnostics.errors > 0) then
+			--		return error_color
+			--	end
+				return fg_color_active
 			end,
 			on_click = function(_, _, _, _, buffer)
 				buffer:delete()

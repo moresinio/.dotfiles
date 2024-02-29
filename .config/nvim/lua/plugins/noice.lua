@@ -6,21 +6,72 @@ require('noice').setup({
 	},
 	lsp = {
 		override = {
-			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-			["vim.lsp.util.stylize_markdown"] = true,
-			["cmp.entry.get_documentation"] = true,
+			["vim.lsp.util.convert_input_to_markdown_lines"] = false,
+			["vim.lsp.util.stylize_markdown"] = false,
+			["cmp.entry.get_documentation"] = false,
+		},
+		progress = {
+			enabled = true,
+			-- Lsp Progress is formatted using the builtins for lsp_progress. See config.format.builtin
+			-- See the section on formatting for more details on how to customize.
+			--- @type NoiceFormat|string
+			format = "lsp_progress",
+			--- @type NoiceFormat|string
+			format_done = "lsp_progress_done",
+			throttle = 1000 / 30, -- frequency to update lsp progress message
+			view = "mini",
+		},
+		hover = {
+			enabled = false,
+			silent = false, -- set to true to not show a message if hover is not available
+			view = nil,  -- when nil, use defaults from documentation
+			---@type NoiceViewOptions
+			opts = {},   -- merged with defaults from documentation
+		},
+		signature = {
+			enabled = false,
+			auto_open = {
+				enabled = true,
+				trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
+				luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
+				throttle = 50, -- Debounce lsp signature help request by 50ms
+			},
+			view = nil,   -- when nil, use defaults from documentation
+			---@type NoiceViewOptions
+			opts = {},    -- merged with defaults from documentation
+		},
+		message = {
+			-- Messages shown by lsp servers
+			enabled = true,
+			view = "notify",
+			opts = {},
+		},
+		-- defaults for hover and signature help
+		documentation = {
+			view = "hover",
+			---@type NoiceViewOptions
+			opts = {
+				lang = "markdown",
+				replace = true,
+				render = "plain",
+				format = { "{message}" },
+				win_options = { concealcursor = "n", conceallevel = 3 },
+			},
 		},
 	},
+
 	presets = {
 		bottom_search = false,
+		command_palette = false,
 		long_message_to_split = true,
 		lsp_doc_border = true,
+		inc_rename = true,
 	},
 
 	views = {
 		cmdline_popup = {
 			position = {
-				row = "60%",
+				row = "50%",
 				col = "50%",
 			},
 			size = {
@@ -31,13 +82,17 @@ require('noice').setup({
 				style = "rounded",
 				padding = { 0, 0 },
 			},
+
+				win_options = {
+					winhighlight = { Normal = "StatusLine", FloatBorder = "Keyword" },
+				},
 		},
 		popupmenu = {
 			enabled = true, -- enables the Noice popupmenu UI
 			backend = "nui", -- backend to use to show regular cmdline completions
 			relative = "editor",
 			position = {
-				row = "80%",
+				row = "70%",
 				col = "50%",
 			},
 			size = {
@@ -49,7 +104,7 @@ require('noice').setup({
 				padding = { 0, 0 },
 			},
 			win_options = {
-				winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+				winhighlight = { Normal = "StatusLine", FloatBorder = "Keyword" },
 			},
 		},
 		commands = {
@@ -67,6 +122,9 @@ require('noice').setup({
 					},
 				},
 			},
+			win_options = {
+				winhighlight = { Normal = "StatusLine", FloatBorder = "Keyword" },
+			},
 		},
 		markdown = {
 			hover = {
@@ -83,4 +141,11 @@ require('noice').setup({
 			},
 		},
 	},
+
+	--	routes = {
+	--		{
+	--			view = "notify",
+	--			filter = { event = "msg_showmode" },
+	--		},
+	--	},
 })

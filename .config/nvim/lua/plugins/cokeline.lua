@@ -7,7 +7,6 @@ local bg_color_inactive = get_hl_attr('Normal', 'bg')
 local bg_color = get_hl_attr('Normal', 'bg')
 local error_color = get_hl_attr('DiagnosticError', 'fg')
 local ok_color = get_hl_attr('DiagnosticOk', 'fg')
-
 require('cokeline').setup({
 	show_if_buffers_are_at_least = 1,
 	mappings = {
@@ -48,17 +47,17 @@ require('cokeline').setup({
 	-- The highlight group used to fill the tabline space
 	fill_hl = "Normal",
 
-	rhs = {
-		{
-			text = "",
-			fg = bg_color_active,
-		},
-		{
-			text = 'Tabs ',
-			fg = fg_color_active,
-			bg = bg_color_active,
-		},
-	},
+	 rhs = {
+	 	{
+	 		text = "",
+	 		fg = bg_color_active,
+	 	},
+	 	{
+	 		text = "󱃢 ", --'󰎦 󰬺 󰎤 󰲠 󰲡 ',
+	 		fg = fg_color_active,
+	 		bg = bg_color_active,
+	 	},
+	 },
 
 	tabs = {
 		placement = "right", --'left" | "right",
@@ -156,11 +155,11 @@ require('cokeline').setup({
 					return fg_color_active
 				end
 			end,
-			--bold = function(buffer)
-			--	if buffer.is_focused then
-			--		return true
-			--	end
-			--end,
+			bold = function(buffer)
+				if buffer.is_focused then
+					return true
+				end
+			end,
 			underline = function(buffer)
 				if buffer.is_focused or buffer.is_hovered then
 					return true
@@ -186,14 +185,14 @@ require('cokeline').setup({
 			end,
 			fg = function(buffer)
 				if buffer.is_modified then
+					--	if (buffer.diagnostics.errors > 0) then
+					--		return error_color
+					--	end
+					return ok_color
+				end
 				--	if (buffer.diagnostics.errors > 0) then
 				--		return error_color
 				--	end
-					return ok_color
-				end
-			--	if (buffer.diagnostics.errors > 0) then
-			--		return error_color
-			--	end
 				return fg_color_active
 			end,
 			on_click = function(_, _, _, _, buffer)

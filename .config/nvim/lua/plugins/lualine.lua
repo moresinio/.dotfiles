@@ -5,14 +5,14 @@ require('lualine').setup {
 		theme = 'auto',
 		component_separators = '•', --♥
 		section_separators = { left = '', right = '' },
-		--disabled_filetypes = { statusline = { "nnn", "dashboard", "packer", "alpha" } },
+		disabled_filetypes = { statusline = { "nnn", "dashboard", "packer", "alpha" } },
 		always_divide_middle = true,
-		globalstatus = true,
+		globalstatus = false,
 	},
 --extensions = {'lazy', 'mason'},
 	sections = {
 		lualine_a = {
-			{ function() return "🦄" end, separator = { right = 'nil' } },
+			{ function() return icons.emojis.a end, separator = { right = 'nil' } },
 			{ 'mode', separator = { right = '' }, right_padding = 1 },
 		},
 		lualine_b = {

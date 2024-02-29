@@ -12,8 +12,8 @@ require('hlchunk').setup({
 			right_arrow = ">",
 		},
 		style = {
-			{ fg = "#806d9c" },
-			{ fg = "#c21f30" }, -- this fg is used to highlight wrong chunk
+			{ fg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("CursorLineNr")), "fg", "gui") },
+			{ fg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Error")), "fg", "gui") }
 		},
 		textobject = "",
 		max_file_size = 1024 * 1024,
@@ -22,7 +22,7 @@ require('hlchunk').setup({
 
 	indent = {
 		enable = true,
-		use_treesitter = false,
+		use_treesitter = true,
 		chars = {
 			"│",
 		},
@@ -32,14 +32,15 @@ require('hlchunk').setup({
 	},
 
 	line_num = {
-		enable = false,
+		enable = true,
 		use_treesitter = true,
-		style = "#806d9c",
+		style = {vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("CursorLineNr")), "fg", "gui")}
+,
 	},
 
 	blank = {
 		enable = true,
-		chars = { " ", "․", "⁚", "⁖", "⸬" },
+		chars = { " ", "․", "⁚", "⁖", "⁘", "⁙" },
 		style = {
 			vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Whitespace")), "fg", "gui"),
 		},

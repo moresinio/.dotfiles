@@ -2,7 +2,7 @@
  :translate-shell "0.9.0"
  :verbose         false
  :hl              "en"
- :tl              "ru"
- :engine          "google"
+ :tl              ["ru"]
+ :engine          "bing"
  :theme           "random"
 }

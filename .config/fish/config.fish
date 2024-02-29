@@ -2,7 +2,8 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-alias tre='trans -brief '
+alias t='trans -brief '
+alias T='trans -brief :en '
 alias N='sudo -E nnn -H'
 alias ht='htop'
 alias xr='xbps-query -Rs'

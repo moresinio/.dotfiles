@@ -19,7 +19,33 @@ require("lazy").setup({
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd([[colorscheme dracula]])
+			--vim.cmd([[colorscheme dracula]])
+		end,
+	},
+	{
+		'glepnir/zephyr-nvim',
+		config = function()
+			--vim.cmd([[colorscheme zephyr]])
+		end,
+	},
+	{
+		"tiagovla/tokyodark.nvim",
+		opts = {
+			-- custom options here
+		},
+		config = function(_, opts)
+			require("tokyodark").setup(opts) -- calling setup is optional
+			--      vim.cmd [[colorscheme tokyodark]]
+		end,
+	},
+	{
+		"lmburns/kimbox",
+		priority = 1000,
+		config = function()
+			require("kimbox").setup({
+				style = "eerie"
+			})
+			vim.cmd("colorscheme kimbox")
 		end,
 	},
 	--------------------------------------------------------------------------------->
@@ -31,23 +57,6 @@ require("lazy").setup({
 		config = function()
 			require('plugins.notify')
 		end
-	},
-	--------------------------------------------------------------------------------->
-	--------------------------------------------------------------------------------->
-	{
-		"EdenEast/nightfox.nvim",
-		config = function()
-			--vim.cmd([[colorscheme carbonfox]])
-			require('nightfox').setup({
-				options = {
-					dim_inactive = true,
-				},
-			})
-		end
-	},
-	--------------------------------------------------------------------------------->
-	{
-		"bluz71/vim-nightfly-colors", as = "nightfly"
 	},
 	--------------------------------------------------------------------------------->
 	{
@@ -84,8 +93,18 @@ require("lazy").setup({
 		event = "VeryLazy",
 		lazy = true,
 		keys = {
-			{ 'ga', '<cmd>lua vim.lsp.buf.code_action()<cr>', desc = "Code action" },
-
+			{ '<leader>d',  '<cmd>lua vim.diagnostic.open_float()<cr>',  desc = "Diagnostic" },
+			{ '[d',         '<cmd>lua vim.diagnostic.goto_prev()<cr>',   desc = "Prev diagnostic" },
+			{ ']d',         '<cmd>lua vim.diagnostic.goto_next()<cr>',   desc = "Next diagnostic" },
+			{ 'ga',         '<cmd>lua vim.lsp.buf.code_action()<cr>',    desc = "Code action" },
+			{ 'gr',         '<cmd>lua vim.lsp.buf.rename()<cr>',         desc = "Rename" },
+			{ 'gR',         '<cmd>lua vim.lsp.buf.references()<cr>',     desc = "References" },
+			{ '<leader>ff', '<cmd>lua vim.lsp.buf.format()<cr>',         desc = "Format" },
+			{ 'gD',         '<cmd>lua vim.lsp.buf.declaration()<cr>',    desc = "Declaration" },
+			{ 'gd',         '<cmd>lua vim.lsp.buf.definition()<cr>',     desc = "Definition" },
+			{ 'K',          '<cmd>lua vim.lsp.buf.hover()<cr>',          desc = "Hover" },
+			{ 'gi',         '<cmd>lua vim.lsp.buf.implementation()<cr>', desc = "Implementation" },
+			{ '<C-k>',      '<cmd>lua vim.lsp.buf.signature_help()<cr>', desc = "help" },
 		},
 		config = function()
 			require('plugins/lspconfig')
@@ -153,36 +172,36 @@ require("lazy").setup({
 		end,
 	},
 	-------------------------------------	
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-		}
-	},
+	--	{
+	--		"nvim-neo-tree/neo-tree.nvim",
+	--		branch = "v3.x",
+	--		dependencies = {
+	--			"nvim-lua/plenary.nvim",
+	--			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+	--			"MunifTanjim/nui.nvim",
+	--			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+	--		}
+	--	},
 	--------------------------------------------------------------------------------->
-	{
-		'ray-x/navigator.lua',
-		--event = "VeryLazy",
-		lazy = false,
-		dependencies = {
-			{ 'ray-x/guihua.lua',               run = 'cd lua/fzy && make' },
-			{ 'neovim/nvim-lspconfig' },
-			{ "nvim-treesitter/nvim-treesitter" },
-		},
-		config = function()
-			require 'navigator'.setup({
-				mason = true,
-				width = 0.75,      -- max width ratio (number of cols for the floating window) / (window width)
-				height = 0.3,      -- max list window height, 0.3 by default
-				preview_height = 0.35, -- max height of preview windows
-				border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-			})
-		end
-	},
+	--	{
+	--		'ray-x/navigator.lua',
+	--		event = "VeryLazy",
+	--		dependencies = {
+	--			{ 'ray-x/guihua.lua',               run = 'cd lua/fzy && make' },
+	--			{ 'neovim/nvim-lspconfig' },
+	--			{ "nvim-treesitter/nvim-treesitter" },
+	--		},
+	--		config = function()
+	--			require('plugins.navigator')
+	--		end
+	--	},
+	--------------------------------------------------------------------------------->
+	--	{
+	--		"ray-x/lsp_signature.nvim",
+	--		event = "VeryLazy",
+	--		opts = {},
+	--		config = function(_, opts) require 'lsp_signature'.setup(opts) end
+	--	},
 	--------------------------------------------------------------------------------->
 	--	{
 	--		"folke/trouble.nvim",
@@ -204,7 +223,7 @@ require("lazy").setup({
 			'hrsh7th/cmp-nvim-lsp',
 			'hrsh7th/cmp-path',
 			'hrsh7th/cmp-emoji',
-			'hrsh7th/cmp-nvim-lsp-signature-help',
+			-- 'hrsh7th/cmp-nvim-lsp-signature-help',
 			'hrsh7th/cmp-nvim-lua',
 		},
 		config = function()
@@ -398,8 +417,17 @@ require("lazy").setup({
 			require("plugins.cokeline")
 		end,
 	},
-
+	---------------------------------------------------------------------------->
+	{
+		"nvim-zh/colorful-winsep.nvim",
+		config = true,
+		event = { "WinNew" },
+	},
+	{
+		"p00f/clangd_extensions.nvim",
+	},
 })
+
 -- for telescope-fzf-native.nvim:
 require('telescope').load_extension('fzf')
 -- for langmapper

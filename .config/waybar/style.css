@@ -53,7 +53,7 @@
  }
 
  #workspaces button {
- 	padding: 0 5px;
+ 	padding: 0 6px;
  	margin: 4px;
  	border-radius: 15px;
  	background-color: transparent;
@@ -62,7 +62,7 @@
 
  #workspaces button:hover {
  	background: rgba(0, 0, 0, 0.2);
- 	padding: 0 5px;
+ 	padding: 0 6px;
  	margin: 4px;
  	border: none;
  	box-shadow: none;
@@ -118,6 +118,7 @@
  	border-radius: 20 20 20 20px;
  	background: @color0Alpha;
  	color: @color7;
+ 	border: 1px groove @color7Alpha
  }
 
  #mode {

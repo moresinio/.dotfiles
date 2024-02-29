@@ -165,7 +165,7 @@ disabled = false
 [jobs]
 format = '[  ](fg:blue bold)[$number$symbol]($style)'
 style = 'fg:blue'
-symbol = '省' # '廒' # '󰜎' # '' # '✦'
+symbol = '' # '廒' # '󰜎' # '' # '✦'
 symbol_threshold = 1
 number_threshold = 4
 disabled = false
@@ -173,7 +173,7 @@ disabled = false
 [memory_usage]
 format = '[  ](fg:purple bold)[$symbol ${ram} ${swap}]($style)'
 style = 'fg:purple'
-symbol = '󰘚 北' # '﬙ 痢' # '﬙ / 󰾵' # '󰍛 󰾵' # '﬙ 󰾴' # '﬙ 󰾶' # '﬙ 󰾷' '﬙ 󰣂'
+symbol = '󰘚 ' # '# '﬙ / 󰾵' # '󰍛 󰾵' # '﬙ 󰾴' # '﬙ 󰾶' # '﬙ 󰾷' '﬙ 󰣂'
 threshold = 75
 disabled = false
 

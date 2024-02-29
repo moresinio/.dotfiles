@@ -6,41 +6,68 @@ lspconfig.clangd.setup {
 	},
 }
 
---lspconfig.lua_l.setup {
---	settings = {
---		['lua_ls'] = {
---		},
---	},
---}
+lspconfig.lua_ls.setup {
+	settings = {
+		['lua_ls'] = {
+		},
+	},
+}
+lspconfig.marksman.setup {
+	settings = {
+		['marksman'] = {
+		},
+	},
+}
+
 local signs = {
-  Error = '',
-  Warn = '',
-  Hint = '',
-  Info = '',
+	Error = '',
+	Warn = '',
+	Hint = '',
+	Info = '',
 }
 for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-local border = {
-	{ "🭽", "FloatBorder" },
-	{ "▔", "FloatBorder" },
-	{ "🭾", "FloatBorder" },
-	{ "▕", "FloatBorder" },
-	{ "🭿", "FloatBorder" },
-	{ "▁", "FloatBorder" },
-	{ "🭼", "FloatBorder" },
-	{ "▏", "FloatBorder" },
-}
-vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
-vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
 
+ vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+ 	vim.lsp.handlers.hover,
+ 	{ border = 'rounded' }
+ )
+ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+ 	vim.lsp.handlers.signature_help,
+ 	{ border = 'rounded' }
+ )
 
-vim.diagnostic.config({
-	virtual_text = false,
-	signs = false,
-	underline = true,
-	update_in_insert = false,
-	severity_sort = false,
+ vim.diagnostic.config({
+ 	virtual_text ={
+		prefix = '󰀨 '
+	},
+ 	signs = true,
+ 	underline = true,
+ 	update_in_insert = false,
+ 	severity_sort = false,
+ 	float = {
+ 		border = 'rounded',
+ 		source = 'always',
+ 		header = '',
+ 		prefix = '',
+ 	},
+ })
+
+vim.o.updatetime = 700
+vim.api.nvim_create_autocmd("CursorHold", {
+  buffer = bufnr,
+  callback = function()
+    local opts = {
+      focusable = false,
+      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+      border = 'rounded',
+      source = 'always',
+      prefix = ' ',
+      scope = 'cursor',
+    }
+    vim.diagnostic.open_float(nil, opts)
+  end
 })

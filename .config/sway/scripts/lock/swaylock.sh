@@ -47,4 +47,4 @@ exec swaylock                         \
 	--clock                             \
 	--timestr '%H:%M'                   \
 	--datestr '%Y-%m-%d'                \
-	--indicator                         \
+	--indicator                         \ &

@@ -3,7 +3,7 @@ if status is-interactive
 end
 
 alias t='trans -brief '
-alias T='trans -brief :en '
+alias т='trans -brief :en '
 alias N='sudo -E nnn -H'
 alias ht='htop'
 alias xr='xbps-query -Rs'

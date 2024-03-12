@@ -45,7 +45,7 @@ require("lazy").setup({
 			require("kimbox").setup({
 				style = "eerie"
 			})
-			vim.cmd("colorscheme kimbox")
+			vim.cmd [[colorscheme kimbox]]
 		end,
 	},
 	--------------------------------------------------------------------------------->

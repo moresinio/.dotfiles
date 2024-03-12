@@ -66,7 +66,7 @@ opt.fixeol = false
 opt.completeopt = 'menuone,noselect'
 
 -- Не автокомментировать новые линии при переходе на новую строку
-vim.cmd [[autocmd BufEnter * set fo-=c fo-=r fo-=o]]
+cmd [[autocmd BufEnter * set fo-=c fo-=r fo-=o]]
 
 -- Подсветка строки с курсором
 opt.cursorline = true
@@ -84,7 +84,7 @@ opt.so = 999
 opt.termguicolors = true
 
 -- Blankline
-opt.list = true
+opt.list = false
 -- vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
 

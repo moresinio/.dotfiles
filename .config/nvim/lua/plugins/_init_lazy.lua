@@ -25,7 +25,7 @@ require("lazy").setup({
 	{
 		'glepnir/zephyr-nvim',
 		config = function()
-			--vim.cmd([[colorscheme zephyr]])
+			vim.cmd([[colorscheme zephyr]])
 		end,
 	},
 	{
@@ -35,7 +35,7 @@ require("lazy").setup({
 		},
 		config = function(_, opts)
 			require("tokyodark").setup(opts) -- calling setup is optional
-			--      vim.cmd [[colorscheme tokyodark]]
+			  --vim.cmd [[colorscheme tokyodark]]
 		end,
 	},
 	{
@@ -45,7 +45,7 @@ require("lazy").setup({
 			require("kimbox").setup({
 				style = "eerie"
 			})
-			vim.cmd [[colorscheme kimbox]]
+		--	vim.cmd [[colorscheme kimbox]]
 		end,
 	},
 	--------------------------------------------------------------------------------->
@@ -222,8 +222,8 @@ require("lazy").setup({
 			'saadparwaiz1/cmp_luasnip',
 			'hrsh7th/cmp-nvim-lsp',
 			'hrsh7th/cmp-path',
-			'hrsh7th/cmp-emoji',
-			-- 'hrsh7th/cmp-nvim-lsp-signature-help',
+			-- 'hrsh7th/cmp-emoji',
+			'hrsh7th/cmp-nvim-lsp-signature-help',
 			'hrsh7th/cmp-nvim-lua',
 		},
 		config = function()

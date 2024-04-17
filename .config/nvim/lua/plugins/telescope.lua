@@ -21,6 +21,40 @@ require("telescope").setup {
 				-- other layout configuration here
 			},
 		},
+    pickers = {
+      find_files = {
+        hidden = true,
+      },
+      live_grep = {
+        --@usage don't include the filename in the search results
+        only_sort_text = true,
+      },
+      grep_string = {
+        only_sort_text = true,
+      },
+      buffers = {
+        initial_mode = "normal",
+        mappings = {
+          i = {
+            ["<C-d>"] = actions.delete_buffer,
+          },
+          n = {
+            ["dd"] = actions.delete_buffer,
+          },
+        },
+      },
+      planets = {
+        show_pluto = true,
+        show_moon = true,
+      },
+      git_files = {
+        hidden = true,
+        show_untracked = true,
+      },
+      colorscheme = {
+        enable_preview = true,
+      },
+    },
 		extensions = {
 			fzf = {
 				fuzzy = true,               -- false will only do exact matching
@@ -30,5 +64,5 @@ require("telescope").setup {
 				-- the default case_mode is "smart_case"
 			},
 		}
-	}
+	},
 }

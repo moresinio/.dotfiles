@@ -40,13 +40,11 @@ local function pick_color()
 	return colors[math.random(#colors)]
 end
 
+
 local function footer()
 	--	local plugins = #vim.tbl_keys(packer_plugins)
-	local datetime = os.date "%d-%m-%Y %H:%M:%S"
-	local plugins_text = " 󰄛 "
-			--		.. plugins
-			--		.. " plugins"
-			--		.. "   v"
+	local datetime = os.date "%H:%M"
+	local plugins_text = " 󰄛  "
 			.. vim.version().major
 			.. "."
 			.. vim.version().minor

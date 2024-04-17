@@ -1,6 +1,6 @@
 local map = vim.api.nvim_set_keymap
 local get_hl_attr = require("cokeline.hlgroups").get_hl_attr
-local bg_color = get_hl_attr('Comment', 'fg')
+-- local bg_color = get_hl_attr('Comment', 'fg')
 local bg_color_active = get_hl_attr('CursorLine', 'bg')
 local fg_color_active = get_hl_attr('Title', 'fg')
 local bg_color_inactive = get_hl_attr('Normal', 'bg')
@@ -49,7 +49,7 @@ require('cokeline').setup({
 
 	 rhs = {
 	 	{
-	 		text = "",
+	 		text = "",--   
 	 		fg = bg_color_active,
 	 	},
 	 	{
@@ -94,7 +94,7 @@ require('cokeline').setup({
 					if buffer.is_first then
 						_text = _text .. ''
 					else
-						_text = _text .. ''
+						_text = _text .. ''
 					end
 				end
 				return _text
@@ -202,7 +202,7 @@ require('cokeline').setup({
 		{
 			text = function(buffer)
 				if buffer.is_focused or buffer.is_last then
-					return ''
+					return '' --  
 				else
 					return ' '
 				end

@@ -11,7 +11,7 @@ vim.o.mousemoveevent = true
 --vim.keymap.set('n', '<MouseMove>', function()
 --	print(vim.inspect(vim.fn.getmousepos()))
 --end)
-
+vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
 --[[ Поиск ]]
 --
 -- Игнорировать регистр при поиске
@@ -37,7 +37,6 @@ opt.signcolumn = "yes"
 opt.splitbelow = false
 
 --[[ Настройка табов ]]
---
 -- Используем табы по умолчанию
 -- Иногда при <CR> создаются пробелы в виде табов. Это отвратительно, поэтому отменим данное поведение
 opt.expandtab = false
@@ -46,13 +45,15 @@ opt.expandtab = false
 -- По сути не смотря на expandtab в терминале все равно отображаются пробельные символы, поэтому установим их количество на одно нажатие этих кнопок
 opt.shiftwidth = 2
 
--- 1 таб == 4 пробела c новой строки
+-- 1 таб == 2 пробела c новой строки
 -- При нажатии <CR> будут вставлять табы. Табы рисуются как пробелы. Именно поэтому мы должны установить что каждый таб в новой строке - 4 пробела
 opt.tabstop = 2
 
 -- Подстраивать новые строки под предыдущий отступ
-
 opt.smartindent = true
+
+opt.showmode = false -- 
+opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
 
 --[[ Дополнительные настройки ]]
 --

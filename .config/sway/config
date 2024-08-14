@@ -296,7 +296,7 @@ exec dunst
 exec pipewire
 exec light -S 50 
 exec wl-paste -t text --watch clipman store --no-persist
-exec way-displays
+exec way-displays > /tmp/way-displays.${XDG_VTNR}.${USER}.log 2>&1
 exec --no-startup-id python ~/.config/sway/scripts/inactive-windows-transparency.py
 exec blueman-applet
 exec udiskie --tray

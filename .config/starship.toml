@@ -88,12 +88,13 @@ RedHatEnterprise = ""
 Redox = "🧪"
 Solus = "" # " "
 SUSE = ""
+Void = ""
 Ubuntu = ""
 Unknown = ""
 Windows = ""
 
 [username]
-format = '[ ](fg:green bold)[$user]($style)[ ]()'
+format = '[> ](fg:green bold)[$user]($style)[ ]()' # 
 style_user = 'fg:green bold'
 style_root = 'fg:red bold'
 show_always = true
@@ -107,13 +108,13 @@ ssh_symbol = '' # '⇒' # ' ' # 'ﬁ⇒'
 disabled = false
 
 [sudo]
-format = '[ ](fg:red bold)[as $symbol]($style)'
+format = '[> ](fg:red bold)[as $symbol]($style)'
 style = 'fg:red bold'
 symbol = ' ' # ' ❯ '
 disabled = false
 
 [directory]
-format = '[ ](fg:cyan bold)[$read_only]($read_only_style)[$repo_root]($repo_root_style)[$path]($style)'
+format = '[> ](fg:cyan bold)[$read_only]($read_only_style)[$repo_root]($repo_root_style)[$path]($style)'
 style = 'fg:cyan bold'
 home_symbol = ' ~'
 read_only = ' ' # ' ' # ' ''
@@ -121,7 +122,7 @@ read_only_style = 'fg:cyan'
 truncation_length = 3
 truncation_symbol = '…/'
 truncate_to_repo = true
-repo_root_format = '[ ](fg:cyan bold)[$read_only]($read_only_style)[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[ ]()'
+repo_root_format = '[> ](fg:cyan bold)[$read_only]($read_only_style)[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[ ]()'
 repo_root_style	= 'fg:cyan bold'
 use_os_path_sep = true
 disabled = false
@@ -163,7 +164,7 @@ deleted = '[󰛌${count} ](fg:orange)' # '🗑 ' '- '
 disabled = false
 
 [jobs]
-format = '[  ](fg:blue bold)[$number$symbol]($style)'
+format = '[ > ](fg:blue bold)[$number$symbol]($style)'
 style = 'fg:blue'
 symbol = '' # '廒' # '󰜎' # '' # '✦'
 symbol_threshold = 1
@@ -171,14 +172,14 @@ number_threshold = 4
 disabled = false
 
 [memory_usage]
-format = '[  ](fg:purple bold)[$symbol ${ram} ${swap}]($style)'
+format = '[ > ](fg:purple bold)[$symbol ${ram} ${swap}]($style)'
 style = 'fg:purple'
 symbol = '󰘚 ' # '# '﬙ / 󰾵' # '󰍛 󰾵' # '﬙ 󰾴' # '﬙ 󰾶' # '﬙ 󰾷' '﬙ 󰣂'
 threshold = 75
 disabled = false
 
 [cmd_duration]
-format = '[  $duration ]($style)'
+format = '[<  $duration ]($style)'
 style = 'fg:yellow'
 min_time = 500
 disabled = false

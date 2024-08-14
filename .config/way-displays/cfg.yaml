@@ -61,7 +61,8 @@ TRANSFORM:
 
 # VRR / adaptive sync is enabled by default. Disable it per display.
 VRR_OFF:
-   - VGA-1
+  - 'LVDS-1'
+  - 'VGA-1'
   # - '!.*my monitor.*'
 
 

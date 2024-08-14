@@ -1,13 +1,16 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+	if vim.v.shell_error ~= 0 then
+		vim.api.nvim_echo({
+			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+			{ out,                            "WarningMsg" },
+			{ "\nPress any key to exit..." },
+		}, true, {})
+		vim.fn.getchar()
+		os.exit(1)
+	end
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -20,7 +23,7 @@ require("lazy").setup({
 		event = "VimEnter",
 		priority = 1000,
 		config = function()
-			vim.cmd([[colorscheme dracula]])
+			--vim.cmd([[colorscheme dracula]])
 		end,
 	},
 	{
@@ -48,10 +51,9 @@ require("lazy").setup({
 		priority = 1000,
 		config = function()
 			require("kimbox").setup({
-				style = "eerie"
-				-- 'burnt_coffee', no 'cannon', 'used_oil', 'deep', 'zinnwaldite', 'eerie',
+				style = "eerie" -- 'burnt_coffee', no 'cannon', 'used_oil', 'deep', 'zinnwaldite', 'eerie',
 			})
-			--vim.cmd [[colorscheme kimbox]]
+			vim.cmd [[colorscheme kimbox]]
 		end,
 	},
 	--------------------------------------------------------------------------------->
@@ -61,6 +63,18 @@ require("lazy").setup({
 		'rcarriga/nvim-notify',
 		lazy = false,
 		config = function()
+			local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+			if not vim.loop.fs_stat(lazypath) then
+				vim.fn.system({
+					"git",
+					"clone",
+					"--filter=blob:none",
+					"https://github.com/folke/lazy.nvim.git",
+					"--branch=stable", -- latest stable release
+					lazypath,
+				})
+			end
+			vim.opt.rtp:prepend(lazypath)
 			require('plugins.notify')
 		end
 	},
@@ -79,7 +93,7 @@ require("lazy").setup({
 	--------------------------------------------------------------------------------->
 	{
 		"williamboman/mason.nvim",
-    event = "VeryLazy",
+		event = "VeryLazy",
 		lazy = true,
 		config = function()
 			require('plugins.mason')
@@ -88,8 +102,8 @@ require("lazy").setup({
 	--------------------------------------------------------------------------------->
 	{
 		"williamboman/mason-lspconfig.nvim",
-    lazy = true,
-    event = "User FileOpened",
+		lazy = true,
+		event = "User FileOpened",
 		config = function()
 			require('plugins.mason-lspconfig')
 		end,
@@ -98,7 +112,7 @@ require("lazy").setup({
 	{
 		"neovim/nvim-lspconfig",
 		lazy = true,
-    dependencies = {"nlsp-settings.nvim" },
+		dependencies = { "nlsp-settings.nvim" },
 		keys = {
 			{ '<leader>D',  '<cmd>lua vim.diagnostic.open_float()<cr>',  desc = "Diagnostic" },
 			{ '[d',         '<cmd>lua vim.diagnostic.goto_prev()<cr>',   desc = "Prev diagnostic" },
@@ -117,14 +131,12 @@ require("lazy").setup({
 			require('plugins/lspconfig')
 		end
 	},
-  { "tamago324/nlsp-settings.nvim", cmd = "LspSettings", lazy = true },
+	{ "tamago324/nlsp-settings.nvim",             cmd = "LspSettings",                                                                                                                   lazy = true },
 	--------------------------------------------------------------------------------->
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		config = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
 			require("plugins.which-key")
 		end,
 	},
@@ -138,11 +150,11 @@ require("lazy").setup({
 	--------------------------------------------------------------------------------->
 	{
 		"folke/neodev.nvim",
-	config = function()
-      require("neodev").setup({
-			library = { plugins = { "nvim-dap-ui" }, types = true },
-      })
-    end
+		config = function()
+			require("neodev").setup({
+				library = { plugins = { "nvim-dap-ui" }, types = true },
+			})
+		end
 	},
 	--------------------------------------------------------------------------------->
 	{
@@ -244,12 +256,12 @@ require("lazy").setup({
 			require('plugins.cmp')
 		end
 	},
-	{ 'L3MON4D3/LuaSnip',                         lazy = true },
-	{ 'saadparwaiz1/cmp_luasnip',                 lazy = true },
-	{ 'hrsh7th/cmp-nvim-lsp',                     lazy = true },
-	{ 'hrsh7th/cmp-path',                         lazy = true },
-	{ 'hrsh7th/cmp-nvim-lsp-signature-help',      lazy = true },
-	{ 'hrsh7th/cmp-nvim-lua',                     lazy = true },
+	{ 'L3MON4D3/LuaSnip',                    lazy = true },
+	{ 'saadparwaiz1/cmp_luasnip',            lazy = true },
+	{ 'hrsh7th/cmp-nvim-lsp',                lazy = true },
+	{ 'hrsh7th/cmp-path',                    lazy = true },
+	{ 'hrsh7th/cmp-nvim-lsp-signature-help', lazy = true },
+	{ 'hrsh7th/cmp-nvim-lua',                lazy = true },
 	--------------------------------------------------------------------------------->
 	{
 		'onsails/lspkind-nvim',
@@ -305,13 +317,13 @@ require("lazy").setup({
 		end,
 	},
 	--------------------------------------------------------------------------------->
-	{
-		"aveplen/ruscmd.nvim",
-		lazy = false,
-		config = function()
-			require('ruscmd').setup {}
-		end,
-	},
+	--{
+	--	"aveplen/ruscmd.nvim",
+	--	lazy = false,
+	--	config = function()
+	--		require('ruscmd').setup {}
+	--	end,
+	--},
 	--------------------------------------------------------------------------------->
 	--	{
 	--		'ggandor/leap.nvim',
@@ -322,28 +334,30 @@ require("lazy").setup({
 	--		end,
 	--	},
 	--------------------------------------------------------------------------------->
-	--	{
-	--		"lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {},
-	--		config = function()
-	--			require('plugins.ibl')
-	--		end,
-	--	},
 	{
-		"shellRaining/hlchunk.nvim",
-		event = "UIEnter",
-		lazy = true,
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {},
 		config = function()
-			require("plugins.hlchunk")
+			require('plugins.ibl')
 		end,
 	},
+	--- {
+	--- 	"shellRaining/hlchunk.nvim",
+	--- 	event = "UIEnter",
+	--- 	lazy = true,
+	--- 	config = function()
+	--- 		require("plugins.hlchunk")
+	--- 	end,
+	--- },
 	--------------------------------------------------------------------------------->
 	--	{
 	--		"lewis6991/satellite.nvim",
 	--		event = "VeryLazy",
 	--		lazy = true,
-	--		config = function()
-	--			require("sattelite").setup()
-	--		end
+	--	 -- config = function()
+	--	 -- 	require("sattelite").setup()
+	--	 -- end
 	--	},
 	{
 		"petertriho/nvim-scrollbar",
@@ -396,7 +410,7 @@ require("lazy").setup({
 			require("plugins.telescope")
 		end
 	},
-  { "nvim-lua/plenary.nvim", cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" }, lazy = true },
+	{ "nvim-lua/plenary.nvim", cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" }, lazy = true },
 	--------------------------------------------------------------------------------->
 	{
 		"folke/noice.nvim",
@@ -446,7 +460,7 @@ require("lazy").setup({
 	---------------------------------------------------------------------------->
 	{
 		'mfussenegger/nvim-dap',
-    lazy = true,
+		lazy = true,
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
 		},
@@ -456,11 +470,33 @@ require("lazy").setup({
 	},
 	{
 		"rcarriga/nvim-dap-ui",
-    lazy = true,
+		lazy = true,
 		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
 		config = function()
 			require("dapui").setup()
 		end
+	},
+	{
+		'theHamsta/nvim-dap-virtual-text',
+		lazy = true,
+		config = function()
+			require("nvim-dap-virtual-text").setup()
+		end
+	},
+
+	{
+		"dnlhc/glance.nvim",
+		config = function()
+			require('glance').setup({
+				-- your configuration
+      detached = false,
+      border = {
+        enable = true, -- Show window borders. Only horizontal borders allowed
+        top_char = '>',
+        bottom_char = '<',
+      },
+			})
+		end,
 	},
 })
 

@@ -4,6 +4,7 @@ end
 
 alias t='trans -brief '
 alias т='trans -brief :en '
+alias s='sudo'
 alias N='sudo -E nnn -H'
 alias ht='htop'
 alias xr='xbps-query -Rs'

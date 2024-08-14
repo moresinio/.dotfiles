@@ -34,15 +34,15 @@ require('hlchunk').setup({
 	line_num = {
 		enable = true,
 		use_treesitter = true,
-		style = {vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("CursorLineNr")), "fg", "gui")}
-,
+		style = { vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("CursorLineNr")), "fg", "gui") }
+		,
 	},
 
---	blank = {
---		enable = true,
---		chars = { " ", "․", "⁚", "⁖", "⁘", "⁙" },
---		style = {
---			vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Whitespace")), "fg", "gui"),
---		},
---	},
+		blank = {
+			enable = true,
+			chars = { " ", "․", "⁚", "⁖", "⁘", "⁙" },
+			style = {
+				vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Whitespace")), "fg", "gui"),
+			},
+		},
 })

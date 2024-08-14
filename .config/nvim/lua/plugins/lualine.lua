@@ -2,8 +2,8 @@ local icons = require('plugins.icons')
 require('lualine').setup {
 	options = {
 		icons_enabled = true,
-		theme = 'auto',
-		component_separators = '•', --♥
+		theme = "auto", --'pywal',
+		component_separators = '•',
 		section_separators = { left = '', right = '' },
 		disabled_filetypes = { statusline = { "nnn", "dashboard", "packer", "alpha" } },
 		always_divide_middle = true,

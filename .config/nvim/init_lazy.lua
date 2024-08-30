@@ -1,4 +1,7 @@
+---@diagnostic disable: undefined-global
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+local configs = "plugins.temp"
+
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
 	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
@@ -16,34 +19,24 @@ vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = ' '
 
-require("lazy").setup({
+require("lazy").setup(configs, {
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
+
 	{
 		"Mofiqul/dracula.nvim",
-		lazy = true,
-		event = "VimEnter",
 		priority = 1000,
 		config = function()
-			--vim.cmd([[colorscheme dracula]])
-		end,
-	},
-	{
-		'glepnir/zephyr-nvim',
-		lazy = true,
-		event = "VimEnter",
-		config = function()
-			--vim.cmd([[colorscheme zephyr]])
-		end,
-	},
-	{
-		"tiagovla/tokyodark.nvim",
-		lazy = true,
-		event = "VimEnter",
-		opts = {
-			-- custom options here
-		},
-		config = function(_, opts)
-			require("tokyodark").setup(opts) -- calling setup is optional
-			--vim.cmd [[colorscheme tokyodark]]
+		vim.cmd([[colorscheme dracula]])
 		end,
 	},
 	{
@@ -51,14 +44,16 @@ require("lazy").setup({
 		priority = 1000,
 		config = function()
 			require("kimbox").setup({
-				style = "eerie" -- 'burnt_coffee', no 'cannon', 'used_oil', 'deep', 'zinnwaldite', 'eerie',
+				style = "burnt_coffee" -- 'burnt_coffee', no 'cannon', 'used_oil', 'deep', 'zinnwaldite', 'eerie',
 			})
-			vim.cmd [[colorscheme kimbox]]
+			--vim.cmd [[colorscheme kimbox]]
 		end,
 	},
 	--------------------------------------------------------------------------------->
+  -- +++
 	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
 	--------------------------------------------------------------------------------->
+	-- +++
 	{
 		'rcarriga/nvim-notify',
 		lazy = false,
@@ -79,6 +74,7 @@ require("lazy").setup({
 		end
 	},
 	--------------------------------------------------------------------------------->
+	-- +++
 	{
 		'goolord/alpha-nvim',
 		event = "VimEnter",
@@ -91,6 +87,7 @@ require("lazy").setup({
 		"chaoren/vim-wordmotion",
 	},
 	--------------------------------------------------------------------------------->
+	-- ++
 	{
 		"williamboman/mason.nvim",
 		event = "VeryLazy",
@@ -100,6 +97,7 @@ require("lazy").setup({
 		end,
 	},
 	--------------------------------------------------------------------------------->
+	-- ++
 	{
 		"williamboman/mason-lspconfig.nvim",
 		lazy = true,
@@ -109,6 +107,7 @@ require("lazy").setup({
 		end,
 	},
 	--------------------------------------------------------------------------------->
+	-- ++
 	{
 		"neovim/nvim-lspconfig",
 		lazy = true,
@@ -133,6 +132,7 @@ require("lazy").setup({
 	},
 	{ "tamago324/nlsp-settings.nvim",             cmd = "LspSettings",                                                                                                                   lazy = true },
 	--------------------------------------------------------------------------------->
+	-- +++
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -141,6 +141,7 @@ require("lazy").setup({
 		end,
 	},
 	--------------------------------------------------------------------------------->
+	-- +++
 	{
 		"folke/neoconf.nvim",
 		event = "VeryLazy",
@@ -148,6 +149,7 @@ require("lazy").setup({
 		cmd = "Neoconf",
 	},
 	--------------------------------------------------------------------------------->
+	-- +++
 	{
 		"folke/neodev.nvim",
 		config = function()
@@ -157,11 +159,13 @@ require("lazy").setup({
 		end
 	},
 	--------------------------------------------------------------------------------->
+	-- +++
 	{
 		'nvim-tree/nvim-web-devicons',
 		lazy = true,
 	},
 	--------------------------------------------------------------------------------->
+  -- +++
 	{
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -187,6 +191,7 @@ require("lazy").setup({
 	--		end,
 	--	},
 	--------------------------------------------------------------------------------->
+  -- +++
 	{
 		"luukvbaal/nnn.nvim",
 		event = "VeryLazy",
@@ -198,6 +203,7 @@ require("lazy").setup({
 		end,
 	},
 	-------------------------------------	
+	-- +++
 	--	{
 	--		"nvim-neo-tree/neo-tree.nvim",
 	--		branch = "v3.x",
@@ -239,6 +245,7 @@ require("lazy").setup({
 	--		end,
 	--	},
 	--------------------------------------------------------------------------------->
+	-- ++
 	{
 		'hrsh7th/nvim-cmp',
 		event = { "InsertEnter", "CmdlineEnter" },
@@ -263,6 +270,7 @@ require("lazy").setup({
 	{ 'hrsh7th/cmp-nvim-lsp-signature-help', lazy = true },
 	{ 'hrsh7th/cmp-nvim-lua',                lazy = true },
 	--------------------------------------------------------------------------------->
+	-- +++
 	{
 		'onsails/lspkind-nvim',
 		event = "VeryLazy",
@@ -271,6 +279,7 @@ require("lazy").setup({
 		end,
 	},
 	--------------------------------------------------------------------------------->
+	-- +++
 	{
 		'nvim-treesitter/nvim-treesitter',
 		event = "User FileOpened",
@@ -280,6 +289,7 @@ require("lazy").setup({
 		end
 	},
 	--------------------------------------------------------------------------------->
+	-- +++
 	{
 		'windwp/nvim-autopairs',
 		event = "InsertEnter",
@@ -289,6 +299,7 @@ require("lazy").setup({
 		end
 	},
 	--------------------------------------------------------------------------------->
+	-- +++
 	{
 		'hiphish/rainbow-delimiters.nvim',
 		event = "VeryLazy",
@@ -308,6 +319,7 @@ require("lazy").setup({
 		end,
 	},
 	--------------------------------------------------------------------------------->
+	-- +++
 	{
 		"norcalli/nvim-colorizer.lua",
 		event = "VeryLazy",
@@ -334,6 +346,7 @@ require("lazy").setup({
 	--		end,
 	--	},
 	--------------------------------------------------------------------------------->
+	-- +++
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
@@ -359,6 +372,7 @@ require("lazy").setup({
 	--	 -- 	require("sattelite").setup()
 	--	 -- end
 	--	},
+	-- +++
 	{
 		"petertriho/nvim-scrollbar",
 		event = "VeryLazy",
@@ -368,6 +382,7 @@ require("lazy").setup({
 		end
 	},
 	--------------------------------------------------------------------------------->
+	-- +++
 	{
 		"ellisonleao/glow.nvim",
 		event = "VeryLazy",
@@ -379,6 +394,7 @@ require("lazy").setup({
 		end
 	},
 	--------------------------------------------------------------------------------->
+	-- +++
 	{
 		"MunifTanjim/nui.nvim",
 		lazy = true,
@@ -387,6 +403,7 @@ require("lazy").setup({
 		end
 	},
 	--Session save------------------------------------------------------------------->
+	-- +++
 	{
 		"olimorris/persisted.nvim",
 		event = "VeryLazy",
@@ -397,6 +414,7 @@ require("lazy").setup({
 		end
 	},
 	--------------------------------------------------------------------------------->
+  -- +++++
 	{
 		'nvim-telescope/telescope.nvim',
 		lazy = true,
@@ -412,6 +430,7 @@ require("lazy").setup({
 	},
 	{ "nvim-lua/plenary.nvim", cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" }, lazy = true },
 	--------------------------------------------------------------------------------->
+  -- +++
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
@@ -424,6 +443,7 @@ require("lazy").setup({
 		end,
 	},
 	--------------------------------------------------------------------------------->
+	-- +++
 	{
 		"utilyre/barbecue.nvim",
 		event = "VeryLazy",
@@ -458,6 +478,7 @@ require("lazy").setup({
 		"p00f/clangd_extensions.nvim",
 	},
 	---------------------------------------------------------------------------->
+	-- +++
 	{
 		'mfussenegger/nvim-dap',
 		lazy = true,
@@ -468,6 +489,7 @@ require("lazy").setup({
 			require('plugins.dap')
 		end
 	},
+	-- +++
 	{
 		"rcarriga/nvim-dap-ui",
 		lazy = true,
@@ -476,6 +498,7 @@ require("lazy").setup({
 			require("dapui").setup()
 		end
 	},
+	-- +++
 	{
 		'theHamsta/nvim-dap-virtual-text',
 		lazy = true,
@@ -484,6 +507,7 @@ require("lazy").setup({
 		end
 	},
 
+	-- +++
 	{
 		"dnlhc/glance.nvim",
 		config = function()

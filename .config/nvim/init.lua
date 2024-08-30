@@ -1,11 +1,15 @@
 	-- Импортируем основные настройки
 	require('settings')
-
-	-- Выключаем встроенные плагины
-	require('disable_builtins')
+	require("autocmd")
 
 	-- Подключаем плагины
-	require('plugins/_init_lazy')
+	require("init_lazy")
+	--require("plugins.colorschemes")
 
 	-- Подгружаем горячие клавиши
 	--require('keybindings/main')
+
+
+-- code
+require('langmapper').automapping({ global = true, buffer = true })
+-- end of init.lua

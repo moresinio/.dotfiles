@@ -12,6 +12,7 @@ vim.o.mousemoveevent = true
 --	print(vim.inspect(vim.fn.getmousepos()))
 --end)
 vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
+
 --[[ Поиск ]]
 --
 -- Игнорировать регистр при поиске
@@ -52,22 +53,26 @@ opt.tabstop = 2
 -- Подстраивать новые строки под предыдущий отступ
 opt.smartindent = true
 
-opt.showmode = false -- 
+opt.showmode = false      --
 opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
 
 --[[ Дополнительные настройки ]]
 --
 -- Используем системный буфер обмена
-opt.clipboard = 'unnamedplus'
+opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 
 -- Отключаем дополнение файлов в конце
 opt.fixeol = false
 
 -- Автодополнение (встроенное в Neovim)
-opt.completeopt = 'menuone,noselect'
+opt.completeopt = "menu,menuone,noselect"
 
--- Не автокомментировать новые линии при переходе на новую строку
-cmd [[autocmd BufEnter * set fo-=c fo-=r fo-=o]]
+opt.shiftround = true
+opt.smartindent = true             -- Instert indent automatically
+opt.undolevels = 10000
+opt.virtualedit = "block"          -- Allow cursor to move where there is not text in visual block mode
+opt.wildmode = "longest:full,full" -- Command line completion mode
+opt.smoothscroll = true
 
 -- Подсветка строки с курсором
 opt.cursorline = true
@@ -86,18 +91,5 @@ opt.termguicolors = true
 
 -- Blankline
 opt.list = false
--- vim.opt.listchars:append "space:⋅"
+vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
-
--- Запоминает где nvim последний раз редактировал файл
-cmd [[
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-]]
-
--- Подсвечивает на доли секунды скопированную часть текста
-exec([[
-augroup YankHighlight
-autocmd!
-autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
-augroup end
-]], false)

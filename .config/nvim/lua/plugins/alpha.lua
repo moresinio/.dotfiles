@@ -58,7 +58,7 @@ local function footer()
 	local quote = table.concat(fortune(), "\n")
 	return plugins_text .. "\n" .. quote
 end
-dashboard.section.footer.val = footer()
+dashboard.section.footer.val = {}
 
 --  Set menu
 dashboard.section.buttons.val = {
@@ -71,7 +71,7 @@ dashboard.section.buttons.val = {
 	-- dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
 }
 --
-dashboard.section.footer.opts.hl = "Type"       --"AlphaFooter"
+--dashboard.section.footer.opts.hl = "Type"       --"AlphaFooter"
 dashboard.section.header.opts.hl = pick_color() --AlphaHeader"
 dashboard.section.buttons.opts.hl = "MoreMsg"
 --

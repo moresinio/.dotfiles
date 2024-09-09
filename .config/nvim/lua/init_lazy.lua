@@ -22,20 +22,20 @@ require("lazy").setup({
 	spec = {
 		{ import = "plugins.temp" }
 	},
+	defaults = {
+		lazy = true,
+	},
 	install = {
 		missing = true,
 	},
 	checker = { enabled = false },
 	change_detection = {
 		-- automatically check for config file changes and reload the ui
-		enabled = true,
-		notify = true,     -- get a notification when changes are found
+		enabled = false,
+		notify = true, -- get a notification when changes are found
 	},
 	cache = {
 		enabled = true,
-	},
-	defaults = {
-		lazy = true,
 	},
 	ui = {
 		border = 'rounded',
@@ -43,11 +43,22 @@ require("lazy").setup({
 	performance = {
 		rtp = {
 			disabled_plugins = {
-				"gzip",
-				"tarPlugin",
-				"tohtml",
-				"tutor",
+				"zip",
 				"zipPlugin",
+				"gzip",
+				"tar",
+				"tarPlugin",
+				"getscript",
+				"getscriptPlugin",
+				"rrhelper",
+				"vimball",
+				"vimballPlugin",
+				"2html_plugin",
+				"netrw",
+				"netrwPlugin",
+				"netrwSettings",
+				"netrwFileHandlers",
+				"logipat"
 			},
 		},
 	},

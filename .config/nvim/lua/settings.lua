@@ -53,8 +53,7 @@ opt.tabstop = 2
 -- Подстраивать новые строки под предыдущий отступ
 opt.smartindent = true
 
-opt.showmode = false      --
-opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
+opt.showmode = false --
 
 --[[ Дополнительные настройки ]]
 --
@@ -65,7 +64,7 @@ opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 opt.fixeol = false
 
 -- Автодополнение (встроенное в Neovim)
-opt.completeopt = "menu,menuone,noselect"
+opt.completeopt = "menu,preview"
 
 opt.shiftround = true
 opt.smartindent = true             -- Instert indent automatically

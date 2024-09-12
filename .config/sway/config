@@ -51,8 +51,6 @@ set $notify $HOME/.config/sway/scripts/lock/notify.sh
 
 ### Input configuration
 #
-# Example configuration:
-#
 input "2:7:SynPS/2_Synaptics_TouchPad" {
      dwt enabled
      tap enabled
@@ -81,10 +79,11 @@ input <identifier> xkb_model "pc86"
 # Basics:
 bindsym --to-code $mod+Return exec foot
 #
-    # Start a terminal
 
     # Kill focused window
     bindsym --to-code $mod+q kill
+    # Kill focused window with middle button mouse
+		bindsym --whole-window button2 kill
 
     # Start your launcher
     bindsym --to-code $mod+z exec $menu
@@ -288,6 +287,7 @@ bindsym XF86MonBrightnessUp exec light -A 20
 bindsym $mod+F1 exec "~/.appimage/librewolf/LibreWolf.x86_64.AppImage"
 bindsym $mod+F2 exec foot -T nnn nnn
 bindsym $mod+F3 exec foot -T Neovim nvim
+bindsym $mod+F4 exec foot -T Taskwarrior vit
 bindsym Print+Shift exec grim -g "$(slurp)"
 bindsym Print exec grim 
 bindsym $mod+Shift+x exec wlogout -p layer-shell

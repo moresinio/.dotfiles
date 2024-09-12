@@ -73,8 +73,6 @@ return {
 					},
 				},
 				lualine_c = {
-					{ "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-					{ "filesize" }
 				},
 				lualine_x = {
 					{
@@ -98,24 +96,24 @@ return {
 				},
 			},
 
-			--winbar = {
-			--	lualine_x = {
-			--		{
-			--			'filename',
-			--			path = 3,
-			--			--color = "Comment" --{ fg = "Comment", bg = "Comment", gui="italic" },
-			--		}
+			--	winbar = {
+			--		lualine_c = {
+			--			{
+			--				'filename',
+			--				path = 3,
+			--				--color = "Comment" --{ fg = "Comment", bg = "Comment", gui="italic" },
+			--			}
+			--		},
 			--	},
-			--},
-			--inactive_winbar = {
-			--	lualine_x = {
-			--		{
-			--			'filename',
-			--			path = 3,
-			--			color = "Comment"
-			--		}
+			--	inactive_winbar = {
+			--		lualine_c = {
+			--			{
+			--				'filename',
+			--				path = 3,
+			--				color = "Comment"
+			--			}
+			--		},
 			--	},
-			--},
 		}
 	end,
 }

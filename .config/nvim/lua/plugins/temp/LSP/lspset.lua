@@ -1,0 +1,73 @@
+local lspconfig = require('lspconfig')
+lspconfig.clangd.setup {
+	settings = {
+		['clangd'] = {
+		},
+	},
+}
+
+lspconfig.lua_ls.setup {
+	settings = {
+		['lua_ls'] = {
+		},
+	},
+}
+lspconfig.marksman.setup {
+	settings = {
+		['marksman'] = {
+		},
+	},
+}
+
+local signs = {
+	Error = '',
+	Warn = '',
+	Hint = '',
+	Info = '',
+}
+for type, icon in pairs(signs) do
+	local hl = "DiagnosticSign" .. type
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(
+	vim.lsp.handlers.hover,
+	{ border = 'rounded' }
+)
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
+	vim.lsp.handlers.signature_help,
+	{ border = 'rounded' }
+)
+
+vim.diagnostic.config({
+	virtual_text = {
+		prefix = '󰀨 '
+	},
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+	severity_sort = false,
+	float = {
+		border = 'rounded',
+		source = 'always',
+		header = '',
+		prefix = '',
+	},
+})
+
+vim.o.updatetime = 700
+vim.api.nvim_create_autocmd("CursorHold", {
+	buffer = bufnr,
+	callback = function()
+		local opts = {
+			focusable = false,
+			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+			border = 'rounded',
+			source = 'always',
+			prefix = ' ',
+			scope = 'cursor',
+		}
+		vim.diagnostic.open_float(nil, opts)
+	end
+})

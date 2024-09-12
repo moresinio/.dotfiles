@@ -2,11 +2,34 @@ return {
 	'hrsh7th/nvim-cmp',
 	event = { "InsertEnter", "CmdlineEnter" },
 	dependencies = {
-		'L3MON4D3/LuaSnip',
 		'saadparwaiz1/cmp_luasnip',
 		'hrsh7th/cmp-nvim-lsp',
 		'hrsh7th/cmp-path',
-		-- 'hrsh7th/cmp-emoji',
+		{
+			"L3MON4D3/LuaSnip",
+			version = "v2.*",
+			build = "make install_jsregexp",
+			config = function()
+				-- Based on: https://github.com/MariaSolOs/dotfiles/blob/main/.config/nvim/lua/plugins/nvim-cmp.lua
+				local luasnip = require("luasnip")
+
+				vim.api.nvim_create_autocmd("ModeChanged", {
+					group = vim.api.nvim_create_augroup("luasnip.config", { clear = true }),
+					pattern = { "i:n", "s:n" },
+					callback = function(e)
+						if
+								luasnip.session
+								and luasnip.session.current_nodes[e.buf]
+								and not luasnip.session.jump_active
+								and not luasnip.choice_active()
+						then
+							luasnip.active_update_dependents()
+							luasnip.unlink_current()
+						end
+					end,
+				})
+			end,
+		},
 		'hrsh7th/cmp-nvim-lsp-signature-help',
 		'hrsh7th/cmp-nvim-lua',
 	},
@@ -14,19 +37,24 @@ return {
 		local cmp = require('cmp')
 		local lspkind = require('lspkind')
 		cmp.setup {
+			preselect = "None",
 			snippet = {
-
 				-- REQUIRED - you must specify a snippet engine
 				expand = function(args)
 					require 'luasnip'.lsp_expand(args.body) -- Luasnip expand
 				end,
 			},
 			view = {
-				entries = "native" -- can be "custom", "wildmenu" or "native"
+				entries = "custom", -- can be "custom", "wildmenu" or "native"
+				selection_order = "top_down",
 			},
 			window = {
-				completion = cmp.config.window.bordered(),
+				completion = { border = "rounded" }, --cmp.config.window.bordered(),
 				documentation = cmp.config.window.bordered(),
+			},
+			confirm_opts = {
+				behavior = cmp.ConfirmBehavior.Replace,
+				select = false,
 			},
 			-- Клавиши, которые будут взаимодействовать в nvim-cmp
 			mapping = {
@@ -46,15 +74,27 @@ return {
 			},
 
 			sources = cmp.config.sources({
-				{ name = 'nvim_lsp' },          -- LSP 👄
+				{ name = 'nvim_lsp' },            -- LSP 👄
 				{ name = 'nvim_lsp_signature_help' }, -- Помощь при введении параметров в методах 🚁
-				{ name = 'luasnip' },           -- Luasnip 🐌
-				{ name = 'buffer' },            -- Буфферы 🐃
-				{ name = 'path' },              -- Пути 🪤
-				{ name = "emoji" },             -- Эмодзи 😳
-			}, {
+				{ name = 'luasnip' },             -- Luasnip 🐌
+				{
+					-- See: https://github.com/hrsh7th/cmp-buffer#all-buffers
+					name = "buffer",
+					option = {
+						get_bufnrs = function()
+							return vim.api.nvim_list_bufs()
+						end,
+					},
+				},
+				{ name = 'path' }, -- Пути 🪤
+				{ name = "emoji" }, -- Эмодзи 😳
 			}),
 			formatting = {
+				fields = {
+					"kind",
+					"abbr",
+					"menu",
+				},
 				format = lspkind.cmp_format({
 					mode = 'symbol', -- show only symbol annotations
 					maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)

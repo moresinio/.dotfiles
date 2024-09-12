@@ -1,11 +1,12 @@
 return {
-	{	"Mofiqul/dracula.nvim",
-	lazy = false,
-	priority = 1000,
-	config = function()
-		vim.cmd([[colorscheme dracula]])
-	end,
-},
+	{
+		"Mofiqul/dracula.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			--	vim.cmd([[colorscheme dracula]])
+		end,
+	},
 	{
 		"lmburns/kimbox",
 		lazy = false,
@@ -14,7 +15,7 @@ return {
 			require("kimbox").setup({
 				style = "eerie" -- 'burnt_coffee', no 'cannon', 'used_oil', 'deep', 'zinnwaldite', 'eerie',
 			})
-		--	vim.cmd [[colorscheme kimbox]]
+			--vim.cmd [[colorscheme kimbox]]
 		end,
 	},
 	{
@@ -22,7 +23,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			--vim.cmd [[colorscheme tokyonight]]
+			vim.cmd [[colorscheme tokyonight]]
 		end,
 		opts = {
 		}

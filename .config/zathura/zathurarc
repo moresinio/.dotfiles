@@ -30,9 +30,12 @@ set completion-group-bg "#2e042b"
 set completion-group-fg "#883582"
 
 # Invert color
-set recolor true
 set recolor-darkcolor "#e6a15a"
 set recolor-lightcolor "#0B1B2C"
+
+
+
+set recolor true
 set recolor-keephue true
 set recolor-reverse-video false
 

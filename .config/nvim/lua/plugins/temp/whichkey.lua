@@ -3,12 +3,10 @@ return {
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		keys = {
-			{ "<leader>d",  group = "DAP" },
-			{ "<leader>b",  group = "Buffers" },
-			{ "<leader>bb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+			{ "<leader>d", group = "DAP" },
 		},
 		opts = {
-			preset = "helix",
+			preset = "classic",
 			win = {
 				border = "rounded",
 			},

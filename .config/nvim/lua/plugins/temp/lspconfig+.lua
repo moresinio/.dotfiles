@@ -2,7 +2,12 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		event = "VeryLazy",
-		dependencies = { "nlsp-settings.nvim" },
+		dependencies = {
+			"nlsp-settings.nvim",
+			"hrsh7th/cmp-nvim-lsp",
+			"williamboman/mason-lspconfig.nvim",
+			"williamboman/mason.nvim",
+		},
 		keys = {
 			{ '<leader>D',  '<cmd>lua vim.diagnostic.open_float()<cr>',  desc = "Diagnostic" },
 			{ '[d',         '<cmd>lua vim.diagnostic.goto_prev()<cr>',   desc = "Prev diagnostic" },
@@ -17,13 +22,14 @@ return {
 			{ 'gi',         '<cmd>lua vim.lsp.buf.implementation()<cr>', desc = "Implementation" },
 			{ '<C-k>',      '<cmd>lua vim.lsp.buf.signature_help()<cr>', desc = "help" },
 		},
- 	config = function()
- 		require('plugins.temp.LSP.lspconfig')
- 	end
+		config = function()
+			require('plugins.temp.LSP.lspset')
+		end
 	},
 	--
 	{
 		"tamago324/nlsp-settings.nvim",
+		enabled = false,
 		cmd = "LspSettings",
 	},
 }

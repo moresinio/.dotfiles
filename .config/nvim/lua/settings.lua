@@ -11,7 +11,7 @@ vim.o.mousemoveevent = true
 --vim.keymap.set('n', '<MouseMove>', function()
 --	print(vim.inspect(vim.fn.getmousepos()))
 --end)
-vim.g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
+g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
 
 --[[ Поиск ]]
 --
@@ -55,6 +55,8 @@ opt.smartindent = true
 
 opt.showmode = false --
 
+opt.swapfile = false
+
 --[[ Дополнительные настройки ]]
 --
 -- Используем системный буфер обмена
@@ -64,7 +66,7 @@ opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 opt.fixeol = false
 
 -- Автодополнение (встроенное в Neovim)
-opt.completeopt = "menu,preview"
+opt.completeopt = "menu,menuone,noselect"
 
 opt.shiftround = true
 opt.smartindent = true             -- Instert indent automatically
@@ -92,3 +94,5 @@ opt.termguicolors = true
 opt.list = false
 vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
+
+opt.winbar = " "

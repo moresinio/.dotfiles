@@ -10,6 +10,7 @@ return {
 				use_treesitter = true,
 				-- details about support_filetypes and exclude_filetypes in https://github.com/shellRaining/hlchunk.nvim/blob/main/lua/hlchunk/utils/filetype.lua
 				chars = {
+					enable = false,
 					horizontal_line = "─",
 					vertical_line = "│",
 					left_top = "╭",
@@ -36,20 +37,20 @@ return {
 				},
 			},
 
-		  line_num = {
-		  	enable = false,
-		  	use_treesitter = true,
-		  	style = { vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("CursorLineNr")), "fg", "gui") }
-		  	,
-		  },
+			line_num = {
+				enable = false,
+				use_treesitter = true,
+				style = { vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("CursorLineNr")), "fg", "gui") }
+				,
+			},
 
-		  blank = {
-		  	enable = false,
-		  	chars = { " ", "․", "⁚", "⁖", "⁘", "⁙" },
-		  	style = {
-		  		vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Whitespace")), "fg", "gui"),
-		  	},
-		  },
+			blank = {
+				enable = true,
+				chars = { " ", "․", "⁚", "⁖", "⁘", "⁙" },
+				style = {
+					vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Whitespace")), "fg", "gui"),
+				},
+			},
 		})
 	end,
 }

@@ -17,12 +17,13 @@ return {
 		local bg_color = get_hl_attr('Normal', 'bg')
 		local error_color = get_hl_attr('DiagnosticError', 'fg')
 		local ok_color = get_hl_attr('DiagnosticOk', 'fg')
+
 		require('cokeline').setup({
 			show_if_buffers_are_at_least = 1,
 			mappings = {
 				cycle_prev_next = true,
-				map('n', '<S-Tab>', '<Plug>(cokeline-focus-prev)', { silent = false }),
-				map('n', '<Tab>', '<Plug>(cokeline-focus-next)', { silent = false }),
+				-- map('n', '<S-Tab>', '<Plug>(cokeline-focus-prev)', { silent = false }),
+				-- map('n', '<Tab>', '<Plug>(cokeline-focus-next)', { silent = false }),
 				map('n', '<F1>', '<Plug>(cokeline-switch-prev)', { silent = true }),
 				map('n', '<F2>', '<Plug>(cokeline-switch-next)', { silent = true }),
 			},

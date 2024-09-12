@@ -26,7 +26,7 @@ require("lazy").setup({
 		lazy = true,
 	},
 	install = {
-		missing = true,
+		missing = false,
 	},
 	checker = { enabled = false },
 	change_detection = {
@@ -47,6 +47,7 @@ require("lazy").setup({
 				"zipPlugin",
 				"gzip",
 				"tar",
+				"tutor",
 				"tarPlugin",
 				"getscript",
 				"getscriptPlugin",

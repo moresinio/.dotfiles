@@ -3,14 +3,17 @@ return {
 		"nvim-lua/plenary.nvim",
 		cmd = { "PlenaryBustedFile", "PlenaryBustedDirectory" },
 	},
+
 	{
 		'nvim-telescope/telescope-fzf-native.nvim',
 		build =
 		'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
 	},
+
 	{
 		'nvim-telescope/telescope.nvim',
 		dependencies = { { 'nvim-lua/plenary.nvim' }, "telescope-fzf-native.nvim" },
+		cmd = "Telescope oldfiles",
 		keys = {
 			{ "<leader>o", "<cmd>Telescope oldfiles<cr>", desc = "OldFiles" },
 			{ '<leader>E', '<cmd>Telescope noice<CR>',    desc = "Errors" },
@@ -24,7 +27,7 @@ return {
 							["`"] = actions.close
 						},
 					},
-					layout_strategy = "horizontal",
+					layout_strategy = "vertical",
 					layout_config = {
 						height = 0.95,
 						width = 0.95,
@@ -84,6 +87,7 @@ return {
 					}
 				},
 			}
+			require("telescope").load_extension("fzf")
 		end
 	},
 	-- for telescope-fzf-native.nvim:

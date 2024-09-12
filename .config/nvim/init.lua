@@ -7,7 +7,7 @@
 	--require("plugins.colorschemes")
 
 	-- Подгружаем горячие клавиши
-	--require('keybindings/main')
+	require('mappings')
 
 
 -- code

@@ -5,23 +5,19 @@ Lazy-loading the plugin, or somehow deferring the setup, is not recommended.
 return {
 	{
 		"williamboman/mason.nvim",
-		lazy = false,
+		--event = "User FileOpened",
+		event = "VeryLazy",
+		cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
 		config = function()
 			require("mason").setup({
 				ui = {
-					icons = {
-						package_installed = "✓",
-						package_pending = "➜",
-						package_uninstalled = "✗"
-					},
-					ui = {
-						border = 'rounded',
-					},
+					border = 'rounded',
+					height = 0.8,
 				}
 			})
 		end,
 	},
---
+	--
 	{
 		"williamboman/mason-lspconfig.nvim",
 		event = "User FileOpened",

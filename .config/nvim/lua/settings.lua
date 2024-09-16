@@ -4,15 +4,13 @@ local opt = vim.opt
 
 -- Глобальные переменные
 local g = vim.g
-local cmd = vim.cmd            -- execute Vim commands
-local exec = vim.api.nvim_exec -- execute Vimscript
+local cmd = vim.cmd -- execute Vim commands
+--local exec = vim.api.nvim_exec -- execute Vimscript
 
 vim.o.mousemoveevent = true
---vim.keymap.set('n', '<MouseMove>', function()
---	print(vim.inspect(vim.fn.getmousepos()))
---end)
 g.root_spec = { "lsp", { ".git", "lua" }, "cwd" }
-
+g.formatoptions = "qrn1"
+g.autoformat = false
 --[[ Поиск ]]
 --
 -- Игнорировать регистр при поиске
@@ -35,7 +33,7 @@ opt.splitright = true
 opt.signcolumn = "yes"
 
 -- Горизонтальные сплиты становятся снизу
-opt.splitbelow = false
+opt.splitbelow = true
 
 --[[ Настройка табов ]]
 -- Используем табы по умолчанию
@@ -52,11 +50,11 @@ opt.tabstop = 2
 
 -- Подстраивать новые строки под предыдущий отступ
 opt.smartindent = true
-
-opt.showmode = false --
-
+vim.opt.wrap = true -- Включить перенос строк
+opt.showmode = false
 opt.swapfile = false
 
+vim.opt.encoding = "UTF-8"
 --[[ Дополнительные настройки ]]
 --
 -- Используем системный буфер обмена
@@ -66,7 +64,7 @@ opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
 opt.fixeol = false
 
 -- Автодополнение (встроенное в Neovim)
-opt.completeopt = "menu,menuone,noselect"
+opt.completeopt = "menuone,noselect"
 
 opt.shiftround = true
 opt.smartindent = true             -- Instert indent automatically
@@ -86,6 +84,8 @@ opt.relativenumber = true
 
 -- Курсор всегда в центре экрана
 opt.so = 999
+opt.scrolloff = 5
+opt.sidescrolloff = 5
 
 -- 24-bit RGB colors
 opt.termguicolors = true
@@ -95,4 +95,16 @@ opt.list = false
 vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
 
-opt.winbar = " "
+vim.opt.whichwrap:append("<,>,[,],h,l")
+
+opt.foldenable = true
+opt.foldcolumn = "1"
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+--opt.foldmethod = "syntax"
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+opt.foldtext = require("modules.foldtext")
+
+
+--opt.winbar = " "
+cmd("autocmd BufEnter * set fo-=c fo-=r fo-=o") -- Отключить автоматическое комментирование при переходе на следующую строку

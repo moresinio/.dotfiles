@@ -22,8 +22,11 @@ return {
 			{ 'gi',         '<cmd>lua vim.lsp.buf.implementation()<cr>', desc = "Implementation" },
 			{ '<C-k>',      '<cmd>lua vim.lsp.buf.signature_help()<cr>', desc = "help" },
 		},
+		opts = {
+			autoformat = false,
+		},
 		config = function()
-			require('plugins.temp.LSP.lspset')
+			require('plugins.LSP.lspset')
 		end
 	},
 	--

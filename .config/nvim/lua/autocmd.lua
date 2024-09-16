@@ -1,4 +1,13 @@
 local exec = vim.api.nvim_exec -- execute Vimscript
+-- Подсвечивает на доли секунды скопированную часть текста
+exec([[
+augroup YankHighlight
+autocmd!
+autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+augroup end
+]], false)
+
+
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight copied text",
@@ -80,7 +89,6 @@ if vim.opt.relativenumber:get() then
 	})
 end
 
-
 vim.api.nvim_create_autocmd("BufHidden", {
 	desc = "Delete [No Name] buffers",
 	callback = function(data)
@@ -91,3 +99,43 @@ vim.api.nvim_create_autocmd("BufHidden", {
 		end
 	end,
 })
+
+-- From LunarVim
+vim.api.nvim_create_autocmd("FileType",
+	{
+		--group = "_buffer_mappings",
+		pattern = {
+			"qf",
+			"help",
+			"man",
+			"floaterm",
+			"lspinfo",
+			"lsp-installer",
+			"tsplayground",
+		},
+		callback = function()
+			vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = true })
+			vim.opt_local.buflisted = false
+		end,
+	}
+)
+
+vim.api.nvim_create_autocmd("FileType",
+	{
+		--group = "_filetype_settings",
+		pattern = { "lua" },
+		desc = "fix gf functionality inside .lua files",
+		callback = function()
+			---@diagnostic disable: assign-type-mismatch
+			-- credit: https://github.com/sam4llis/nvim-lua-gf
+			vim.opt_local.include = [[\v<((do|load)file|require|reload)[^''"]*[''"]\zs[^''"]+]]
+			vim.opt_local.includeexpr = "substitute(v:fname,'\\.','/','g')"
+			vim.opt_local.suffixesadd:prepend ".lua"
+			vim.opt_local.suffixesadd:prepend "init.lua"
+
+			for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
+				vim.opt_local.path:append(path .. "/lua")
+			end
+		end,
+	}
+)

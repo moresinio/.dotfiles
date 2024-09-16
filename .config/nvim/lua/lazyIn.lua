@@ -20,7 +20,7 @@ vim.g.mapleader = ' '
 
 require("lazy").setup({
 	spec = {
-		{ import = "plugins.temp" }
+		{ import = "plugins" }
 	},
 	defaults = {
 		lazy = true,

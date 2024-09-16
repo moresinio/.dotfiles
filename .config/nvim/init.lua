@@ -1,15 +1,14 @@
-	-- Импортируем основные настройки
-	require('settings')
-	require("autocmd")
+-- Импортируем основные настройки
+require('settings')
+require("autocmd")
 
-	-- Подключаем плагины
-	require("init_lazy")
-	--require("plugins.colorschemes")
+-- Подключаем плагины
+require("lazyIn")
+--require("plugins.colorschemes")
 
-	-- Подгружаем горячие клавиши
-	require('mappings')
-
+require('mappings')
 
 -- code
-require('langmapper').automapping({ global = true, buffer = true })
+
+--require('langmapper').automapping({ global = true, buffer = true })
 -- end of init.lua

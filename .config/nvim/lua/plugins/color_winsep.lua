@@ -1,6 +1,7 @@
 --local get_hl_attr = require("plugins.temp.Ui.hlgroups").get_hl_attr
 return {
 	"nvim-zh/colorful-winsep.nvim",
+	enabled = true,
 	config = true,
 	event = { "WinNew" },
 	opts = {

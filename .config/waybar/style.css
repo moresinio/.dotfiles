@@ -84,7 +84,7 @@
  #group_0 {
  	background: rgba(0, 0, 0, 0.6);
  	border-radius: 0px;
- 	padding: 0px;
+ 	padding: 5 0 5 5px;
  	margin: 4 -1 0 5px;
  	color: #ffffff;
  }
@@ -132,6 +132,25 @@
  #idle_inhibitor {
  	padding: 0 5px;
  }
+
+ #custom-pomo {
+ 	padding: 0 5px;
+ 	border-radius: 13px;
+ 	background: @color6Alpha;
+ 	color: #ffffff;
+ }
+ #custom-pomo.finished {
+  background: @color5Alpha;
+ 	color: #ffffff;
+}
+#custom-pomo.running {
+  background: @color9Alpha;
+ 	color: #ffffff;
+}
+#custom-pomo.paused {
+  background: @color12Alpha;
+ 	color: #ffffff;
+}
 
  #user {
  	padding: 0 5px;

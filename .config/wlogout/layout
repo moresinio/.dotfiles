@@ -1,4 +1,10 @@
 {
+    "label" : "lockscreen",
+    "action" : "~/.config/sway/scripts/lock/swaylock.sh",
+		"text" : "",
+    "keybind" : "x"
+}
+{
     "label" : "shutdown",
     "action" : "loginctl poweroff",
 		"text" : "󰐥",
@@ -9,10 +15,4 @@
     "action" : "loginctl reboot",
     "text" : "󰑓",
     "keybind" : "r"
-}
-{
-    "label" : "logout",
-    "action" : "loginctl terminate-user $USER",
-    "text" : "󰗼",
-    "keybind" : "e"
 }

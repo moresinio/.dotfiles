@@ -2,7 +2,7 @@ return {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "v3.x",
 	keys = {
-		{ "<leader>v", "<cmd>Neotree toggle<cr>", desc = "Explorer" }
+		{ "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Explorer" }
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -112,7 +112,7 @@ return {
 			mappings = {
 				["<space>"] = {
 					"toggle_node",
-					nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
+					nowait = true, -- disable `nowait` if you have existing combos starting with this char that you want to use
 				},
 				["<2-LeftMouse>"] = "open",
 				["<cr>"] = "open",

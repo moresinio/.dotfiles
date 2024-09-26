@@ -1,55 +1,61 @@
-@define-color fg #ebdbb2;
-@define-color bg #1d2021;
+@import url("/home/rengoku/.cache/wal/colors-custom-gtk3.css");
 
-@define-color black #282828;
-@define-color red #cc241d;
-@define-color green #b8bb26;
-@define-color yellow #fabd2f;
-@define-color blue #83a598;
-@define-color purple #d3869b;
-@define-color aqua #8ec07c;
-@define-color orange #fe8019;
-
+/* filling the window */
 window {
-	background-color: rgba(40, 40, 40, 0.5);
-	font-family: Sauce Code Pro NF;
-	font-size: 80px;
+	background-color: @color1Alpha;
+	font-family: FiraCode Nerd Font;
+	font-size: 50px;
+	background-image: radial-gradient(ellipse at center, @color1Alpha, @color0Alpha);
 }
 
 grid {
-	border-radius: 30px;
-	margin: 200px 200px;
-	padding: 10px;
-	background-color: @bg;
+	border-radius: 10px;
+	margin: 200px;
+	padding: 15px;
+	background-color: @color0;
 }
 
 button {
-	border-radius: 20px;
-	border-width: 3px;
-	border-color: @black;
-	outline-style: none;
+	border-radius: 640px;
+	border-width: 2px;
+	border-color: @color0Alpha;
 	margin: 10px;
-	padding: 40px;
+	padding: 25px;
 	background-repeat: no-repeat;
 	background-size: 0%;
 	background-position: center;
-	background-color: @black;
+	background-color: @color1;
 }
 
-button:hover,
-button:focus,
+button:hover{
+	border-color: @color4;
+}
+button:focus{
+	border-color: @color7;
+}
 button:active {
-	border-color: @color;
+	border-color: @color10;
+}
+
+#reboot:hover,
+#lockscreen:hover,
+#shutdown:hover {
+	color: @color4;
+}
+#reboot:focus,
+#lockscreen:focus,
+#shutdown:focus {
+	color: @color7;
 }
 
 #shutdown {
-	color: @red;
+	color: @color0Alpha;
 }
 
 #reboot {
-	color: @blue;
+	color: @color0Alpha;
 }
 
-#logout {
-	color: @green;
+#lockscreen{
+	color: @color0Alpha;
 }

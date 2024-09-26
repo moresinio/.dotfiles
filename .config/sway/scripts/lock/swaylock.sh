@@ -1,6 +1,5 @@
 #!/usr/bin/bash
 
-# --image ~/Pictures/wallhaven-4oj627.jpg  \
 source ~/.cache/wal/colors.sh
 
 

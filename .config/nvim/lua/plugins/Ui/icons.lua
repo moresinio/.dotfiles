@@ -21,7 +21,7 @@ return {
     CircuitBoard = "",
 	},
 	dap = {
-		Stopped             = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
+		Stopped             = "󰁕 ",
 		Breakpoint          = " ",
 		BreakpointCondition = " ",
 		BreakpointRejected  = { " ", "DiagnosticError" },
@@ -108,6 +108,7 @@ return {
     ChevronShortRight = "",
     ChevronShortUp = "",
     Circle = "",
+    CircleSmall = "●",
     Close = "󰅖",
     CloudDownload = "",
     Code = "",

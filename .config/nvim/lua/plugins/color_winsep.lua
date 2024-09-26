@@ -1,14 +1,15 @@
---local get_hl_attr = require("plugins.temp.Ui.hlgroups").get_hl_attr
+local get_hl_attr = require("plugins.Ui.hlgroups").get_hl_attr
+local fg_color = get_hl_attr("Debug", "fg")
 return {
 	"nvim-zh/colorful-winsep.nvim",
-	enabled = true,
+	enabled = false,
 	config = true,
 	event = { "WinNew" },
 	opts = {
 		no_exec_files = { "packer", "neotree", "TelescopePrompt", "mason", "CompetiTest", "NvimTree" },
 		symbols = { "─", "│", "╭", "╮", "╰", "╯" },
 		hi = {
-			--bg = "#16161E",
+			fg = fg_color
 		},
 	}
 }

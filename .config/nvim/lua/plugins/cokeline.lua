@@ -182,7 +182,7 @@ return {
 					text = function(buffer)
 						if buffer.is_modified then
 							if buffer.is_hovered then
-								return " "
+								return " 󰅙"
 							end
 							--		if (buffer.diagnostics.errors > 0) then
 							--			return " 󰈸"
@@ -190,9 +190,9 @@ return {
 							return " 󰌪"
 						end
 						if buffer.is_hovered then
-							return " " --󰅙 󰅚 󰲡 󱤆 󱤅 󰌪 󰲠 󰪥  󰝥  󰧞 󰧟󰗖  󱠇
+							return " 󰅙" --󰅙 󰅚 󰲡 󱤆 󱤅 󰌪 󰲠 󰪥  󰝥  󰧞 󰧟󰗖  󱠇
 						end
-						return " 󰅖" --  󰅖
+						return " 󰅚" --  󰅖
 					end,
 					fg = function(buffer)
 						if buffer.is_modified then

@@ -6,7 +6,7 @@ return {
 	{
 		"williamboman/mason.nvim",
 		--event = "User FileOpened",
-		event = "VeryLazy",
+		event = "UIEnter",
 		cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
 		config = function()
 			require("mason").setup({
@@ -23,8 +23,8 @@ return {
 		event = "User FileOpened",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "clangd", "bash" }, -- "clangd", "marksman", "pyre", "lemminx",
-				automatic_installation = false,
+				ensure_installed = { "lua_ls", "clangd", "bashls", "marksman", }, -- "clangd",  "pyre", "lemminx",
+				automatic_installation = true,
 			})
 		end,
 	},

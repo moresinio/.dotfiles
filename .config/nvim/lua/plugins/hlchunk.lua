@@ -1,6 +1,6 @@
 return {
 	"shellRaining/hlchunk.nvim",
-	enabled = true,
+	enabled = false,
 	event = "UIEnter",
 	config = function()
 		require('hlchunk').setup({
@@ -18,12 +18,15 @@ return {
 					right_arrow = ">",
 				},
 				style = {
-					{ fg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Conditional")), "fg", "gui") },
+					{ fg =vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Conditional")), "fg", "gui") },
 					{ fg = vim.fn.synIDattr(vim.fn.synIDtrans(vim.fn.hlID("Error")), "fg", "gui") }
 				},
-				textobject = "",
+				textobject = "ic",
 				max_file_size = 1024 * 1024,
 				error_sign = true,
+				-- animation related
+				duration = 0,
+				delay = 0,
 			},
 
 			indent = {

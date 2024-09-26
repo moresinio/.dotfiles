@@ -10,5 +10,5 @@ require('mappings')
 
 -- code
 
---require('langmapper').automapping({ global = true, buffer = true })
+require('langmapper').automapping({ global = true, buffer = true })
 -- end of init.lua

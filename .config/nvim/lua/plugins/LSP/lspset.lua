@@ -6,6 +6,12 @@ lspconfig.clangd.setup {
 	},
 }
 
+lspconfig.bashls.setup {
+	settings = {
+		['bashls'] = {
+		},
+	},
+}
 lspconfig.lua_ls.setup {
 	settings = {
 		['lua_ls'] = {

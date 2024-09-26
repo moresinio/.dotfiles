@@ -1,3 +1,22 @@
+-- Lsp status take from Wansmer's config
+local function lsp_list()
+	local get_clients = vim.fn.has("nvim-0.10") == 1 and vim.lsp.get_clients or vim.lsp.get_active_clients
+	local buf_clients = get_clients({ bufnr = 0 })
+	local buf_client_names = {}
+
+	for _, client in pairs(buf_clients) do
+		table.insert(buf_client_names, client.name)
+	end
+
+	return table.concat(buf_client_names, ", ")
+end
+
+local lsp_status = function()
+	local lsp = lsp_list()
+	local prefix = (lsp == "" and "LSP Inactive" or "%#LSPStatusActive#%*")
+	return vim.trim(vim.fn.join({ prefix, lsp }, " "))
+end
+
 local icons = require('plugins.Ui.icons')
 local mode_icon_map = {
 	["NORMAL"] = "󰰓",
@@ -21,18 +40,19 @@ local mode_icon_map = {
 local progress_cyrcle = function()
 	local current_line = vim.fn.line(".")
 	local total_lines = vim.fn.line("$")
-  local chars = {
-      "▱▱▱▱▱▱▱▱",
-      "▱▱▱▱▱▱▱▰",
-      "▱▱▱▱▱▱▰▰",
-      "▱▱▱▱▱▰▰▰",
-      "▱▱▱▱▰▰▰▰",
-      "▱▱▱▰▰▰▰▰",
-      "▱▱▰▰▰▰▰▰",
-      "▱▰▰▰▰▰▰▰",
-      "▰▰▰▰▰▰▰▰",
-    }
-	--local chars = { "", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥" }
+	--local chars = {
+	--	"▱▱▱▱▱▱▱▱",
+	--	"▱▱▱▱▱▱▱▰",
+	--	"▱▱▱▱▱▱▰▰",
+	--	"▱▱▱▱▱▰▰▰",
+	--	"▱▱▱▱▰▰▰▰",
+	--	"▱▱▱▰▰▰▰▰",
+	--	"▱▱▰▰▰▰▰▰",
+	--	"▱▰▰▰▰▰▰▰",
+	--	"▰▰▰▰▰▰▰▰",
+	--}
+	--local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+	local chars = { "", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥" }
 	local line_ratio = current_line / total_lines
 	local index = math.ceil(line_ratio * #chars)
 
@@ -51,7 +71,7 @@ return {
 				section_separators = { left = '', right = '' },
 				disabled_filetypes = {
 					statusline = { "dashboard", "lazy", "packer", "alpha" },
-					winbar = { "alpha", "nnn", "neo-tree" } },
+					winbar = { "lazy", "alpha", "nnn", "neo-tree", "dap-repl" } },
 				always_divide_middle = true,
 				globalstatus = true,
 			},
@@ -86,25 +106,31 @@ return {
 				lualine_c = {
 				},
 				lualine_x = {
+					{ lsp_status }
 				},
 				lualine_y = {
 					--{ 'selectioncount' },
 					--{ 'location' },
-					{ 'progress' },
+				 -- { 'progress',
+				 -- 	separator = "",
+				 -- },
 					{ progress_cyrcle,
-						separator = " ",
+						separator = "",
 						padding = { left = 1, right = 1 },
 					},
+					{
+						"%L"
+					}
 				},
 				lualine_z = {
 					--{ function() return os.date("%R") end },
-					require('tomato').message,
+				--	require('tomato').message,
 				},
 			},
 
 			winbar = {
 				lualine_c = {
-					{ function() return icons.ui.Circle end,
+					{ function() return icons.ui.CircleSmall end,
 						--separator = { right = ' ' },
 						color = "Question",
 					},
@@ -117,7 +143,7 @@ return {
 			},
 			inactive_winbar = {
 				lualine_c = {
-					{ function() return icons.ui.Circle end,
+					{ function() return icons.ui.CircleSmall end,
 						--separator = { right = ' ' },
 						color = { bg = "Comment", }
 					},

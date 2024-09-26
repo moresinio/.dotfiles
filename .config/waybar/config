@@ -1,22 +1,21 @@
 {
-    "layer": "top",
-    "position": "top",
-    "height": 9,
-    "spacing": 1,
-    // "start_hidden": true,
-    "modules-left": ["group/group_0", "sway/workspaces", "custom/vpn", "sway/mode"],
-     "modules-center": ["sway/window"],
-     "modules-right": [ "group/group_2", "group/group_1",],
+	"layer": "top",
+	"position": "top",
+	"height": 9,
+	"spacing": 1,
+	"modules-left": ["group/group_0", "sway/workspaces",
+										"custom/vpn",  "sway/mode"],
+	"modules-center": ["sway/window"],
+	"modules-right": [ "group/group_2", "group/group_1",],
 
 	"group/group_0": {
 		"orientation": "horizontal",
     "drawer": {
         "transition-duration": 500,
-       // "transition-left-to-right": false,
-        "transition-right-to-left": false,
+        "transition-right-to-left": true,
     },
 			"modules": [
-				"custom/menu",
+				"custom/menu", "custom/pomo",
 			],
 	},
 		 	
@@ -24,7 +23,6 @@
 		"orientation": "horizontal",
     "drawer": {
         "transition-duration": 500,
-       // "transition-left-to-right": false,
         "transition-right-to-left": false,
     },
 			"modules": [
@@ -42,6 +40,17 @@
 			],
 	},
 
+	//https://crates.io/crates/pomodoro-cli/1.2.1
+	"custom/pomo": {
+			"format": " {}",
+			"exec": "pomodoro-cli status --format json",
+			"return-type": "json",
+			"on-click": "pomodoro-cli start --duration 25m --notify & notify-send 'Lets go to work!'",
+			"on-click-middle": "pomodoro-cli pause",
+			"on-click-right": "pomodoro-cli stop & notify-send 'Pomo stopped'",
+			"interval": 1
+	},
+
 	"custom/menu": {
     "format": "  ",
     "tooltip": true,
@@ -50,39 +59,39 @@
     "on-click-right": "",
 	},
 
-"custom/pipewire": {
-    "tooltip": false,
-    "max-length": 6,
-    "exec": "$HOME/.config/waybar/scripts/pipewire.sh",
-    "on-click": "pavucontrol",
-    "on-click-right": "qpwgraph"
-},
+	"custom/pipewire": {
+			"tooltip": false,
+			"max-length": 6,
+			"exec": "$HOME/.config/waybar/scripts/pipewire.sh",
+			"on-click": "pavucontrol",
+			"on-click-right": "qpwgraph"
+	},
 
-"custom/vpn": {
-    "format": " VPN ",
-    "exec": "echo '{\"class\": \"connected\"}'",
-    "exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
-    "return-type": "json",
-    "interval": 5
-},
+	"custom/vpn": {
+			"format": " VPN ",
+			"exec": "echo '{\"class\": \"connected\"}'",
+			"exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
+			"return-type": "json",
+			"interval": 5
+	},
 
-"wireplumber": {
-    "format": "{icon}",
-    "format-muted": "",
-    "on-click": "helvum",
-		"tooltip-format": "{volume}%",
-    "format-icons": ["", "", ""]
-},
+	"wireplumber": {
+			"format": "{icon}",
+			"format-muted": "",
+			"on-click": "helvum",
+			"tooltip-format": "{volume}%",
+			"format-icons": ["", "", ""]
+	},
 
-"mpd": {
-    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
-    "format-disconnected": "Disconnected ",
-    "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-    "interval": 10,
-		"max-length": 25,
-    "consume-icons": {
-        "on": " " // Icon shows only when "consume" is on
-    },
+	"mpd": {
+			"format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+			"format-disconnected": "Disconnected ",
+			"format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+			"interval": 10,
+			"max-length": 25,
+			"consume-icons": {
+					"on": " " // Icon shows only when "consume" is on
+			},
     "random-icons": {
         "off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
         "on": " "
@@ -101,11 +110,11 @@
     "tooltip-format-disconnected": "MPD (disconnected)",
 	  "on-click": "mpc play",
 	  "on-click-right": "mpc stop",
-},
-
+	},
 	"custom/lock": {
     "format": "  ",
     "tooltip": true,
+		"tooltip-format": "Lockscreen",
     "on-click": "$HOME/.config/sway/scripts/lock/swaylock.sh",
     "on-click-right": "wlogout -p layer-shell",
 	},
@@ -193,6 +202,7 @@
 		"urgent": "",
     "focused": "🌻",
 		},
+
 		"persistent-workspaces": {
         "11": ["LVDS-1"],
         "12": ["LVDS-1"],
@@ -232,31 +242,30 @@
         "tooltip": false,
     },
     
-        "clock": {
-        "format": "{:%H:%M}",
-        "format-alt": "{:%A, %B %d, %Y (%R)} 󰃭 ",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>",
-			"calendar": {
-									"mode"          : "year",
-									"mode-mon-col"  : 3,
-									"weeks-pos"     : "right",
-									"on-scroll"     : 1,
-									"on-click-right": "mode",
-									"format": {
-														"months":     "<span color='#ffead3'><b>{}</b></span>",
-														"days":       "<span color='#ecc6d9'><b>{}</b></span>",
-														"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-														"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-														"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-														}
-									},
-			"actions":  {
-									"on-click-right": "mode",
-									"on-click-forward": "tz_up",
-									"on-click-backward": "tz_down",
-									"on-scroll-up": "shift_up",
-									"on-scroll-down": "shift_down"
-									}
+		"clock": { "format": "{:%H:%M}",
+				"format-alt": "{:%A, %B %d, %Y (%R)} 󰃭 ",
+				"tooltip-format": "<tt><small>{calendar}</small></tt>",
+				"calendar": {
+										"mode"          : "year",
+										"mode-mon-col"  : 3,
+										"weeks-pos"     : "right",
+										"on-scroll"     : 1,
+										"on-click-right": "mode",
+										"format": {
+															"months":     "<span color='#ffead3'><b>{}</b></span>",
+															"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+															"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+															"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+															"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+										 }
+					},
+					"actions":  {
+											"on-click-right": "mode",
+											"on-click-forward": "tz_up",
+											"on-click-backward": "tz_down",
+											"on-scroll-up": "shift_up",
+											"on-scroll-down": "shift_down"
+					}
     },
     
 		"network": {
@@ -276,10 +285,6 @@
     },
 
 		"temperature": {
-				// "thermal-zone": 2,
-				// "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-				// "critical-threshold": 80,
-				// "format-critical": "{temperatureC}°C ",
 				"format": "{temperatureC}°C "
 		},
 

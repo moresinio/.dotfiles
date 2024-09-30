@@ -114,13 +114,13 @@ return {
 				 -- { 'progress',
 				 -- 	separator = "",
 				 -- },
+					{
+						"%L"
+					},
 					{ progress_cyrcle,
 						separator = "",
 						padding = { left = 1, right = 1 },
 					},
-					{
-						"%L"
-					}
 				},
 				lualine_z = {
 					--{ function() return os.date("%R") end },

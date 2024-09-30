@@ -105,7 +105,7 @@ return {
 							if buffer.is_first then
 								_text = _text .. ''
 							else
-								_text = _text .. ''
+								_text = _text .. '' --   
 							end
 						end
 						return _text

@@ -19,7 +19,7 @@ return {
 			require("kimbox").setup({
 				style = "eerie" -- 'burnt_coffee', no 'cannon', 'used_oil', 'deep', 'zinnwaldite', 'eerie',
 			})
-		--	vim.cmd [[colorscheme kimbox]]
+			--	vim.cmd [[colorscheme kimbox]]
 		end,
 	},
 	{
@@ -27,7 +27,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd [[colorscheme tokyonight]]
+			vim.cmd [[colorscheme tokyonight-night]]
 		end,
 		opts = {
 		}
@@ -44,7 +44,7 @@ return {
 				---Default is "medium".
 				background = "soft", -- Your config here
 				italics = false,
-			--	vim.cmd([[colorscheme everforest]])
+				--vim.cmd([[colorscheme everforest]])
 			})
 		end,
 	},

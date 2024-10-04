@@ -1,6 +1,0 @@
-"custom/wlsunset": {
-	"format": "󰈋",
-	"on-click-right": "bash ~/.config/waybar/scripts/night/sunONOFF",
-	"on-scroll-up": "bash ~/.config/waybar/scripts/red_dec",
-	"on-scroll-down": "bash ~/.config/waybar/scripts/red_inc",
-	},

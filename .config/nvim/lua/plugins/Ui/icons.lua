@@ -21,9 +21,9 @@ return {
     CircuitBoard = "",
 	},
 	dap = {
-		Stopped             = "󰁕 ",
-		Breakpoint          = " ",
-		BreakpointCondition = " ",
+		Stopped             = "", -- 󰁕
+		Breakpoint          = " ",
+		BreakpointCondition = " ",
 		BreakpointRejected  = { " ", "DiagnosticError" },
 		LogPoint            = ".>",
 	},

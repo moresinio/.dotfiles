@@ -15,7 +15,7 @@
         "transition-right-to-left": true,
     },
 			"modules": [
-				"custom/menu", "custom/pomo",
+				"custom/menu", "custom/pomo", "custom/gammastep",
 			],
 	},
 		 	
@@ -42,13 +42,22 @@
 
 	//https://crates.io/crates/pomodoro-cli/1.2.1
 	"custom/pomo": {
-			"format": " {}",
+			"format": " 🍅 {} ", // 
 			"exec": "pomodoro-cli status --format json",
 			"return-type": "json",
 			"on-click": "pomodoro-cli start --duration 25m --notify & notify-send 'Lets go to work!'",
 			"on-click-middle": "pomodoro-cli pause",
 			"on-click-right": "pomodoro-cli stop & notify-send 'Pomo stopped'",
 			"interval": 1
+	},
+
+	"custom/gammastep":{
+		"format": "{icon} ",
+		"format-source": "{icon} ",
+			"format-icons": ["🎑"],
+		"on-click-right": "bash ~/.config/waybar/scripts/gammastep/gamma_inc.sh",
+		"on-click": "bash ~/.config/waybar/scripts/gammastep/gamma_dec.sh",
+		"on-click-middle": "bash ~/.config/waybar/scripts/gammastep/gamma_toggle.sh"
 	},
 
 	"custom/menu": {

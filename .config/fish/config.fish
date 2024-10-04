@@ -2,18 +2,19 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+# translate shell
 alias t='trans -brief '
 alias т='trans -brief :en '
+# taskwarrior
 alias ta='task add'
+alias tl='task list'
 alias s='sudo'
 alias N='sudo -E nnn -H'
-alias r='ranger'
-alias R='sudo -E ranger'
 alias ht='htop'
 alias xr='xbps-query -Rs'
 alias xs='xbps-query -s'
-starship init fish | source
 
+starship init fish | source
 
 export NNN_PLUG='s:suedit;l:launch;m:nmount;d:xdgdefault;i:!nsxiv "$nnn"*;n:nuke'
 export NNN_BMS='d:~/Documents;D:~/Downloads/'

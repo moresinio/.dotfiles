@@ -19,7 +19,14 @@ return {
 			require("kimbox").setup({
 				style = "eerie" -- 'burnt_coffee', no 'cannon', 'used_oil', 'deep', 'zinnwaldite', 'eerie',
 			})
-			--	vim.cmd [[colorscheme kimbox]]
+				vim.cmd [[colorscheme kimbox]]
+		end,
+	},
+	{ "catppuccin/nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+	--		vim.cmd [[colorscheme catppuccin]]
 		end,
 	},
 	{
@@ -27,7 +34,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd [[colorscheme tokyonight-night]]
+			--vim.cmd [[colorscheme tokyonight-night]]
 		end,
 		opts = {
 		}

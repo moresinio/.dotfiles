@@ -22,6 +22,7 @@ export NNN_BMS='d:~/Documents;D:~/Downloads/'
 # export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
 export VISUAL='ewrap'
 
+export PATH="$PATH:/usr/local/bin"
 
 function mark_prompt_start --on-event fish_prompt
     echo -en "\e]133;A\e\\"

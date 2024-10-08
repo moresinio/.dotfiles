@@ -14,4 +14,4 @@ export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|l
 export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
 export RUSTBACKTRACE="1"
 
-export GEMINI_API_KEY="AIzaSyALVDpg9CSKCbmen-9l33wRhRtO4qrm_iQ"
+export PATH="$PATH:/usr/local/bin"

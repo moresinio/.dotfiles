@@ -8,14 +8,17 @@ return {
 
 	opts = {
 		signs = {
-			left = " ",
-			right = "",
-			diag = " ",
-			arrow = " ",
+			left = "",
+			right = " ",
+			diag = " 󰀨",
+			arrow = "󰇘 ",
 			up_arrow = " ",
 			vertical = " │",
 			vertical_end = " ╰",
 		},
-		options = { virt_texts = { priority = 5000 } },
+		options = {
+			virt_texts = { priority = 5000 },
+			multilines = true,
+		},
 	},
 }

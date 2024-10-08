@@ -1,0 +1,5 @@
+#!/bin/fish
+set Selection true
+set LoginShell /bin/fish --login
+
+exec dbus-run-session $argv

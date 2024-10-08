@@ -50,9 +50,10 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(
 )
 
 vim.diagnostic.config({
-	virtual_text = {
-		prefix = '󰀨 '
-	},
+	virtual_text = false,
+	--  	{
+	--  	prefix = '󰀨 '
+	--  },
 	signs = true,
 	underline = true,
 	update_in_insert = false,
@@ -65,18 +66,18 @@ vim.diagnostic.config({
 	},
 })
 
-vim.o.updatetime = 700
-vim.api.nvim_create_autocmd("CursorHold", {
-	buffer = bufnr,
-	callback = function()
-		local opts = {
-			focusable = false,
-			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-			border = 'rounded',
-			source = 'always',
-			prefix = ' ',
-			scope = 'cursor',
-		}
-		vim.diagnostic.open_float(nil, opts)
-	end
-})
+-- vim.o.updatetime = 700
+-- vim.api.nvim_create_autocmd("CursorHold", {
+-- 	buffer = bufnr,
+-- 	callback = function()
+-- 		local opts = {
+-- 			focusable = false,
+-- 			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+-- 			border = 'rounded',
+-- 			source = 'always',
+-- 			prefix = ' ',
+-- 			scope = 'cursor',
+-- 		}
+-- 		vim.diagnostic.open_float(nil, opts)
+-- 	end
+-- })

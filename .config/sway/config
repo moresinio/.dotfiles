@@ -130,6 +130,7 @@ smart_borders on
  titlebar_border_thickness 0
 ################################
 
+mouse_warping container
 focus_follows_mouse yes
 for_window [class="^.*"] border pixel 2
 for_window [app_id="mpv"] floating enable

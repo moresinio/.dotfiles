@@ -106,14 +106,15 @@ return {
 				lualine_c = {
 				},
 				lualine_x = {
-					{ lsp_status }
+					{ lsp_status
+						}
 				},
 				lualine_y = {
 					--{ 'selectioncount' },
 					--{ 'location' },
-				 -- { 'progress',
-				 -- 	separator = "",
-				 -- },
+					-- { 'progress',
+					-- 	separator = "",
+					-- },
 					{
 						"%L"
 					},
@@ -124,7 +125,7 @@ return {
 				},
 				lualine_z = {
 					--{ function() return os.date("%R") end },
-				--	require('tomato').message,
+					--	require('tomato').message,
 				},
 			},
 

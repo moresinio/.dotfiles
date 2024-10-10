@@ -16,7 +16,7 @@ set $term foot
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu rofi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -show combi -modes combi -combi-modes 
+set $menu rofi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -show drun
 
 ### Output configuration
 #
@@ -130,12 +130,12 @@ smart_borders on
  titlebar_border_thickness 0
 ################################
 
-mouse_warping container
+mouse_warping output
 focus_follows_mouse yes
 for_window [class="^.*"] border pixel 2
 for_window [app_id="mpv"] floating enable
 for_window [app_id="Color Picker"] floating enable
-for_window [window_type="dialog"] floating enable
+for_window [window_type="dialog"] floating enable; exec swaymsg resize set 70ppt 70ppt
 for_window [window_role="dialog"] floating enable
 for_window [window_role = "pop-up"] floating enable
 for_window [window_role = "bubble"] floating enable
@@ -184,6 +184,7 @@ bindsym $mod+Shift+0 move container to workspace number 10
 # Kill focused window with middle button mouse
 bindsym --whole-window button2 kill
 bindsym --to-code {
+
 	# Start your launcher
 	$mod+z exec $menu
 
@@ -191,7 +192,10 @@ bindsym --to-code {
 	$mod+Shift+r reload
 
 	# Exit sway (logs you out of your Wayland session)
-	$mod+Shift+e exec swaynag -e bottom -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+	$mod+Shift+e exec swaynag -e bottom -t warning -m \
+				'You pressed the exit shortcut. Do you really want to exit sway?\
+				This will end your Wayland session.' \
+				-B 'Yes, exit sway' 'swaymsg exit'
 	
   # Power menu
 	$mod+Shift+x exec wlogout -p layer-shell
@@ -244,6 +248,11 @@ bindsym --to-code {
 
 	# Move focus to the parent container
 	$mod+x focus parent
+
+	# Move floating window to center and resize
+	$mod+Shift+f exec swaymsg move position center; exec swaymsg resize set 70ppt 70ppt
+
+	$mod+Shift+t exec "bash ~/.dotfiles/.config/waybar/scripts/gammastep/gamma_toggle.sh"
 
 	# Move the currently focused window to the scratchpad
 	$mod+Shift+a move scratchpad

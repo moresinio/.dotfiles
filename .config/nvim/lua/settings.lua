@@ -86,6 +86,8 @@ opt.relativenumber = true
 opt.so = 999
 opt.scrolloff = 5
 opt.sidescrolloff = 5
+opt.mousescroll = "ver:1,hor:1"
+opt.mousefocus = true
 
 -- 24-bit RGB colors
 opt.termguicolors = true

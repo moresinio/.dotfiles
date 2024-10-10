@@ -281,4 +281,4 @@ error-message {
 
 //@theme "/home/rengoku/.local/share/rofi/themes/windows11-list-dark.rasi"
 
-//@theme "/home/rengoku/.local/share/rofi/themes/rounded-green-dark.rasi"
+@theme "/home/rengoku/.local/share/rofi/themes/rounded-green-dark.rasi"

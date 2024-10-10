@@ -15,3 +15,4 @@ export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
 export RUSTBACKTRACE="1"
 
 export PATH="$PATH:/usr/local/bin"
+export PATH="$PATH:/home/rengoku/.cargo/bin"

@@ -6,8 +6,9 @@ end
 alias t='trans -brief '
 alias т='trans -brief :en '
 # taskwarrior
-alias ta='task add'
-alias tl='task list'
+alias taa='task add'
+alias tal='task list'
+alias tad='task done'
 alias s='sudo'
 alias N='sudo -E nnn -H'
 alias ht='htop'
@@ -23,6 +24,7 @@ export NNN_BMS='d:~/Documents;D:~/Downloads/'
 export VISUAL='ewrap'
 
 export PATH="$PATH:/usr/local/bin"
+export PATH="$PATH:/home/rengoku/.cargo/bin"
 
 function mark_prompt_start --on-event fish_prompt
     echo -en "\e]133;A\e\\"

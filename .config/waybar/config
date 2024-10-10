@@ -52,7 +52,7 @@
 	},
 
 	"custom/gammastep":{
-		"format": "{icon} ",
+		"format": "{icon}",
 		"format-source": "{icon} ",
 			"format-icons": ["🎑"],
 		"on-click-right": "bash ~/.config/waybar/scripts/gammastep/gamma_inc.sh",
@@ -308,4 +308,3 @@
     },
 
 }
-

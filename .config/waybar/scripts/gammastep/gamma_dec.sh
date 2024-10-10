@@ -17,7 +17,7 @@ if pgrep gammastep >/dev/null; then
         echo "default_temp=$((current_temp))" > default_temp
     fi
 else
-    default_temp=3400
+    default_temp=3000
     gammastep -O "$default_temp" &
     notify-send -t 700 "RedGlow Started"
     echo "default_temp=$((default_temp))" > default_temp

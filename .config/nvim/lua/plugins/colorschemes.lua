@@ -8,7 +8,7 @@ return {
 				italic_comment = true, -- default false
 				--lualine_bg_color = "#282A36", -- default nil
 			})
-			--vim.cmd([[colorscheme dracula]])
+			vim.cmd([[colorscheme dracula]])
 		end,
 	},
 	{
@@ -19,7 +19,7 @@ return {
 			require("kimbox").setup({
 				style = "eerie" -- 'burnt_coffee', no 'cannon', 'used_oil', 'deep', 'zinnwaldite', 'eerie',
 			})
-				--vim.cmd [[colorscheme kimbox]]
+			--	vim.cmd [[colorscheme kimbox]]
 		end,
 	},
 	{ "catppuccin/nvim",
@@ -34,7 +34,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd [[colorscheme tokyonight-night]]
+			--vim.cmd [[colorscheme tokyonight-night]]
 		end,
 		opts = {
 		}

@@ -1,9 +1,6 @@
 #!/usr/bin/bash
 
 source ~/.cache/wal/colors.sh
-
-
-source ~/.cache/wal/colors.sh
 exec swaylock                         \
 	-S \
 	--effect-blur 5x1  \

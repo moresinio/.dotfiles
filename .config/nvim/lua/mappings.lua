@@ -14,6 +14,13 @@ map("n", "S", '"_S', { desc = "'S' without copying to clipboard" })
 map("n", "C", '"_C', { desc = "'C' without copying to clipboard" })
 map("n", "D", '"_D', { desc = "'D' without copying to clipboard" })
 
+-- see "gbprod/yanky.nvim",
+map({"n","x"}, "p", "<Plug>(YankyPutAfter)")
+map({"n","x"}, "P", "<Plug>(YankyPutBefore)")
+map({"n","x"}, "gp", "<Plug>(YankyGPutAfter)")
+map({"n","x"}, "gP", "<Plug>(YankyGPutBefore)")
+map("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
+map("n", "<c-n>", "<Plug>(YankyNextEntry)")
 
 local wk = require("which-key")
 wk.add({

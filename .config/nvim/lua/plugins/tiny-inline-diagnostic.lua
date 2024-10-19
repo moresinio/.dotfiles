@@ -8,10 +8,10 @@ return {
 
 	opts = {
 		signs = {
-			left = "",
-			right = " ",
+			left = "█",
+			right = "",
 			diag = " 󰀨",
-			arrow = "󰇘 ",
+			arrow = " 󰇘",
 			up_arrow = " ",
 			vertical = " │",
 			vertical_end = " ╰",

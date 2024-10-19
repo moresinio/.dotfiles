@@ -1,284 +1,179 @@
-/**
- *
- * Author : Aditya Shakya (adi1090x)
- * Github : @adi1090x
- * 
- * Rofi Theme File
- * Rofi Version: 1.7.3
- **/
-
-/*****----- Configuration -----*****/
-configuration {
-	modi:                       "drun,run,filebrowser";
-    show-icons:                 true;
-    display-drun:               " ";
-    display-run:                "";
-    display-filebrowser:        "";
-	drun-display-format:        "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
-	window-format:              "{w} · {c} · {t}";
-}
-
-/*****----- Global Properties -----*****/
-@import	 "colors/ef-trio-dark_new.rasi"
 
 * {
-    border-colour:               var(selected);
-    handle-colour:               var(selected);
-    background-colour:           var(background);
-    foreground-colour:           var(foreground);
-    alternate-background:        var(background-alt);
-    normal-background:           var(background);
-    normal-foreground:           var(foreground);
-    urgent-background:           var(urgent);
-    urgent-foreground:           var(background);
-    active-background:           var(active);
-    active-foreground:           var(background);
-    selected-normal-background:  var(selected);
-    selected-normal-foreground:  var(selected-fg);
-    selected-urgent-background:  var(active);
-    selected-urgent-foreground:  var(background);
-    selected-active-background:  var(urgent);
-    selected-active-foreground:  var(background);
-    alternate-normal-background: var(background);
-    alternate-normal-foreground: var(foreground);
-    alternate-urgent-background: var(urgent);
-    alternate-urgent-foreground: var(background);
-    alternate-active-background: var(active);
-    alternate-active-foreground: var(background);
-}
+    foreground:  #ffeedd;
+    backlight:   #ccffeedd;
+    background-color:  transparent;
+    dark: #1c1c1c;
+    // Black
+    black:       #3d352a;
+    lightblack:  #554444;
+    tlightblack:  #554444cc;
+    //
+    // Red
+    red:         #cd5c5c;
+    lightred:    #cc5533;
+    //
+    // Green
+    green:       #86af80;
+    lightgreen:  #88cc22;
+    //
+    // Yellow
+    yellow:      #e8ae5b;
+    lightyellow:     #ffa75d;
+    //
+    // Blue
+    blue:      #6495ed;
+    lightblue:     #87ceeb;
+    //
+    // Magenta
+    magenta:      #deb887;
+    lightmagenta:     #996600;
+    //
+    // Cyan
+    cyan:      #b0c4de;
+    tcyan:      #ccb0c4de;
+    lightcyan:     #b0c4de;
+    //
+    // White
+    white:      #bbaa99;
+    lightwhite:     #ddccbb;
+    //
+    // Bold, Italic, Underline
+    highlight:     underline bold #ffffff;
 
-/*****----- Main Window -----*****/
+    transparent: rgba(0,0,0,0);
+    font: "Source Code Pro 10";
+}
 window {
-    /* properties for window widget */
-    transparency:                "real";
-    location:                    center;
-    anchor:                      center;
-    fullscreen:                  false;
-    width:                       600px;
-    x-offset:                    0px;
-    y-offset:                    0px;
-
-    /* properties for all widgets */
-    enabled:                     true;
-    margin:                      0px;
-    padding:                     0px;
-    border:                      2px solid;
-    border-radius:               8px;
-    border-color:                @border-colour;
-    cursor:                      "default";
-    background-color:            @background-colour;
+    location: center;
+    anchor:   center;
+    transparency: "real";
+    padding: 10px;
+    border:  0px;
+    border-radius: 10px;
+    color: @magenta;
+    background-color: @transparent;
+    spacing: 0;
+    children:  [mainbox];
+    orientation: horizontal;
 }
-
-/*****----- Main Box -----*****/
 mainbox {
-    enabled:                     true;
-    spacing:                     10px;
-    margin:                      0px;
-    padding:                     10px;
-    border:                      0px solid;
-    border-radius:               0px 0px 0px 0px;
-    border-color:                @border-colour;
-    background-color:            transparent;
-    children:                    [ "inputbar", "message", "listview", "mode-switcher" ];
+    spacing: 0;
+    children: [ inputbar, message, listview ];
 }
-
-/*****----- Inputbar -----*****/
+message {
+    border-color: @foreground;
+    border:  0px 2px 2px 2px;
+//    border-radius: 10px;
+    padding: 5;
+    background-color: @tcyan;
+}
+message {
+    font: "Source Code Pro 8";
+    color: @black;
+}
 inputbar {
-    enabled:                     true;
-    spacing:                     10px;
-    margin:                      0px;
-    padding:                     10px;
-    border:                      0px 0px 1px 0px;
-    border-radius:               0px;
-    border-color:                @border-colour;
-    background-color:            @alternate-background;
-    text-color:                  @foreground-colour;
-    children:                    [ "prompt", "entry" ];
+    color: @lightgreen;
+    padding: 11px;
+    background-color: @tlightblack;
+    border: 2px 2px 2px 2px;
+    border-radius:  15px 15px 0px 0px;
+    border-color: @foreground;
+    font: "Source Code Pro 18";
 }
-
+entry,prompt,case-indicator {
+    text-font: inherit;
+    text-color:inherit;
+}
 prompt {
-    enabled:                     true;
-    background-color:            inherit;
-    text-color:                  inherit;
+    margin:     0px 0.3em 0em 0em ;
 }
-textbox-prompt-colon {
-    enabled:                     true;
-    expand:                      false;
-    str:                         "::";
-    background-color:            inherit;
-    text-color:                  inherit;
-}
-entry {
-    enabled:                     true;
-    background-color:            inherit;
-    text-color:                  inherit;
-    cursor:                      text;
-    placeholder:                 "";
-    placeholder-color:           inherit;
-}
-
-/*****----- Listview -----*****/
 listview {
-    enabled:                     true;
-    columns:                     1;
-    lines:                       8;
-    cycle:                       true;
-    dynamic:                     true;
-    scrollbar:                   false;
-    layout:                      vertical;
-    reverse:                     false;
-    fixed-height:                true;
-    fixed-columns:               true;
-    
-    spacing:                     0px;
-    margin:                      0px;
-    padding:                     0px;
-    border:                      0px solid;
-    border-radius:               0px;
-    border-color:                @border-colour;
-    background-color:            transparent;
-    text-color:                  @foreground-colour;
-    cursor:                      "default";
+    padding: 8px;
+    border-radius: 0px 0px 15px 15px;
+    border-color: @foreground;
+    border: 0px 2px 2px 2px;
+    background-color: #1c1c1ccc;
+    dynamic: false;
+    lines: 10;
 }
-scrollbar {
-    handle-width:                5px ;
-    handle-color:                @handle-colour;
-    border-radius:               0px;
-    background-color:            @alternate-background;
-}
-
-/*****----- Elements -----*****/
 element {
-    enabled:                     true;
-    spacing:                     10px;
-    margin:                      0px;
-    padding:                     10px;
-    border:                      0px solid;
-    border-radius:               4px;
-    border-color:                @border-colour;
-    background-color:            transparent;
-    text-color:                  @foreground-colour;
-    cursor:                      pointer;
-}
-element normal.normal {
-    background-color:            var(normal-background);
-    text-color:                  var(normal-foreground);
-}
-element normal.urgent {
-    background-color:            var(urgent-background);
-    text-color:                  var(urgent-foreground);
-}
-element normal.active {
-    background-color:            var(active-background);
-    text-color:                  var(active-foreground);
-}
-element selected.normal {
-    background-color:            var(selected-normal-background);
-    text-color:                  var(selected-normal-foreground);
-}
-element selected.urgent {
-    background-color:            var(selected-urgent-background);
-    text-color:                  var(selected-urgent-foreground);
-}
-element selected.active {
-    background-color:            var(selected-active-background);
-    text-color:                  var(selected-active-foreground);
-}
-element alternate.normal {
-    background-color:            var(alternate-normal-background);
-    text-color:                  var(alternate-normal-foreground);
-}
-element alternate.urgent {
-    background-color:            var(alternate-urgent-background);
-    text-color:                  var(alternate-urgent-foreground);
-}
-element alternate.active {
-    background-color:            var(alternate-active-background);
-    text-color:                  var(alternate-active-foreground);
-}
-element-icon {
-    background-color:            transparent;
-    text-color:                  inherit;
-    size:                        24px;
-    cursor:                      inherit;
+    padding: 3px;
+    vertical-align: 0.5;
+//    border: 2px;
+    border-radius: 4px;
+    background-color: transparent;
+    color: @foreground;
+    font:inherit;
 }
 element-text {
-    background-color:            transparent;
-    text-color:                  inherit;
-    highlight:                   inherit;
-    cursor:                      inherit;
-    vertical-align:              0.5;
-    horizontal-align:            0.0;
+    background-color: inherit;
+    text-color:       inherit;
 }
+element selected.normal {
+    background-color: @blue;
+}
+element normal active {
+    foreground: @lightblue;
+}
+element normal urgent {
+    foreground: @lightred;
+}
+element alternate normal {
+}
+element alternate active {
+    foreground: @lightblue;
+}
+element alternate urgent {
+    foreground: @lightred;
+}
+element selected active {
+    background-color: @lightblue;
+    foreground: @dark;
+}
+element selected urgent {
+    background-color: @lightred;
+    foreground: @dark;
+}
+element normal normal {
 
-/*****----- Mode Switcher -----*****/
-mode-switcher{
-    enabled:                     true;
-    spacing:                     10px;
-    margin:                      0px;
-    padding:                     0px;
-    border:                      0px solid;
-    border-radius:               0px;
-    border-color:                @border-colour;
-    background-color:            transparent;
-    text-color:                  @foreground-colour;
+}
+vertb {
+    expand: false;
+    children: [ dummy0, mode-switcher, dummy1  ];
+}
+dummy0,  dummy1 {
+    expand: true;
+}
+mode-switcher {
+    expand: false;
+    orientation: vertical;
+    spacing: 0px;
+    border: 0px 0px 0px 0px;
 }
 button {
-    padding:                     10px;
-    border:                      0px solid;
-    border-radius:               4px;
-    border-color:                @border-colour;
-    background-color:            @alternate-background;
-    text-color:                  inherit;
-    cursor:                      pointer;
+    font: "FontAwesome 22";
+    padding: 6px;
+    border: 2px 0px 2px 2px;
+    border-radius: 4px 0px 0px 4px;
+    background-color: @tlightblack;
+    border-color: @foreground;
+    color: @foreground;
+    horizontal-align: 0.5;
 }
-button selected {
-    background-color:            var(selected-normal-background);
-    text-color:                  var(selected-normal-foreground);
-}
-
-/*****----- Message -----*****/
-message {
-    enabled:                     true;
-    margin:                      0px;
-    padding:                     0px;
-    border:                      0px solid;
-    border-radius:               0px 0px 0px 0px;
-    border-color:                @border-colour;
-    background-color:            transparent;
-    text-color:                  @foreground-colour;
-}
-textbox {
-    padding:                     10px;
-    border:                      0px solid;
-    border-radius:               0px;
-    border-color:                @border-colour;
-    background-color:            @alternate-background;
-    text-color:                  @foreground-colour;
-    vertical-align:              0.5;
-    horizontal-align:            0.0;
-    highlight:                   none;
-    placeholder-color:           @foreground-colour;
-    blink:                       true;
-    markup:                      true;
+button selected normal {
+    color: @dark;
+    border: 2px 0px 2px 2px;
+    background-color: @backlight;
+    border-color: @foreground;
 }
 error-message {
-    padding:                     10px;
-    border:                      0px solid;
-    border-radius:               0px;
-    border-color:                @border-colour;
-    background-color:            @background-colour;
-    text-color:                  @foreground-colour;
+    expand: true;
+    background-color: red;
+    border-color: darkred;
+    border: 2px;
+    padding: 1em;
 }
 
-//@theme "/home/rengoku/.local/share/rofi/themes/launchpad.rasi"
 
-//@theme "/home/rengoku/.local/share/rofi/themes/squared-everforest.rasi"
-
-//@theme "/home/rengoku/.local/share/rofi/themes/windows11-grid-dark.rasi"
-
-//@theme "/home/rengoku/.local/share/rofi/themes/rounded-red-dark.rasi"
-
-//@theme "/home/rengoku/.local/share/rofi/themes/windows11-list-dark.rasi"
-
-@theme "/home/rengoku/.local/share/rofi/themes/rounded-green-dark.rasi"
+@theme "/usr/local/share/rofi/themes/arthur.rasi"

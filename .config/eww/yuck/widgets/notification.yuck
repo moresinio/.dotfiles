@@ -1,0 +1,60 @@
+(defwidget notification [id title body actions image onclick] (eventbox
+    :class "notification"
+    :onclick "${EWW_CONFIG_DIR}/scripts/notifications ${onclick} ${id}"
+    (box
+        :class "notification-content"
+        :space-evenly false
+        :orientation "v"
+        (box
+            :space-evenly false
+            (box
+                :visible {image != "null"}
+                :class "image"
+                :style "background-image: url('${image}')"
+                :valign "start"
+            )
+            (box
+                :class "content"
+                :space-evenly false
+                :orientation "v"
+                :hexpand true
+                (box
+                    :space-evenly false
+                    (label 
+                        :xalign 0
+                        :class "title"
+                        :wrap true
+                        :text title)
+                    (overlay 
+                        :hexpand true
+                        :width 30
+                        (box) (button
+                        :class "close-button"
+                        :halign "end"
+                        :valign "start"
+                        :onclick "${EWW_CONFIG_DIR}/scripts/notifications close ${id}"
+                        (label :text "")
+                    ))
+                )
+                (label
+                    :wrap true
+                    :justify "left"
+                    :xalign 0
+                    :class "body"
+                    :text body)
+            )
+        )
+        (box
+            :space-evenly false
+            (for action in actions
+                (button
+                    :hexpand true
+                    :class "action-button"
+                    :onclick "${EWW_CONFIG_DIR}/scripts/notifications action ${id} ${action.id}"
+                    (label :text {action.label})
+                )
+            )
+        )
+    )
+))
+

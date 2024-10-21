@@ -8,7 +8,7 @@ return {
 				italic_comment = true, -- default false
 				--lualine_bg_color = "#282A36", -- default nil
 			})
-			vim.cmd([[colorscheme dracula]])
+			--vim.cmd([[colorscheme dracula]])
 		end,
 	},
 	{
@@ -34,7 +34,7 @@ return {
 		lazy = false,
 		priority = 1000,
 		config = function()
-			--vim.cmd [[colorscheme tokyonight-night]]
+			vim.cmd [[colorscheme tokyonight-night]]
 		end,
 		opts = {
 		}

@@ -1,31 +1,83 @@
-(defvar     bluetooth       "{}")
-(defvar     network         "{}")
-(defvar     media           "{}")
-(defvar     media_positions "{}")
-(defvar     battery         "{}")
-(defvar     notifications   "{}")
+(defwindow dock
+    :monitor 0
+    :stacking "fg"
+    :namespace "eww_dock"
+    :geometry (geometry :width  "1%"
+                        :height "1%"
+                        :anchor "bottom center")(dock))
 
-(deflisten  window      `scripts/hyprland window`)
-(deflisten  workspaces  `scripts/hyprland workspaces`)
+(defvar dock_hovered false)
+(defwidget dock_button [class tooltip onclick] (eventbox
+    :class "laucher ${class}"
+    :tooltip tooltip
+    :onclick onclick
+    :onhoverlost "${EWW_CMD} update dock_hovered=false"
+    :onhover "${EWW_CMD} update dock_hovered=true"
+    :valign "END"
+    (box
+        :orientation "v"
+        :space-evenly false
+        (box
+            :class "icon"
+            :valign "START"
+            :vexpand true
+        )
+        (box
+            :class "indicator"
+            :valign "END"
+            :halign "CENTER"
+        )
+    )
+))
 
-(defpoll    volume      :interval "3s" :initial "{}" `scripts/volume get`)
-(defpoll    theme       :interval "3s" :initial "{}" `scripts/theme get`)
-(defpoll    power       :interval "3s" :initial "{}" `scripts/power get`)
-(defpoll    night_light :interval "3s" :initial "{}" `scripts/night_light get`)
-(defpoll    brightness  :interval "3s" :initial "{}" `scripts/brightness get`)
-
-(defpoll    events      :interval "3s" :initial "[]" `scripts/todo --eww`)
-(defpoll    weather     :interval "3m" :initial "[]" `scripts/weather`)
-
-(defpoll    panel_clock :interval "5s" `date "+%H:%M  |  %b. %d. %A"`)
-(defpoll    hour        :interval "5s" `date "+%H"`)
-(defpoll    minutes     :interval "5s" `date "+%M"`)
-(defpoll    date        :interval "5s" `date "+%b. %d. %A"`)
-(defpoll    uptime      :interval "60s" "uptime | awk '{print $3}' | tr ',' ' '")
-
-(defvar real_name "Demeter")
-(defvar user_name "@Aylur")
-
-(include "./yuck/widgets.yuck")
-(include "./yuck/windows.yuck")
-(include "./setups/leftbar.yuck")
+(defvar dock_reveal true)
+(defwidget dock [] (eventbox
+    :class "dock"
+    :onhover "${EWW_CMD} update dock_reveal=true"
+    :onhoverlost "${EWW_CMD} update dock_reveal=false"
+    (revealer
+        :reveal dock_reveal
+        :transition "slideup"
+        :duration "300ms"
+        (overlay
+            (button
+                :class "container ${dock_hovered ? "hovered" : ""}"
+            )
+            (box
+                :class "foot"
+                :valign "END"
+            )
+            (box
+                :halign "CENTER"
+                :valign "END"
+                :spacing 20
+                :space-evenly false
+                (dock_button 
+                    :class "firefox"
+                    :tooltip "LibreWolf"
+                    :onclick "${EWW_CONFIG_DIR}/scripts/launcher firefox"
+                )
+                (dock_button 
+                    :class "terminal"
+                    :tooltip "Terminal"
+                    :onclick "${EWW_CONFIG_DIR}/scripts/launcher terminal"
+                )
+                (dock_button 
+                    :class "file-manager"
+                    :tooltip "Thunar"  
+                    :onclick "${EWW_CONFIG_DIR}/scripts/launcher file-manager"
+                )
+                (dock_button 
+                    :class "file-manager"
+                    :tooltip "Change wallpaper"  
+                    :onclick "${EWW_CONFIG_DIR}/scripts/launcher wall-change"
+                )
+                (dock_button 
+                    :class "file-manager"
+                    :tooltip "Bluetooth connect"  
+                    :onclick "${EWW_CONFIG_DIR}/scripts/launcher bluetooth"
+                )
+            )
+        )
+    )
+))

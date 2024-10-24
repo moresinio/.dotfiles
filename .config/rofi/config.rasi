@@ -176,4 +176,6 @@ error-message {
 }
 
 
-@theme "/usr/local/share/rofi/themes/arthur.rasi"
+//@theme "/usr/local/share/rofi/themes/arthur.rasi"
+
+@theme "/home/rengoku/.local/share/rofi/themes/rounded-pink-dark.rasi"

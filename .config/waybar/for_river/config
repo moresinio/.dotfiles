@@ -1,0 +1,261 @@
+{
+	"layer": "top",
+	"position": "top",
+	"height": 9,
+	"spacing": 1,
+	"modules-left": ["group/group_0", "river/tags", "river/layout",
+										],
+	"modules-center": ["river/window"],
+	"modules-right": [ "group/group_2", "group/group_1",],
+
+	"group/group_0": {
+		"orientation": "horizontal",
+    "drawer": {
+        "transition-duration": 500,
+        "transition-right-to-left": true,
+    },
+			"modules": [
+				"custom/menu", "custom/pomo", "custom/gammastep",
+			],
+	},
+		 	
+	"group/group_1": {
+		"orientation": "horizontal",
+    "drawer": {
+        "transition-duration": 500,
+        "transition-right-to-left": false,
+    },
+			"modules": [
+				"custom/lock",
+				"user",
+				"idle_inhibitor",
+			],
+	},
+
+	"group/group_2": {
+		"orientation": "horizontal",
+			"modules": [ "temperature", 
+									"cpu", "memory", "wireplumber", "network", "tray",
+									"clock",
+			],
+	},
+
+	//https://crates.io/crates/pomodoro-cli/1.2.1
+	"custom/pomo": {
+			"format": " 🍅 {} ", // 
+			"exec": "pomodoro-cli status --format json",
+			"return-type": "json",
+			"on-click": "pomodoro-cli start --duration 25m --notify & notify-send 'Lets go to work!'",
+			"on-click-middle": "pomodoro-cli pause",
+			"on-click-right": "pomodoro-cli stop & notify-send 'Pomo stopped'",
+			"interval": 1
+	},
+
+	"custom/gammastep":{
+		"format": "{icon}",
+		"format-source": "{icon} ",
+			"format-icons": ["🎑"],
+		"on-click-right": "bash ~/.config/waybar/scripts/gammastep/gamma_inc.sh",
+		"on-click": "bash ~/.config/waybar/scripts/gammastep/gamma_dec.sh",
+		"on-click-middle": "bash ~/.config/waybar/scripts/gammastep/gamma_toggle.sh"
+	},
+
+	"custom/menu": {
+    "format": "  ",
+    "tooltip": true,
+    "tooltip-format": "VOID",
+    "on-click": "rofi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -show drun",
+    "on-click-right": "",
+	},
+
+	"custom/pipewire": {
+			"tooltip": false,
+			"max-length": 6,
+			"exec": "$HOME/.config/waybar/scripts/pipewire.sh",
+			"on-click": "pavucontrol",
+			"on-click-right": "qpwgraph"
+	},
+
+	"custom/vpn": {
+			"format": " VPN ",
+			"exec": "echo '{\"class\": \"connected\"}'",
+			"exec-if": "test -d /proc/sys/net/ipv4/conf/tun0",
+			"return-type": "json",
+			"interval": 5
+	},
+
+	"wireplumber": {
+			"format": "{icon}",
+			"format-muted": "",
+			"on-click": "helvum",
+			"tooltip-format": "{volume}%",
+			"format-icons": ["", "", ""]
+	},
+
+	"mpd": {
+			"format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+			"format-disconnected": "Disconnected ",
+			"format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+			"interval": 10,
+			"max-length": 25,
+			"consume-icons": {
+					"on": " " // Icon shows only when "consume" is on
+			},
+    "random-icons": {
+        "off": "<span color=\"#f53c3c\"></span> ", // Icon grayed out when "random" is off
+        "on": " "
+    },
+    "repeat-icons": {
+        "on": " "
+    },
+    "single-icons": {
+        "on": "1 "
+    },
+    "state-icons": {
+        "paused": "",
+        "playing": ""
+    },
+    "tooltip-format": "MPD (connected)",
+    "tooltip-format-disconnected": "MPD (disconnected)",
+	  "on-click": "mpc play",
+	  "on-click-right": "mpc stop",
+	},
+	"custom/lock": {
+    "format": "  ",
+    "tooltip": true,
+		"tooltip-format": "Lockscreen",
+    "on-click": "$HOME/.config/sway/scripts/lock/swaylock.sh",
+    "on-click-right": "wlogout -p layer-shell",
+	},
+
+	"user": {
+					"format": "{user} {work_H}:{work_M} up 🥵",
+					"interval": 60,
+					"height": 30,
+					"width": 30,
+					"icon": true,
+	},
+
+	"custom/spotify": {
+	    "format": "{icon} {}",
+	    "escape": true,
+	    "return-type": "json",
+	    "max-length": 40,
+	    "interval": 30, // Remove this if your script is endless and write in loop
+	    "on-click": "playerctl -p spotify play-pause",
+	    "on-click-right": "killall spotify",
+	    "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
+	    "on-scroll-up" : "playerctl -p spotify next",
+	    "on-scroll-down" : "playerctl -p spotify previous",
+	    "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null", // Script in resources/custom_modules folder
+	    "exec-if": "pgrep spotify"
+	},
+
+	"idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": "",
+				"timeout": "60",
+        }
+    },
+	
+		"cava": {
+	 	"framerate": 30,
+	    "autosens": 1,
+	    "sensitivity": 100,
+	    "bars": 14,
+	    "lower_cutoff_freq": 50,
+	    "higher_cutoff_freq": 10000,
+	    "method": "pulse",
+	    "source": "auto",
+	    "stereo": true,
+	    "reverse": false,
+	    "bar_delimiter": 0,
+	    "monstercat": false,
+	    "waves": false,
+	    "noise_reduction": 0.77,
+	    "input_delay": 2,
+	    "format-icons" : ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" ],
+	    "actions": {
+	    	"on-click-right": "mode"
+	        }
+	    },
+
+		"river/tags": {
+								"num-tags": 5
+					},
+
+		"river/window": {
+								"format": "{}"
+						},
+
+    "river/layout": {
+            "format": "{}",
+            "min-length": 4,
+            "align": "right"
+       },
+    "tray": {
+        // "icon-size": 11,
+        "spacing": 5,
+        "tooltip": false,
+    },
+    
+		"clock": { "format": "{:%H:%M}",
+				"format-alt": "{:%A, %B %d, %Y (%R)} 󰃭 ",
+				"tooltip-format": "<tt><small>{calendar}</small></tt>",
+				"calendar": {
+										"mode"          : "year",
+										"mode-mon-col"  : 3,
+										"weeks-pos"     : "right",
+										"on-scroll"     : 1,
+										"on-click-right": "mode",
+										"format": {
+															"months":     "<span color='#ffead3'><b>{}</b></span>",
+															"days":       "<span color='#ecc6d9'><b>{}</b></span>",
+															"weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+															"weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+															"today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+										 }
+					},
+					"actions":  {
+											"on-click-right": "mode",
+											"on-click-forward": "tz_up",
+											"on-click-backward": "tz_down",
+											"on-scroll-up": "shift_up",
+											"on-scroll-down": "shift_down"
+					}
+    },
+    
+		"network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": " ",
+        "format-ethernet": "",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "cpu": {
+				"interval": 7,
+        "format": "{usage}% 󰻠",
+        "tooltip": true
+    },
+
+		"temperature": {
+				"format": "{temperatureC}°C "
+		},
+
+    "memory": {
+        "format": "{percentage}% "
+    },
+
+		"backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+}
+

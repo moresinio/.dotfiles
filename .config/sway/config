@@ -100,7 +100,7 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 bar {
-    status_command waybar
+    status_command waybar -c "~/.config/waybar/for_sway/config"
     mode invisible
 }
 
@@ -291,5 +291,6 @@ exec wl-paste -t text --watch clipman store --no-persist
 exec blueman-applet
 exec udiskie --tray
 exec sleep 1 & swww-daemon
+exec eww daemon & eww open dock
 
 include ~/.config/sway/config.d/*.conf

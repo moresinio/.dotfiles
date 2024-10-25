@@ -11,7 +11,7 @@
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
 
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
-riverctl map normal Super Return spawn foot
+riverctl map normal Super Return spawn footclient
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
@@ -161,6 +161,15 @@ riverctl rule-add -app-id "bar" csd
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 &
 
-dbus-run-session waybar &
+dbus-run-session waybar -c "~/.config/waybar/for_river/config" &
 
-way-displays &
+foot --server                                          &
+kanshi                                                 &
+dunst                                                  &
+pipewire                                               &
+light -S 50                                            &
+wl-paste -t text --watch clipman store --no-persist    &
+blueman-applet                                         &
+udiskie --tray                                         &
+sleep 1 & swww-daemon                                  &
+eww daemon & eww open dock                             &

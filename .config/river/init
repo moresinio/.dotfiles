@@ -130,8 +130,7 @@ do
     riverctl map $mode None XF86AudioRaiseVolume  spawn 'pamixer -i 5'
     riverctl map $mode None XF86AudioLowerVolume  spawn 'pamixer -d 5'
     riverctl map $mode None XF86AudioMute         spawn 'pamixer --toggle-mute'
-
-    # Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
+ Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
     riverctl map $mode None XF86AudioMedia spawn 'playerctl play-pause'
     riverctl map $mode None XF86AudioPlay  spawn 'playerctl play-pause'
     riverctl map $mode None XF86AudioPrev  spawn 'playerctl previous'
@@ -161,15 +160,14 @@ riverctl rule-add -app-id "bar" csd
 riverctl default-layout rivertile
 rivertile -view-padding 6 -outer-padding 6 &
 
-dbus-run-session waybar -c "~/.config/waybar/for_river/config" &
-
-foot --server                                          &
-kanshi                                                 &
-dunst                                                  &
-pipewire                                               &
-light -S 50                                            &
-wl-paste -t text --watch clipman store --no-persist    &
-blueman-applet                                         &
-udiskie --tray                                         &
-sleep 1 & swww-daemon                                  &
-eww daemon & eww open dock                             &
+#dbus-run-session 'waybar -c ~/.config/waybar/for_river/config -s ~/.config/waybar/for_river/style.css' &
+foot --server                                                     &
+kanshi                                                            &
+dunst                                                             &
+pipewire                                                          &
+light -S 50                                                       &
+wl-paste -t text --watch clipman store --no-persist               &
+blueman-applet                                                    &
+udiskie --tray                                                    &
+sleep 1 & swww-daemon                                             &
+eww daemon & eww open dock                                        &

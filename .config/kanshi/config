@@ -1,0 +1,11 @@
+
+profile one {
+		output LVDS-1 {
+					mode 1280x800
+					position 0,0
+		}
+		output VGA-1 {
+							mode 1280x1024@75Hz
+							position 1280,0
+		}
+}

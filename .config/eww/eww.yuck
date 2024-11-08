@@ -54,7 +54,7 @@
                 :space-evenly false
                 (dock_button 
                     :class "firefox"
-                    :tooltip "LibreWolf"
+                    :tooltip "Firefox"
                     :onclick "${EWW_CONFIG_DIR}/scripts/launcher firefox"
                 )
                 (dock_button 

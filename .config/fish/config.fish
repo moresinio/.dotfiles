@@ -9,6 +9,7 @@ alias т='trans -brief :en '
 alias taa='task add'
 alias tal='task list'
 alias tad='task done'
+alias du='dua'
 alias s='sudo'
 alias N='sudo -E nnn -H'
 alias ht='htop'
@@ -19,16 +20,11 @@ starship init fish | source
 
 export NNN_PLUG='s:suedit;l:launch;m:nmount;d:xdgdefault;i:!nsxiv "$nnn"*;n:nuke'
 export NNN_BMS='d:~/Documents;D:~/Downloads/'
-# export NNN_COLORS="2136"
-# export NNN_FCOLORS='c1e2272e006033f7c6d6abc4'
-export VISUAL='ewrap'
 
-export PATH="$PATH:/usr/local/bin"
+# export PATH="$PATH:/usr/local/bin"
 export PATH="$PATH:/home/rengoku/.cargo/bin"
+export PATH="$PATH:/home/rengoku/.local/bin"
 
 function mark_prompt_start --on-event fish_prompt
     echo -en "\e]133;A\e\\"
 end
-
-# Created by `pipx` on 2024-02-09 08:38:18
-set PATH $PATH /home/rengoku/.local/bin

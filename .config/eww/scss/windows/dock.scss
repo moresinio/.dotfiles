@@ -1,4 +1,4 @@
-$dock_icon_size: 5em;
+$dock_icon_size: 3em;
 
 .dock{
     .container{
@@ -42,7 +42,7 @@ $dock_icon_size: 5em;
                 background-color: $accent;
             }
         }
-        &.firefox .icon{ background-image:      url($assets+'apps/svg/file-manager.svg'); }
+        &.firefox .icon{ background-image:      url($assets+'apps/firefox.png'); }
         &.terminal .icon{ background-image:     url($assets+'apps/terminal.png'); }
         &.file-manager .icon{ background-image: url($assets+'apps/svg/file-manager.svg'); }
     }

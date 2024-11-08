@@ -1,6 +1,6 @@
 {
     "label" : "lockscreen",
-    "action" : "~/.config/sway/scripts/lock/swaylock.sh",
+    "action" : "gtklock",
 		"text" : "",
     "keybind" : "x"
 }

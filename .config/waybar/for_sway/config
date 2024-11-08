@@ -54,7 +54,7 @@
 	"custom/gammastep":{
 		"format": "{icon}",
 		"format-source": "{icon} ",
-			"format-icons": ["🎑"],
+		"format-icons": ["🎑"],
 		"on-click-right": "bash ~/.config/waybar/scripts/gammastep/gamma_inc.sh",
 		"on-click": "bash ~/.config/waybar/scripts/gammastep/gamma_dec.sh",
 		"on-click-middle": "bash ~/.config/waybar/scripts/gammastep/gamma_toggle.sh"
@@ -64,7 +64,7 @@
     "format": "  ",
     "tooltip": true,
     "tooltip-format": "VOID",
-    "on-click": "rofi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -show drun",
+    "on-click": "fuzzel -a top-left --no-exit-on-keyboard-focus-loss",
     "on-click-right": "",
 	},
 
@@ -124,7 +124,7 @@
     "format": "  ",
     "tooltip": true,
 		"tooltip-format": "Lockscreen",
-    "on-click": "$HOME/.config/sway/scripts/lock/swaylock.sh",
+    "on-click": "gtklock",
     "on-click-right": "wlogout -p layer-shell",
 	},
 

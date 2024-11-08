@@ -16,7 +16,7 @@ if [[ $1 == 'screenlock'     ]]; then screenlock; fi
 if [[ $1 == 'config'         ]]; then config; fi
 if [[ $1 == 'screenshot'     ]]; then screenshot $2; fi
 
-if [[ $1 == 'firefox'       ]]; then LibreWolf; fi
+if [[ $1 == 'firefox'       ]]; then firefox-wayland; fi
 if [[ $1 == 'terminal'      ]]; then footclient; fi
 if [[ $1 == 'file-manager'  ]]; then thunar; fi
 if [[ $1 == 'wall-change'   ]]; then ~/.config/sway/scripts/wallpaper_change.sh; fi

@@ -15,13 +15,20 @@ run  = "plugin smart-filter"
 desc = "Smart filter"
 
 [[manager.prepend_keymap]]
-on   = [ "i" ]
-run = "plugin easyjump"
-desc = "easyjump"
+  on   = "v"
+	run  = "plugin what-size"
+	desc = "Calc size of selection or cwd"
 
-prepend_keymap = [
-  { on   = [ ".", "s" ], run  = "plugin what-size", desc = "Calc size of selection or cwd" },
-]
+[[manager.prepend_keymap]]
+on   = "o"
+run  = "plugin open-with-cmd --args=block"
+desc = "Open with command in the terminal"
+
+[[manager.prepend_keymap]]
+on   = "O"
+run  = "plugin open-with-cmd"
+desc = "Open with command"
+
 
 keymap = [
 	{ on = "<Esc>", run = "escape",             desc = "Exit visual mode, clear selected, or cancel search" },

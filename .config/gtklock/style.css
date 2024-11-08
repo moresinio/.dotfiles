@@ -1,0 +1,17 @@
+window {
+   background-image: url("/home/rengoku/Pictures/wallhaven-lmxmxy.png");
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-color: black;
+}
+
+/*
+#window-box {
+	padding: 64px;
+	border: 1px solid black;
+	border-radius: 4px;
+	box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 12px;
+	background-color: grey;
+}
+*/

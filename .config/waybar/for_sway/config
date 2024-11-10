@@ -276,7 +276,7 @@
         "format-ethernet": "",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-disconnected": "Net off ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
 

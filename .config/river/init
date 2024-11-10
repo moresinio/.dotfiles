@@ -12,67 +12,68 @@
 
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
 riverctl map normal Super Return spawn footclient
-riverctl map normal Super Z spawn fuzzel
-riverctl map normal Super F3 spawn "footclient -T Neovim nvim"
-riverctl map normal Super F2 spawn "footclient -T Yazi yazi"
-riverctl map normal Print spawn grim
+
+riverctl map -layout 0 normal Super Z spawn fuzzel
+riverctl map -layout 0 normal Super F3 spawn "footclient -T Neovim nvim"
+riverctl map -layout 0 normal Super F2 spawn "footclient -T Yazi yazi"
+riverctl map -layout 0 normal None Print spawn grim
+
 # Super+Q to close the focused view
-riverctl map normal Super Q close
+riverctl map -layout 0 normal Super Q close
 
 # Super+Shift+E to exit river
-riverctl map normal Super+Shift E exit
+riverctl map -layout 0 normal Super+Shift E exit
 
 # Super+J and Super+K to focus the next/previous view in the layout stack
-riverctl map normal Super J focus-view next
-riverctl map normal Super K focus-view previous
+riverctl map -layout 0 normal Super J focus-view next
+riverctl map -layout 0 normal Super K focus-view previous
 
 # Super+Shift+J and Super+Shift+K to swap the focused view with the next/previous
 # view in the layout stack
-riverctl map normal Super+Shift J swap next
-riverctl map normal Super+Shift K swap previous
+riverctl map -layout 0 normal Super+Shift J swap next
+riverctl map -layout 0 normal Super+Shift K swap previous
 
 # Super+Period and Super+Comma to focus the next/previous output
-riverctl map normal Super Period focus-output next
-riverctl map normal Super Comma focus-output previous
+riverctl map -layout 0 normal Super Period focus-output next
+riverctl map -layout 0 normal Super Comma focus-output previous
 
 # Super+Shift+{Period,Comma} to send the focused view to the next/previous output
-riverctl map normal Super+Shift Period send-to-output next
-riverctl map normal Super+Shift Comma send-to-output previous
+riverctl map -layout 0 normal Super+Shift Period send-to-output next
+riverctl map -layout 0 normal Super+Shift Comma send-to-output previous
 
 # Super+Control Return to bump the focused view to the top of the layout stack
-riverctl map normal Super+Control Return zoom
+riverctl map -layout 0 normal Super+Control Return zoom
 
 # Super+H and Super+L to decrease/increase the main ratio of rivertile(1)
-riverctl map normal Super H send-layout-cmd rivertile "main-ratio -0.05"
-riverctl map normal Super L send-layout-cmd rivertile "main-ratio +0.05"
+riverctl map -layout 0 normal Super H send-layout-cmd rivertile "main-ratio -0.05"
+riverctl map -layout 0 normal Super L send-layout-cmd rivertile "main-ratio +0.05"
 
 # Super+Shift+H and Super+Shift+L to increment/decrement the main count of rivertile(1)
-riverctl map normal Super+Shift H send-layout-cmd rivertile "main-count +1"
-riverctl map normal Super+Shift L send-layout-cmd rivertile "main-count -1"
+riverctl map -layout 0 normal Super+Shift H send-layout-cmd rivertile "main-count +1"
+riverctl map -layout 0 normal Super+Shift L send-layout-cmd rivertile "main-count -1"
 
 # Super+Alt+{H,J,K,L} to move views
-riverctl map normal Super+Alt H move left 100
-riverctl map normal Super+Alt J move down 100
-riverctl map normal Super+Alt K move up 100
-riverctl map normal Super+Alt L move right 100
+riverctl map -layout 0 normal Super+Alt H move left 100
+riverctl map -layout 0 normal Super+Alt J move down 100
+riverctl map -layout 0 normal Super+Alt K move up 100
+riverctl map -layout 0 normal Super+Alt L move right 100
 
 # Super+Alt+Control+{H,J,K,L} to snap views to screen edges
-riverctl map normal Super+Alt+Control H snap left
-riverctl map normal Super+Alt+Control J snap down
-riverctl map normal Super+Alt+Control K snap up
-riverctl map normal Super+Alt+Control L snap right
+riverctl map -layout 0 normal Super+Alt+Control H snap left
+riverctl map -layout 0 normal Super+Alt+Control J snap down
+riverctl map -layout 0 normal Super+Alt+Control K snap up
+riverctl map -layout 0 normal Super+Alt+Control L snap right
 
 # Super+Alt+Shift+{H,J,K,L} to resize views
-riverctl map normal Super+Alt+Shift H resize horizontal -100
-riverctl map normal Super+Alt+Shift J resize vertical 100
-riverctl map normal Super+Alt+Shift K resize vertical -100
-riverctl map normal Super+Alt+Shift L resize horizontal 100
+riverctl map -layout 0 normal Super+Alt+Shift H resize horizontal -100
+riverctl map -layout 0 normal Super+Alt+Shift J resize vertical 100
+riverctl map -layout 0 normal Super+Alt+Shift K resize vertical -100
+riverctl map -layout 0 normal Super+Alt+Shift L resize horizontal 100
 
 # Super + Left Mouse Button to move views
 riverctl map-pointer normal Super BTN_LEFT move-view
 
 # Super + Right Mouse Button to resize views
-riverctl map normal Print+Shift spawn "$HOME/.config/sway/scripts/screenshot.sh"
 riverctl map-pointer normal Super BTN_RIGHT resize-view
 
 # Super + Middle Mouse Button to toggle float
@@ -105,7 +106,7 @@ riverctl map normal Super+Shift 0 set-view-tags $all_tags
 riverctl map normal Super Space toggle-float
 
 # Super+F to toggle fullscreen
-riverctl map normal Super F toggle-fullscreen
+riverctl map -layout 0 normal Super F toggle-fullscreen
 
 # Super+{Up,Right,Down,Left} to change layout orientation
 riverctl map normal Super Up    send-layout-cmd rivertile "main-location top"
@@ -141,8 +142,8 @@ do
    #  riverctl map $mode None XF86AudioNext  spawn 'playerctl next'
 
     # Control screen backlight brightness with light (https://github.com/haikarainen/light)
-    riverctl map $mode None XF86MonBrightnessUp   spawn 'light -A 10'
-    riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 10'
+    riverctl map $mode None XF86MonBrightnessUp   spawn 'light -A 20'
+    riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 20'
 done
 
 # Set background and border color
@@ -150,12 +151,12 @@ riverctl background-color 0x002b36
 riverctl border-color-focused 0x93a1a1
 riverctl border-color-unfocused 0x586e75
 riverctl border-color-urgent 0xaaaaaa
-riverctl border-width 1
+riverctl border-width 2
 
 # Cursor
 riverctl focus-follows-cursor always
 riverctl hide-cursor when-typing enabled
-riverctl hide-cursor timeout 6000
+riverctl hide-cursor timeout 0
 riverctl set-cursor-warp on-output-change
 
 # Input
@@ -170,9 +171,7 @@ riverctl input pointer-2-7-SynPS/2_Synaptics_TouchPad accel-profile adaptive
 riverctl input pointer-4815-341-COOLER_MASTER_CM_STORM_SENTINEL_Z3RO-G accel-profile flat
 riverctl input pointer-4815-341-COOLER_MASTER_CM_STORM_SENTINEL_Z3RO-G pointer-accel -0.1
 
-riverctl keyboard-layout '"us,ru" -options "grp:alt_shift_toggle"'
-#riverctl keyboard-layout -options "grp:alt_shift_toggle, caps:escape, altwin:menu_win"
-# riverctl keyboard-layout "us,ru"
+riverctl keyboard-layout -options "grp:alt_shift_toggle,caps:escape,altwin:menu_win" -model "pc86" "us,ru"
 
 # Set keyboard repeat rate
 riverctl set-repeat 25 300
@@ -183,19 +182,22 @@ riverctl rule-add -app-id 'float*' -title 'foo' float
 # Make all views with app-id "bar" and any title use client-side decorations
 riverctl rule-add -app-id "bar" csd
 
+riverctl rule-add -app-id "mpv" float
+
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
 riverctl default-layout rivertile
 rivertile -view-padding 2 -outer-padding 2 &
 
-waybar -c ~/.config/waybar/for_river/config -s ~/.config/waybar/for_river/style.css                    &
-foot --server                                                     &
-kanshi                                                            &
-dunst                                                             &
-pipewire                                                          &
-light -S 50                                                       &
-wl-paste -t text --watch clipman store --no-persist               &
-blueman-applet                                                    &
-udiskie --tray                                                    &
-sleep 1 & swww-daemon                                             &
-eww daemon & eww open dock                                        &
+waybar -c ~/.config/waybar/for_river/config           \
+			 -s ~/.config/waybar/for_river/style.css        &
+foot --server                                         &
+kanshi                                                &
+dunst                                                 &
+pipewire                                              &
+light -S 50                                           &
+wl-paste -t text --watch clipman store --no-persist   &
+blueman-applet                                        &
+udiskie --tray                                        &
+sleep 1 & swww-daemon                                 &
+eww daemon & eww open dock                            &

@@ -9,6 +9,7 @@ alias т='trans -brief :en '
 alias taa='task add'
 alias tal='task list'
 alias tad='task done'
+
 alias du='dua'
 alias s='sudo'
 alias N='sudo -E nnn -H'

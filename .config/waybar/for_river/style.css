@@ -3,7 +3,7 @@
  * {
  	/* `otf-font-awesome` is required to be installed for icons */
  	font-family: FiraCode Nerd Font;
- 	font-size: 11px;
+ 	font-size: 13px;
  }
 
  window#waybar {
@@ -45,55 +45,55 @@
  	color: #ffffff;
  }
 
- #workspaces {
+ #tags {
  	margin: 4 0 0 0px;
  	padding: 0 5 0 0px;
  	border-radius: 0 20 20 0px;
  	background: @background;
  }
 
- #workspaces button {
- 	padding: 0 6px;
- 	margin: 4px;
- 	border-radius: 15px;
+ #tags button {
+ 	padding: 1 2px;
+ 	margin: 4 2px;
  	background-color: transparent;
  	color: @foreground;
  }
 
- #workspaces button:hover {
- 	background: rgba(0, 0, 0, 0.2);
- 	padding: 0 6px;
- 	margin: 4px;
+ #tags button:hover {
+ 	background: rgba(0, 0, 0, 0.3);
+ 	padding: 1 2px;
+ 	margin: 4 2px;
  	border: none;
  	box-shadow: none;
  }
 
- #workspaces button.focused {
- 	margin: 4px;
- 	padding: 0 2px;
- 	background-color: #000000;
- 	border-radius: 15px;
+ #tags button.occupied {
+ 	margin: 4 2px;
+ 	padding: 1 2px;
+ 	background-color: @color1Alpha;
+ 	border-radius: 20px;
+ 	color: #ffffff;
+ 	font-weight: bold;
+ }
+
+ #tags button.focused {
+ 	margin: 4 2px;
+ 	padding: 1 2px;
+ 	background-color: @color1;
+ 	border-radius: 20px;
  	color: #ffffff;
  }
 
- #workspaces button.urgent {
+ #tags button.urgent {
  	background-color: #eb4d4b;
  	margin-bottom: 3px;
  }
 
  #group_0 {
  	background: @background;
- 	border-radius: 0px;
+ 	border-radius: 20 0 0 20px;
  	padding: 5 0 5 5px;
  	margin: 4 -1 0 5px;
- 	color: @foreground;
- }
-
- #group_1 {
- 	background: @background;
- 	border-radius: 0px;
- 	padding: 5 5 5 0px;
- 	margin: 4 5 0 -1px;
  	color: @foreground;
  }
 
@@ -104,12 +104,21 @@
  	color: @foreground;
  }
 
+ #group_1 {
+ 	background: @background;
+ 	border-radius: 0 20 20 0px;
+ 	padding: 5 5 5 0px;
+ 	margin: 4 5 0 -1px;
+ 	color: @foreground;
+ }
+
  #network.disconnected {
  	color: #eb4d4b;
  }
 
  #custom-menu {
  	color: @color5;
+ 	font-size: 17;
  }
 
  #custom-vpn {
@@ -136,23 +145,26 @@
  #custom-gammastep,
  #custom-pomo {
  	padding: 0 5px;
- 	margin: 4 0 0 3px;
+ 	margin: 0 2px;
  	border-radius: 13px;
  	background: @color6Alpha;
  	color: #ffffff;
  }
+
  #custom-pomo.finished {
-  background: @color5Alpha;
+ 	background: @color5Alpha;
  	color: @foreground;
-}
-#custom-pomo.running {
-  background: @color9Alpha;
+ }
+
+ #custom-pomo.running {
+ 	background: @color9Alpha;
  	color: @foreground;
-}
-#custom-pomo.paused {
-  background: @color12Alpha;
+ }
+
+ #custom-pomo.paused {
+ 	background: @color12Alpha;
  	color: @foreground;
-}
+ }
 
  #user {
  	padding: 0 5px;
@@ -175,8 +187,7 @@
  	color: #ffffff;
  }
 
- #temperature,
- #scratchpad {
+ #temperature {
  	padding: 0 7px;
  	margin: 4 2 4 5px;
  	border-radius: 13px;
@@ -221,8 +232,4 @@
  #tray>.needs-attention {
  	-gtk-icon-effect: highlight;
  	background-color: #eb4d4b;
- }
-
- #scratchpad.empty {
- 	background-color: transparent;
  }

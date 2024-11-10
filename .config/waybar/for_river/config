@@ -3,7 +3,7 @@
 	"position": "top",
 	"height": 9,
 	"spacing": 1,
-	"modules-left": ["group/group_0", "river/tags", "river/layout",
+	"modules-left": ["group/group_0", "river/tags",
 										],
 	"modules-center": ["river/window"],
 	"modules-right": [ "group/group_2", "group/group_1",],
@@ -45,9 +45,9 @@
 			"format": " 🍅 {} ", // 
 			"exec": "pomodoro-cli status --format json",
 			"return-type": "json",
-			"on-click": "pomodoro-cli start --duration 25m --notify & notify-send 'Lets go to work!'",
+			"on-click": "pomodoro-cli start --duration 25m --notify & notify-send --icon='/home/rengoku/.local/share/icons/tomato128.png' 'Lets go to work!'",
 			"on-click-middle": "pomodoro-cli pause",
-			"on-click-right": "pomodoro-cli stop & notify-send 'Pomo stopped'",
+			"on-click-right": "pomodoro-cli stop & notify-send --icon='/home/rengoku/.local/share/icons/tomato128.png' 'Pomo stopped'",
 			"interval": 1
 	},
 
@@ -61,10 +61,10 @@
 	},
 
 	"custom/menu": {
-    "format": "  ",
+    "format": "   ",
     "tooltip": true,
     "tooltip-format": "VOID",
-    "on-click": "rofi -hover-select -me-select-entry '' -me-accept-entry MousePrimary -show drun",
+    "on-click": "fuzzel -a top-left --no-exit-on-keyboard-focus-loss",
     "on-click-right": "",
 	},
 
@@ -124,7 +124,7 @@
     "format": "  ",
     "tooltip": true,
 		"tooltip-format": "Lockscreen",
-    "on-click": "$HOME/.config/sway/scripts/lock/swaylock.sh",
+    "on-click": "gtklock -f -S --idle-hide --idle-timeout 3",
     "on-click-right": "wlogout -p layer-shell",
 	},
 
@@ -184,17 +184,13 @@
 
 		"river/tags": {
 								"num-tags": 5
+									
 					},
 
 		"river/window": {
 								"format": "{}"
 						},
 
-    "river/layout": {
-            "format": "{}",
-            "min-length": 4,
-            "align": "right"
-       },
     "tray": {
         // "icon-size": 11,
         "spacing": 5,
@@ -233,7 +229,7 @@
         "format-ethernet": "",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        "format-disconnected": "Net off ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
 

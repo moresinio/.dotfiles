@@ -1,9 +1,20 @@
+/*
 window {
    background-image: url("/home/rengoku/Pictures/wallhaven-lmxmxy.png");
    background-size: cover;
    background-repeat: no-repeat;
    background-position: center;
    background-color: black;
+}
+*/
+window#VGA-1 {
+	background-image: url("/tmp/VGA-1.png");
+	background-color: black;
+}
+
+window#LVDS-1 {
+	background-image: url("/tmp/LVDS-1.png");
+	background-color: black;
 }
 
 /*

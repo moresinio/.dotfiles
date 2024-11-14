@@ -85,8 +85,8 @@
 	},
 
 	"wireplumber": {
-			"format": "{icon}",
-			"format-muted": "",
+			"format": "{icon} ",
+			"format-muted": " ",
 			"on-click": "helvum",
 			"tooltip-format": "{volume}%",
 			"format-icons": ["", "", ""]

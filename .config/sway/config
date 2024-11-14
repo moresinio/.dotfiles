@@ -113,7 +113,7 @@ bar {
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
     gsettings set $gnome-schema gtk-theme 'Orchis-Pink-Dark'
-    gsettings set $gnome-schema icon-theme 'BeautyLine'
+    gsettings set $gnome-schema icon-theme 'Tela-pink-dark'
     gsettings set $gnome-schema cursor-theme 'oreo_spark_pink_cursors'
     gsettings set $gnome-schema font-name 'FiraCode Nerd Font 11'
 }

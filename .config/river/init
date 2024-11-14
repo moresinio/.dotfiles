@@ -1,22 +1,35 @@
 #!/bin/sh
 
-# This is the example configuration file for river.
-#
-# If you wish to edit this, you will probably want to copy it to
-# $XDG_CONFIG_HOME/river/init or $HOME/.config/river/init first.
-#
-# See the river(1), riverctl(1), and rivertile(1) man pages for complete
-# documentation.
+#######################################################################
+#######################################################################
 
-# Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
-
-# Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
 riverctl map normal Super Return spawn footclient
-
 riverctl map -layout 0 normal Super Z spawn fuzzel
 riverctl map -layout 0 normal Super F3 spawn "footclient -T Neovim nvim"
 riverctl map -layout 0 normal Super F2 spawn "footclient -T Yazi yazi"
 riverctl map -layout 0 normal None Print spawn grim
+riverctl map -layout 0 normal Super+Shift Z spawn "~/.local/bin/powermenu"
+riverctl map -layout 0 normal Super+Shift T spawn "bash ~/.dotfiles/.config/waybar/scripts/gammastep/gamma_toggle.sh"
+
+riverctl spawn "~/.config/river/scripts/lockscreen.sh"
+
+# The scratchpad will live on an unused tag. Which tags are used depends on your
+# config, but rivers default uses the first 9 tags.
+scratch_tag=$((1 << 20 ))
+
+# Toggle the scratchpad with Super+P
+riverctl map -layout 0 normal Super A toggle-focused-tags ${scratch_tag}
+
+# Send windows to the scratchpad with Super+Shift+P
+riverctl map -layout 0 normal Super+Shift A set-view-tags ${scratch_tag}
+
+# Set spawn tagmask to ensure new windows don't have the scratchpad tag unless
+# explicitly set.
+all_but_scratch_tag=$(( ((1 << 32) - 1) ^ $scratch_tag ))
+riverctl spawn-tagmask ${all_but_scratch_tag}
+
+#######################################################################
+#######################################################################
 
 # Super+Q to close the focused view
 riverctl map -layout 0 normal Super Q close
@@ -147,8 +160,8 @@ do
 done
 
 # Set background and border color
-riverctl background-color 0x002b36
-riverctl border-color-focused 0x93a1a1
+riverctl background-color 0x000000
+riverctl border-color-focused 0xff2cb3
 riverctl border-color-unfocused 0x586e75
 riverctl border-color-urgent 0xaaaaaa
 riverctl border-width 2
@@ -176,6 +189,8 @@ riverctl keyboard-layout -options "grp:alt_shift_toggle,caps:escape,altwin:menu_
 # Set keyboard repeat rate
 riverctl set-repeat 25 300
 
+#######################################################################
+#######################################################################
 # Make all views with an app-id that starts with "float" and title "foo" start floating.
 riverctl rule-add -app-id 'float*' -title 'foo' float
 
@@ -183,6 +198,16 @@ riverctl rule-add -app-id 'float*' -title 'foo' float
 riverctl rule-add -app-id "bar" csd
 
 riverctl rule-add -app-id "mpv" float
+riverctl rule-add -app-id "gcolor3" float
+riverctl rule-add -app-id "org.qbittorrent.qBittorrent" float
+riverctl rule-add -app-id "thunar" ssd
+riverctl rule-add -app-id "org.pwmt.zathura" ssd
+riverctl rule-add -title "File Operation Progress" float
+riverctl rule-add -title "Song Info" float
+riverctl rule-add -title "TelegramDesktop" float
+riverctl rule-add -title "TelegramDesktop" position 1100 100
+riverctl rule-add -title "Enter name of file to save to…" float
+riverctl rule-add -title "Enter name of file to save to…" dimensions 1000 600
 
 # Set the default layout generator to be rivertile and start it.
 # River will send the process group of the init executable SIGTERM on exit.
@@ -199,5 +224,5 @@ light -S 50                                           &
 wl-paste -t text --watch clipman store --no-persist   &
 blueman-applet                                        &
 udiskie --tray                                        &
-sleep 1 & swww-daemon                                 &
-eww daemon & eww open dock                            &
+sleep 1 && swww-daemon                                &
+eww daemon && eww open dock                           &

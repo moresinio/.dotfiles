@@ -39,7 +39,7 @@ set recolor true
 set recolor-keephue true
 set recolor-reverse-video false
 
-set font "Terminus 10"
+set font "Terminus 12"
 set adjust-open best-fit
 set advance-pages-per-row true
 set page-padding 5

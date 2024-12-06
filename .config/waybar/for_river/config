@@ -3,7 +3,7 @@
 	"position": "top",
 	"height": 9,
 	"spacing": 1,
-	"modules-left": ["group/group_0", "river/tags",
+	"modules-left": ["group/group_0", "river/tags", "group/group_3",
 										],
 	"modules-center": ["river/window"],
 	"modules-right": [ "group/group_2", "group/group_1",],
@@ -23,7 +23,7 @@
 		"orientation": "horizontal",
     "drawer": {
         "transition-duration": 500,
-        "transition-right-to-left": false,
+        "transition-left-to-right": false,
     },
 			"modules": [
 				"custom/lock",
@@ -38,6 +38,16 @@
 									"cpu", "memory", "wireplumber", "network", "tray",
 									"clock",
 			],
+	},
+
+	"group/group_3": {
+    "drawer": {
+        "transition-duration": 500,
+        "transition-left-to-right": true,
+    },
+		"orientation": "horizontal",
+		"modules": [ "river/layout", "cpu"
+		],
 	},
 
 	//https://crates.io/crates/pomodoro-cli/1.2.1
@@ -124,7 +134,7 @@
     "format": "  ",
     "tooltip": true,
 		"tooltip-format": "Lockscreen",
-    "on-click": "gtklock -f -S --idle-hide --idle-timeout 3",
+    "on-click": "locker_blur.sh",
     "on-click-right": "wlogout -p layer-shell",
 	},
 
@@ -188,8 +198,13 @@
 					},
 
 		"river/window": {
-								"format": "{}"
+								"format": "{}",
+								"max-length": 40,
 						},
+
+		"river/layout": {
+				"min-length": 5,
+		},
 
     "tray": {
         // "icon-size": 11,

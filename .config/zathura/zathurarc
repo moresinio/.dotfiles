@@ -51,6 +51,8 @@ map <F2> set "pages-per-row 2"
 
 map <F3> feedkeys ":set scroll-step 100<Return>"
 map <F4> feedkeys ":set scroll-step 40<Return>"
+map j feedkeys "<C-Down>"
+map k feedkeys "<C-Up>"
 
 set selection-clipboard clipboard
 

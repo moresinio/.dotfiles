@@ -1,5 +1,5 @@
 #!/bin/sh
-
+source ~/.cache/wal/colors-river.sh
 #######################################################################
 #######################################################################
 riverctl map normal Super Return spawn footclient
@@ -229,7 +229,7 @@ wideriver \
     --border-width                 1           \
     --border-width-monocle         1           \
     --border-width-smart-gaps      1           \
-    --border-color-focused         "0xff2cb3"  \
+    --border-color-focused         "0xAF0602"  \
     --border-color-focused-monocle "0x22809f"  \
     --border-color-unfocused       "0x586e75"  \
     --log-threshold                info        \

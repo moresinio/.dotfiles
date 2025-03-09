@@ -155,7 +155,7 @@ Equal = zoom +10
 Plus = zoom +10
 Minus = zoom -10
 w = zoom width
-Shift+w = zoom height
+# Shift+w = zoom height
 z = zoom fit
 Shift+z = zoom fill
 0 = zoom real
@@ -168,8 +168,12 @@ a = antialiasing
 r = reload
 i = info
 Shift+Delete = exec rm "%"; skip_file
+
 # need swww!
 Shift+Return = exec swww img "%" -t fade
+# need pywal!
+Shift+w = exec wal -i "%"
+
 Escape = exit
 q = exit
 # Mouse related

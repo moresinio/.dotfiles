@@ -1,0 +1,39 @@
+<RCC>
+	<qresource prefix="/">
+		<file>Modern/control-bg-panel-left.png</file>
+		<file>Modern/control-bg-panel-right.png</file>
+		<file>Modern/control-bg-panel.png</file>
+		<file>Modern/control-bg-seekbar-buffering.png</file>
+		<file>Modern/control-bg-seekbar-left.png</file>
+		<file>Modern/control-bg-seekbar-progress.png</file>
+		<file>Modern/control-bg-seekbar-right.png</file>
+		<file>Modern/control-bg-seekbar.png</file>
+		<file>Modern/control-bg-volumebar-progress.png</file>
+		<file>Modern/control-bg-volumebar.png</file>
+		<file>Modern/control-button-equalizer.png</file>
+		<file>Modern/control-button-fastforward.png</file>
+		<file>Modern/control-button-fullscreen.png</file>
+		<file>Modern/control-button-max-volume.png</file>
+		<file>Modern/control-button-min-volume.png</file>
+		<file>Modern/control-button-next.png</file>
+		<file>Modern/control-button-play-pause.png</file>
+		<file>Modern/control-button-playlist.png</file>
+		<file>Modern/control-button-previous.png</file>
+		<file>Modern/control-button-record.png</file>
+		<file>Modern/control-button-repeat.png</file>
+		<file>Modern/control-button-rewind.png</file>
+		<file>Modern/control-button-seek-knob.png</file>
+		<file>Modern/control-button-shuffle.png</file>
+		<file>Modern/control-button-stop.png</file>
+		<file>Modern/control-button-volume-knob.png</file>
+		<file>Modern/download_subs.png</file>
+		<file>Modern/dvd.png</file>
+		<file>Modern/info.png</file>
+		<file>Modern/open.png</file>
+		<file>Modern/open_favorites.png</file>
+		<file>Modern/open_folder.png</file>
+		<file>Modern/prefs.png</file>
+		<file>Modern/screenshot.png</file>
+		<file>Modern/url.png</file>
+	</qresource>
+</RCC>

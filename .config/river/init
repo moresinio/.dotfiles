@@ -201,6 +201,7 @@ riverctl rule-add -app-id "bar" csd
 riverctl rule-add ssd
 
 riverctl rule-add -app-id "mpv" float
+riverctl rule-add -app-id "smplayer" float
 riverctl rule-add -app-id "gcolor3" float
 riverctl rule-add -app-id "thunar" ssd
 riverctl rule-add -app-id "org.pwmt.zathura" ssd
@@ -246,4 +247,4 @@ wl-paste -t text --watch clipman store --no-persist   &
 blueman-applet                                        &
 udiskie --tray                                        &
 sleep 1 && swww-daemon                                &
-eww daemon && eww open dock                           &
+# eww daemon && eww open dock                           &

@@ -1,6 +1,6 @@
 {
     "label" : "lockscreen",
-    "action" : "gtklock",
+    "action" : "~/.local/bin/locker_blur.sh",
 		"text" : "",
     "keybind" : "x"
 }

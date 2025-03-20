@@ -47,7 +47,7 @@
 			"return-type": "json",
 			"on-click": "pomodoro-cli start --duration 25m --notify & notify-send 'Lets go to work!'",
 			"on-click-middle": "pomodoro-cli pause",
-			"on-click-right": "pomodoro-cli stop & notify-send 'Pomo stopped'",
+			"on-click-right": "pomodoro-cli stop & notify-send --icon='/home/rengoku/.local/share/icons/tomato128.png' 'Pomo stopped'",
 			"interval": 1
 	},
 

@@ -1,0 +1,196 @@
+ @import url("/home/rengoku/.cache/wal/colors-custom-gtk3.css");
+
+ * {
+ 	/* `otf-font-awesome` is required to be installed for icons */
+ 	font-family: FiraCode Nerd Font;
+ 	font-size: 13px;
+ }
+
+ window#waybar {
+	background: linear-gradient(to bottom, @backgroundAlpha, transparent);
+ 	/*	border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+	color: #ffffff;
+	transition-property: background-color;
+	transition-duration: .5s;
+	*/
+ }
+
+ window#waybar.hidden {
+ 	opacity: 0.2;
+ }
+
+ window#waybar.empty {
+ 	background-color: transparent;
+ }
+
+ window#waybar.empty #window {
+ 	padding: 0px;
+ 	background-color: transparent;
+ }
+
+ button {
+ 	/* Use box-shadow instead of border so the text isn't offset */
+ 	/* Avoid rounded borders under each button name */
+ 	border: none;
+ 	box-shadow: none;
+ }
+
+ #tags {
+ 	padding: 0px;
+ 	border-radius: 0 20 20 0px;
+ }
+
+ #tags button {
+ 	padding: 1 2px;
+ 	margin: 4 2px;
+ 	border-radius: 15px;
+ 	background-color: transparent;
+ 	color: @foreground;
+ }
+
+ #tags button:hover {
+ 	background: rgba(0, 0, 0, 0.2);
+ 	padding: 1 2px;
+ 	border: none;
+ 	box-shadow: none;
+ }
+
+ #tags button.occupied {
+ 	margin: 4 2px;
+ 	padding: 1 2px;
+ 	background-color: @color1Alpha;
+ 	border-radius: 20px;
+ 	color: #ffffff;
+ }
+
+ #tags button.focused {
+ 	margin: 4 2px;
+ 	padding: 1 2px;
+ 	background-color: @color1;
+ 	border-radius: 20px;
+ 	color: #ffffff;
+ 	font-weight: bold;
+ }
+
+ #tags button.urgent {
+ 	background-color: #eb4d4b;
+ }
+
+ #group_0 {
+ 	color: @foreground;
+ 	padding: 5 5 5 0px;
+ }
+
+ #group_1 {
+ 	padding: 5 5 5 0px;
+ 	color: #ffffff;
+ }
+
+ #group_2 {
+ 	color: @foreground;
+ }
+
+ #network.disconnected {
+ 	color: #eb4d4b;
+ }
+
+ #custom-menu {
+ 	color: @color5;
+ }
+
+ #custom-vpn {
+ 	padding: 5 5px;
+ 	background: @color0Alpha;
+ 	color: @color7;
+ }
+
+ #mode {
+ 	padding: 5 5px;
+ 	background: #eb4d4b;
+ 	color: #000000;
+ }
+
+ #idle_inhibitor {
+ 	padding: 0 5px;
+ }
+
+ #custom-gammastep,
+ #custom-pomo {
+ 	padding: 0 5px;
+ 	background: @color6Alpha;
+ 	color: #ffffff;
+ }
+ #custom-pomo.finished {
+  background: @color5Alpha;
+ 	color: @foreground;
+}
+#custom-pomo.running {
+  background: @color9Alpha;
+ 	color: @foreground;
+}
+#custom-pomo.paused {
+  background: @color12Alpha;
+ 	color: @foreground;
+}
+
+ #user {
+ 	padding: 0 5px;
+ 	background: @color6Alpha;
+ 	color: #ffffff;
+ }
+
+ #memory,
+ #network,
+ #language,
+ #cpu,
+ #wireplumber,
+ #tray,
+ #clock {
+ 	padding: 0 7px;
+ 	color: #ffffff;
+ }
+
+ #temperature,
+ #scratchpad {
+ 	padding: 0 7px;
+ 	color: #ffffff;
+ }
+
+ #window {
+ 	color: #ffffff;
+ }
+
+
+ /* If workspaces is the leftmost module, omit left margin */
+ /* .modules-left>widget:first-child>#group_0 {
+ 	margin-left: 5px;
+ } */
+
+ /* If workspaces is the rightmost module, omit right margin 
+.modules-right>widget:last-child>#group_2 {
+	margin-right: 5;
+}
+*/
+ @keyframes blink {
+ 	to {
+ 		background-color: #ffffff;
+ 		color: #000000;
+ 	}
+ }
+
+ label:focus {
+ 	background-color: #000000;
+ }
+
+ #tray>.passive {
+ 	-gtk-icon-effect: dim;
+ }
+
+ #tray>.needs-attention {
+ 	-gtk-icon-effect: highlight;
+ 	background-color: #eb4d4b;
+ }
+
+ #scratchpad.empty {
+ 	background-color: transparent;
+ }

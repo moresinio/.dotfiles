@@ -99,14 +99,6 @@ fetchers = [
 	{ id = "mime", name = "*", run = "mime", if = "!mime", prio = "high" },
 ]
 
-[[plugin.prepend_fetchers]]
-id   = "git"
-name = "*"
-run  = "git"
-[[plugin.prepend_fetchers]]
-id   = "git"
-name = "*/"
-run  = "git"
 
 preloaders = [
 	# Image

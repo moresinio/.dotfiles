@@ -176,7 +176,7 @@ riverctl set-cursor-warp on-output-change
 
 # Input
 riverctl input pointer-2-7-SynPS/2_Synaptics_TouchPad middle-emulation enabled
-riverctl input pointer-2-7-SynPS/2_Synaptics_TouchPad natural-scroll disabled
+riverctl input pointer-2-7-SynPS/2_Synaptics_TouchPad natural-scroll enabled
 riverctl input pointer-2-7-SynPS/2_Synaptics_TouchPad scroll-factor 2
 riverctl input pointer-2-7-SynPS/2_Synaptics_TouchPad tap enabled
 riverctl input pointer-2-7-SynPS/2_Synaptics_TouchPad tap-button-map left-right-middle

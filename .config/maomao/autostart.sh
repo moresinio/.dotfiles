@@ -5,7 +5,7 @@ set +e
 waybar -c ~/.config/waybar/for_maomao/config                     \
 			 -s ~/.config/waybar/for_maomao/style.css                  &
 foot --server                                                    &
-kanshi                                                           &
+# kanshi                                                           &
 dunst                                                            &
 pipewire                                                         &
 light -S 50                                                      &
@@ -18,5 +18,9 @@ swayidle -w \
 	-h string:bgcolor:#900000 \
 	-h string:fgcolor:#ffffff \
 	-h string:frcolor:#ff0000 "LOCKING screen in 30 seconds"'  \
-	timeout 600 locker_blur.sh                                     &
+	timeout 600 'locker_blur.sh' \
+	timeout 900 'wlr-dpms off' \
+	resume 'wlr-dpms on' \
+	before-sleep 'locker_blur.sh'                                  &
+
 sleep 1 && swww-daemon                                           &

@@ -74,7 +74,7 @@
     "format": "   ",
     "tooltip": true,
     "tooltip-format": "VOID",
-    "on-click": "fuzzel -a top-left --no-exit-on-keyboard-focus-loss",
+    "on-click": "fuzzel -a top-left --x-margin=11 --y-margin=11 --no-exit-on-keyboard-focus-loss",
     "on-click-right": "",
 	},
 
@@ -103,7 +103,7 @@
 	},
 
 	"mpd": {
-			"format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
+			"format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ",
 			"format-disconnected": "Disconnected ",
 			"format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
 			"interval": 10,
@@ -200,10 +200,14 @@
 		"river/window": {
 								"format": "{}",
 								"max-length": 40,
+								"on-click-middle": "riverctl close",
+								"on-scroll-down": "riverctl focus-view next",
+								"on-scroll-up": "riverctl focus-view previous",
 						},
 
 		"river/layout": {
 				"min-length": 5,
+				"on-click": "riverctl send-layout-cmd wideriver '--layout-toggle'",
 		},
 
     "tray": {

@@ -64,7 +64,7 @@
     "format": "  ",
     "tooltip": true,
     "tooltip-format": "VOID",
-    "on-click": "fuzzel -a top-left --no-exit-on-keyboard-focus-loss",
+    "on-click": "fuzzel -a top-left --x-margin=11 --y-margin=11 --no-exit-on-keyboard-focus-loss",
     "on-click-right": "",
 	},
 

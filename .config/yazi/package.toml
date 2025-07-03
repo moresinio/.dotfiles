@@ -1,27 +1,22 @@
 [[plugin.deps]]
 use = "yazi-rs/plugins:smart-filter"
-rev = "a1738e8"
-hash = "f0c4b41b5d19a3144958383333eff6e7"
+rev = "86d28e4"
+hash = "f660384d7ed12ecd456efed313453310"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:full-border"
-rev = "a1738e8"
-hash = "1f3dad061209081a6b04dd6ff2cb06c7"
+rev = "86d28e4"
+hash = "3996fc74044bc44144b323686f887e1"
 
 [[plugin.deps]]
 use = "Sonico98/exifaudio"
-rev = "7ff7141"
-hash = "666ccba55119fba4c25b8ad354b2855c"
-
-[[plugin.deps]]
-use = "Ape/mediainfo"
-rev = "df17c4f"
-hash = "74c2b0063f30c6b4e4ede533f9ca03f2"
+rev = "4506f9d"
+hash = "4761fffb60a12d37096c34a356380cdf"
 
 [[plugin.deps]]
 use = "pirafrank/what-size"
-rev = "f1c6b69"
-hash = "6e789212eb41d937bab04877ca361099"
+rev = "d896656"
+hash = "62251f94eb67648d42cdfcfb8be0fad2"
 
 [[plugin.deps]]
 use = "yazi-rs/plugins:max-preview"

@@ -1,7 +1,7 @@
 
 profile multi {
 		output LVDS-1 mode 1280x800 position 0,0
-		output VGA-1 mode 1280x1024@75Hz position 1280,0
+		output VGA-0 mode 1280x1024@75Hz position 1280,0
 		}
 profile one {
 		output LVDS-1 mode 1280x800 position 0,0

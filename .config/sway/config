@@ -289,15 +289,14 @@ bindsym Print+Shift exec ~/.config/sway/scripts/screenshot.sh
 bindsym Print exec grim 
 
 exec foot --server
-# exec kanshi
+exec kanshi
 exec dunst
 exec pipewire
 exec light -S 50 
 exec wl-paste -t text --watch clipman store --no-persist
-# exec python ~/.config/sway/scripts/inactive-windows-transparency.py
+exec python ~/.config/sway/scripts/inactive-windows-transparency.py
 exec blueman-applet
 exec udiskie --tray
 exec sleep 1 & swww-daemon
-exec eww daemon & sleep 10 & eww open dock
 
 include ~/.config/sway/config.d/*.conf

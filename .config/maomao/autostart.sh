@@ -5,7 +5,7 @@ set +e
 waybar -c ~/.config/waybar/for_maomao/config                     \
 			 -s ~/.config/waybar/for_maomao/style.css                  &
 foot --server                                                    &
-# kanshi                                                           &
+kanshi                                                           &
 dunst                                                            &
 pipewire                                                         &
 light -S 50                                                      &

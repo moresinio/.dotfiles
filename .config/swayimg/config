@@ -17,7 +17,7 @@
 ################################################################################
 [general]
 # Mode at startup (viewer/gallery)
-mode = viewer
+mode = gallery
 # Window position (parent or absolute coordinates, e.g. 100,200)
 position = parent
 # Window size (fullscreen/parent/image, or absolute size, e.g. 800,600)

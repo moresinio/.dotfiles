@@ -46,18 +46,26 @@
         "transition-left-to-right": true,
     },
 		"orientation": "horizontal",
-		"modules": [ "river/layout", "cpu"
+		"modules": [ "river/layout", "custom/unic"
 		],
+	},
+
+	"custom/unic": {
+    "format": " 🦄  ",
+    "tooltip": true,
+    "tooltip-format": "",
+    "on-click": "",
+    "on-click-right": "",
 	},
 
 	//https://crates.io/crates/pomodoro-cli/1.2.1
 	"custom/pomo": {
-			"format": " 🍅 {} ", // 
+			"format": " 🍅{} ", // 
 			"exec": "pomodoro-cli status --format json",
 			"return-type": "json",
-			"on-click": "pomodoro-cli start --duration 25m --notify & notify-send --icon='/home/rengoku/.local/share/icons/tomato128.png' 'Lets go to work!'",
+			"on-click": "pomodoro-cli start --duration 25m --notify & notify-send --icon='/home/rengoku/.dotfiles/icons/tomato128.png' 'Lets go to work!'",
 			"on-click-middle": "pomodoro-cli pause",
-			"on-click-right": "pomodoro-cli stop & notify-send --icon='/home/rengoku/.local/share/icons/tomato128.png' 'Pomo stopped'",
+			"on-click-right": "pomodoro-cli stop & notify-send --icon='/home/rengoku/.dotfiles/icons/tomato128.png' 'Pomo stopped'",
 			"interval": 1
 	},
 

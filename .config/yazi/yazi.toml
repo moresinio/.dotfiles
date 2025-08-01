@@ -88,7 +88,6 @@ suppress_preload = false
 
 [plugin]
 prepend_previewers = [
-  { name = "*.md", run = "glow" },
 	{ mime = "audio/*",   run = "exifaudio"},
 	{ mime = "{image,audio,video}/*", run = "mediainfo"},
 	{ mime = "application/x-subrip", run = "mediainfo"},

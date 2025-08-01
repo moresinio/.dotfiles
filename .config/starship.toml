@@ -22,7 +22,6 @@
 
 # Customizing the prompt (and placing desired modules at desired position and sequence):
 format = """
-[╭╴](fg:#505050)\
 $os\
 $username\
 $hostname\
@@ -35,12 +34,10 @@ $memory_usage\
 $cmd_duration\
 $fill\
 $line_break\
-[╰╴](fg:#505050)\
 [$status\
 $localip\
 $character]($style)
 """
-
 
 # Inserts a blank line between shell prompts:
 add_newline = true
@@ -48,7 +45,7 @@ add_newline = true
 # Customization and activation of some modules:
 # Listed in the order of their position in the module row above
 [os]
-format = "[$symbol ]($style)[ ]()"
+format = "[ $symbol ]($style)[ ]()"
 style = "fg:#AAAAAA"
 disabled = false
 
@@ -94,9 +91,9 @@ Unknown = ""
 Windows = ""
 
 [username]
-format = '[> ](fg:green bold)[$user]($style)[ ]()' # 
-style_user = 'fg:green bold'
-style_root = 'fg:red bold'
+format = '[> ](fg:green italic)[$user]($style)[ ]()' # 
+style_user = 'fg:green bold italic'
+style_root = 'fg:red bold underline blink'
 show_always = true
 disabled = false
 
@@ -110,16 +107,16 @@ disabled = false
 [sudo]
 format = '[> ](fg:red bold)[as $symbol]($style)'
 style = 'fg:red bold'
-symbol = ' ' # ' ❯ '
+symbol = ' ' # ' ❯ '
 disabled = false
 
 [directory]
 format = '[> ](fg:cyan bold)[$read_only]($read_only_style)[$repo_root]($repo_root_style)[$path]($style)'
-style = 'fg:cyan bold'
-home_symbol = ' ~'
-read_only = ' ' # ' ' # ' ''
+style = 'fg:cyan italic bold'
+home_symbol = ' ~'
+read_only = ' ' # ' ' # ' ''
 read_only_style = 'fg:cyan'
-truncation_length = 3
+truncation_length = 7
 truncation_symbol = '…/'
 truncate_to_repo = true
 repo_root_format = '[> ](fg:cyan bold)[$read_only]($read_only_style)[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[ ]()'
@@ -129,13 +126,13 @@ disabled = false
 
 [git_branch]
 format = '[❯ $symbol $branch(:$remote_branch)]($style)[ ]()'
-style = 'fg:#E04D27'
+style = 'fg:#E04D27 italic'
 symbol = '󰊢'
 #ignore_branches = ['master', 'main']
 
 [git_commit]
 format = '[\($hash$tag\)]($style)[ ]()'
-style = 'fg:#E04D27'
+style = 'fg:#E04D27 italic'
 commit_hash_length = 8
 tag_symbol = ' ' # ' ''
 disabled = false
@@ -149,7 +146,7 @@ disabled = false
 [git_status]
 # place symbols before '$count'
 format = '([$all_status$ahead_behind]($style))'
-style = 'fg:#E04D27'
+style = 'fg:#E04D27 italic'
 conflicted = '[${count} ](fg:red)'
 ahead = '[⇡${count} ](fg:yellow)'
 behind = '[⇣${count} ](fg:yellow)'
@@ -165,7 +162,7 @@ disabled = false
 
 [jobs]
 format = '[ > ](fg:blue bold)[$number$symbol]($style)'
-style = 'fg:blue'
+style = 'fg:blue italic'
 symbol = '' # '廒' # '󰜎' # '' # '✦'
 symbol_threshold = 1
 number_threshold = 4
@@ -179,8 +176,8 @@ threshold = 75
 disabled = false
 
 [cmd_duration]
-format = '[<  $duration ]($style)'
-style = 'fg:yellow'
+format = '[< 󰔛 $duration ]($style)'
+style = 'fg:yellow italic'
 min_time = 500
 disabled = false
 
@@ -190,7 +187,7 @@ symbol = '─'
 
 [status]
 format = '[$symbol$status $hex_status  $signal_number-$signal_name ]($style)'
-style = 'fg:red'
+style = 'fg:red italic'
 symbol = '✘ '
 disabled = false
 
@@ -200,4 +197,4 @@ ssh_only = true
 disabled = false
 
 [character]
-success_symbol = '[>](bold green)'
+success_symbol = '[](bold italic green)'

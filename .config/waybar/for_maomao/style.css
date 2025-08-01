@@ -3,9 +3,13 @@
  * {
  	/* `otf-font-awesome` is required to be installed for icons */
  	font-family: FiraCode Nerd Font;
- 	font-size: 13px;
+ 	font-size: 12px;
  }
 
+ #waybar {
+	 margin: 0;
+	 padding: 0;
+ }
  window#waybar {
 	background: linear-gradient(to bottom, @backgroundAlpha, transparent);
  	/*	border-bottom: 3px solid rgba(100, 114, 125, 0.5);
@@ -13,6 +17,10 @@
 	transition-property: background-color;
 	transition-duration: .5s;
 	*/
+ }
+ #window {
+	 margin: 0;
+	 padding: 0;
  }
 
  window#waybar.hidden {
@@ -36,53 +44,55 @@
  }
 
  #tags {
- 	padding: 0px;
- 	border-radius: 0 20 20 0px;
+ 	padding: 0px 1px;
  }
 
  #tags button {
- 	padding: 1 2px;
- 	margin: 4 2px;
- 	border-radius: 15px;
+ 	padding: 0px 1px;
+ 	margin: 0px 2px 2px 2px;
+ 	border-radius: 0px 0px 5px 5px;
  	background-color: transparent;
  	color: @foreground;
  }
 
  #tags button:hover {
  	background: rgba(0, 0, 0, 0.2);
- 	padding: 1 2px;
+ 	padding: 0px 1px;
+ 	margin: 0px 2px 2px 2px;
+ 	border-radius: 0px 0px 5px 5px;
  	border: none;
  	box-shadow: none;
  }
 
  #tags button.occupied {
- 	margin: 4 2px;
- 	padding: 1 2px;
- 	background-color: @color1Alpha;
- 	border-radius: 20px;
+ 	border-radius: 0px 0px 5px 5px;
+ 	padding: 0px 1px;
+ 	margin: 0px 2px 2px 2px;
  	color: #ffffff;
+ 	font-weight: bold;
  }
 
  #tags button.focused {
- 	margin: 4 2px;
- 	padding: 1 2px;
- 	background-color: @color1;
- 	border-radius: 20px;
+ 	margin: 0px 2px 2px 2px;
+ 	padding: 0px 1px;
+	background: linear-gradient(to top, @color3, transparent);
+ 	border-radius: 0px 0px 5px 5px;
  	color: #ffffff;
  	font-weight: bold;
  }
 
  #tags button.urgent {
  	background-color: #eb4d4b;
+ 	border-radius: 0px 0px 5px 5px;
  }
 
  #group_0 {
  	color: @foreground;
- 	padding: 5 5 5 0px;
+ 	padding: 5px 5px 5px 0px;
  }
 
  #group_1 {
- 	padding: 5 5 5 0px;
+ 	padding: 5px 5px 5px 0px;
  	color: #ffffff;
  }
 
@@ -96,27 +106,29 @@
 
  #custom-menu {
  	color: @color5;
+ 	padding: 1px 2px;
+ 	margin: 0px 2px 2px 2px;
  }
 
  #custom-vpn {
- 	padding: 5 5px;
+ 	padding: 5px 5px;
  	background: @color0Alpha;
  	color: @color7;
  }
 
  #mode {
- 	padding: 5 5px;
+ 	padding: 5px 5px;
  	background: #eb4d4b;
  	color: #000000;
  }
 
  #idle_inhibitor {
- 	padding: 0 5px;
+ 	padding: 0px 5px;
  }
 
  #custom-gammastep,
  #custom-pomo {
- 	padding: 0 5px;
+ 	padding: 0px 5px;
  	background: @color6Alpha;
  	color: #ffffff;
  }
@@ -134,7 +146,7 @@
 }
 
  #user {
- 	padding: 0 5px;
+ 	padding: 0px 5px;
  	background: @color6Alpha;
  	color: #ffffff;
  }
@@ -146,13 +158,13 @@
  #wireplumber,
  #tray,
  #clock {
- 	padding: 0 7px;
+ 	padding: 0px 7px;
  	color: #ffffff;
  }
 
  #temperature,
  #scratchpad {
- 	padding: 0 7px;
+ 	padding: 0px 7px;
  	color: #ffffff;
  }
 

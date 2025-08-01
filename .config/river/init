@@ -2,10 +2,10 @@
 source ~/.cache/wal/colors-river.sh
 #######################################################################
 #######################################################################
-riverctl map normal Super Return spawn footclient
+riverctl map normal Super Return spawn foot
 riverctl map -layout 0 normal Super Z spawn fuzzel
-riverctl map -layout 0 normal Super F3 spawn "footclient -T Neovim nvim"
-riverctl map -layout 0 normal Super F2 spawn "footclient -T Yazi yazi"
+riverctl map -layout 0 normal Super F3 spawn "foot -T Neovim nvim"
+riverctl map -layout 0 normal Super F2 spawn "foot -T Yazi yazi"
 riverctl map -layout 0 normal None Print spawn grim
 riverctl map -layout 0 normal Super+Shift Z spawn "~/.local/bin/powermenu"
 riverctl map -layout 0 normal Super+Shift T spawn "bash ~/.dotfiles/.config/waybar/scripts/gammastep/gamma_toggle.sh"
@@ -157,8 +157,8 @@ do
    #  riverctl map $mode None XF86AudioNext  spawn 'playerctl next'
 
     # Control screen backlight brightness with light (https://github.com/haikarainen/light)
-    riverctl map $mode None XF86MonBrightnessUp   spawn 'light -A 20'
-    riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 20'
+    riverctl map $mode None XF86MonBrightnessUp   spawn 'light -S 100'
+    riverctl map $mode None XF86MonBrightnessDown spawn 'light -S 0'
 done
 
 # Set background and border color
@@ -200,7 +200,7 @@ riverctl rule-add -app-id 'float*' -title 'foo' float
 riverctl rule-add -app-id "bar" csd
 riverctl rule-add ssd
 
-riverctl rule-add -app-id "mpv" float
+# riverctl rule-add -app-id "mpv" float
 riverctl rule-add -app-id "smplayer" float
 riverctl rule-add -app-id "gcolor3" float
 riverctl rule-add -app-id "thunar" ssd
@@ -225,12 +225,12 @@ wideriver \
     --ratio-master                 0.50        \
     --count-wide-left              0           \
     --ratio-wide                   0.35        \
-    --inner-gaps                   0           \
-    --outer-gaps                   2           \
-    --border-width                 1           \
+    --inner-gaps                   2           \
+    --outer-gaps                   0           \
+    --border-width                 2           \
     --border-width-monocle         1           \
     --border-width-smart-gaps      1           \
-    --border-color-focused         "0xAF0602"  \
+    --border-color-focused         "0x874135"  \
     --border-color-focused-monocle "0x22809f"  \
     --border-color-unfocused       "0x586e75"  \
     --log-threshold                info        \
@@ -238,7 +238,6 @@ wideriver \
 
 waybar -c ~/.config/waybar/for_river/config           \
 			 -s ~/.config/waybar/for_river/style.css        &
-foot --server                                         &
 kanshi                                                &
 dunst                                                 &
 pipewire                                              &

@@ -1,3 +1,3 @@
 function fish_greeting
-	lua ~/.config/fish/functions/gr.lua | lolcat -r
+	lua ~/.config/fish/functions/gr.lua | lolcat -p
 end

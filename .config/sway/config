@@ -36,7 +36,7 @@ set $menu fuzzel
 set $lock_me "locker_blur.sh"
 exec swayidle -w \
 	timeout 570 'notify-send -h string:bgcolor:#900000 -h string:fgcolor:#ffffff -h string:frcolor:#ff0000 "LOCKING screen in 30 seconds"'  \
-	timeout 600 $lock_me \
+	timeout 100 $lock_me \
 	timeout 850 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
 	before-sleep $lock_me  \
 #
@@ -50,7 +50,7 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
      accel_profile adaptive
      dwt enabled
      tap enabled
-     natural_scroll disabled
+     natural_scroll enabled
      middle_emulation enabled
 }
 input "4815:341:COOLER_MASTER_CM_STORM_SENTINEL_Z3RO-G" {
@@ -63,7 +63,7 @@ input * {
   xkb_options "grp:alt_shift_toggle, caps:escape, altwin:menu_win"
 	repeat_delay 300
 	repeat_rate 25
-	xkb_model "pc86"
+	#xkb_model "pc86"
 }
 input <identifier> xkb_model "pc86"
 #
@@ -292,9 +292,8 @@ exec foot --server
 exec kanshi
 exec dunst
 exec pipewire
-exec light -S 50 
 exec wl-paste -t text --watch clipman store --no-persist
-exec python ~/.config/sway/scripts/inactive-windows-transparency.py
+# exec python ~/.config/sway/scripts/inactive-windows-transparency.py
 exec blueman-applet
 exec udiskie --tray
 exec sleep 1 & swww-daemon

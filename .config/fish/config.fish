@@ -11,7 +11,7 @@ alias tal='task list'
 alias tad='task done'
 
 alias du='dua'
-alias s='sudo'
+alias s='sudo -s'
 alias N='sudo -E nnn -H'
 alias ht='htop'
 alias xr='xbps-query -Rs'

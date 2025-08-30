@@ -46,22 +46,43 @@
  	box-shadow: none;
  }
 
- #tags {
+ #workspaces button{
  	padding: 0px 7px;
  	margin: 0px 2px 2px 2px;
  	border-radius: 0px 0px 5px 5px;
-	color: @foreground;
+ 	background-color: transparent;
+ 	color: #ffffff;
+ 	font-weight: bold;
  }
 
- #tags button {
+ #workspaces button.empty{
  	padding: 0px 7px;
  	margin: 0px 2px 2px 2px;
  	border-radius: 0px 0px 5px 5px;
  	background-color: transparent;
  	color: @foreground;
+ 	font-weight: lighter;
  }
 
- #tags button:hover {
+ #workspaces button.focused {
+ 	margin: 0px 2px 2px 2px;
+ 	padding: 0px 7px;
+	background: linear-gradient(to top, @color3, transparent);
+ 	border-radius: 0px 0px 5px 5px;
+ 	color: #ffffff;
+ 	font-weight: bold;
+ }
+/*
+ #workspaces button.active {
+ 	margin: 0px 2px 2px 2px;
+ 	padding: 0px 7px;
+	background: linear-gradient(to top, @color3, transparent);
+ 	border-radius: 0px 0px 5px 5px;
+ 	color: #ffffff;
+ 	font-weight: bold;
+ }
+*/
+ #workspaces button:hover {
  	background: rgba(0, 0, 0, 0.2);
  	padding: 0px 7px;
  	margin: 0px 2px 2px 2px;
@@ -70,24 +91,7 @@
  	box-shadow: none;
  }
 
- #tags button.occupied {
- 	border-radius: 0px 0px 5px 5px;
- 	padding: 0px 7px;
- 	margin: 0px 2px 2px 2px;
- 	color: #ffffff;
- 	font-weight: bold;
- }
-
- #tags button.focused {
- 	margin: 0px 2px 2px 2px;
- 	padding: 0px 7px;
-	background: linear-gradient(to top, @color3, transparent);
- 	border-radius: 0px 0px 5px 5px;
- 	color: #ffffff;
- 	font-weight: bold;
- }
-
- #tags button.urgent {
+ #workspaces button.urgent {
  	background-color: #eb4d4b;
  	border-radius: 0px 0px 5px 5px;
  }

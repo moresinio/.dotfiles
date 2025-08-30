@@ -241,9 +241,7 @@ waybar -c ~/.config/waybar/for_river/config           \
 kanshi                                                &
 dunst                                                 &
 pipewire                                              &
-light -S 50                                           &
 wl-paste -t text --watch clipman store --no-persist   &
 blueman-applet                                        &
 udiskie --tray                                        &
 sleep 1 && swww-daemon                                &
-# eww daemon && eww open dock                           &

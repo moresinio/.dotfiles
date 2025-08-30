@@ -18,7 +18,6 @@
 	transition-duration: .5s;
 	*/
  }
-
  #window {
 	 margin: 0;
 	 padding: 0;
@@ -34,8 +33,6 @@
 
  window#waybar.empty #window {
  	padding: 0px;
- 	margin: 0px;
- 	border: 0px;
  	background-color: transparent;
  }
 
@@ -48,9 +45,6 @@
 
  #tags {
  	padding: 0px 7px;
- 	margin: 0px 2px 2px 2px;
- 	border-radius: 0px 0px 5px 5px;
-	color: @foreground;
  }
 
  #tags button {
@@ -93,22 +87,17 @@
  }
 
  #group_0 {
+ 	color: @foreground;
  	padding: 5px 5px 5px 0px;
- 	color: #ffffff;
  }
 
  #group_1 {
- 	padding: 3px 3px 3px 3px;
+ 	padding: 5px 5px 5px 0px;
  	color: #ffffff;
  }
 
  #group_2 {
  	color: @foreground;
- }
-
- #group_3 {
- 	padding: 0px 1px;
- 	color: @color3;
  }
 
  #network.disconnected {
@@ -119,13 +108,6 @@
  	color: @color5;
  	padding: 1px 2px;
  	margin: 0px 2px 2px 2px;
- }
- 
- #custom-gammastep,
- #custom-pomo {
- 	padding: 0px 5px;
- 	background: @color6Alpha;
- 	color: #ffffff;
  }
 
  #custom-vpn {
@@ -141,23 +123,27 @@
  }
 
  #idle_inhibitor {
- 	padding: 0 5px;
+ 	padding: 0px 5px;
  }
 
+ #custom-gammastep,
+ #custom-pomo {
+ 	padding: 0px 5px;
+ 	background: @color6Alpha;
+ 	color: #ffffff;
+ }
  #custom-pomo.finished {
- 	background: @color5Alpha;
+  background: @color5Alpha;
  	color: @foreground;
- }
-
- #custom-pomo.running {
- 	background: @color9Alpha;
+}
+#custom-pomo.running {
+  background: @color9Alpha;
  	color: @foreground;
- }
-
- #custom-pomo.paused {
- 	background: @color12Alpha;
+}
+#custom-pomo.paused {
+  background: @color12Alpha;
  	color: @foreground;
- }
+}
 
  #user {
  	padding: 0px 5px;
@@ -176,9 +162,10 @@
  	color: #ffffff;
  }
 
- #temperature {
+ #temperature,
+ #scratchpad {
+ 	padding: 0px 7px;
  	color: #ffffff;
-	padding: 0px 7px;
  }
 
  #window {
@@ -214,4 +201,8 @@
  #tray>.needs-attention {
  	-gtk-icon-effect: highlight;
  	background-color: #eb4d4b;
+ }
+
+ #scratchpad.empty {
+ 	background-color: transparent;
  }

@@ -2,16 +2,16 @@
 
 set +e
 
-waybar -c ~/.config/waybar/for_maomao/config                     \
-			 -s ~/.config/waybar/for_maomao/style.css                  &
+wllchng_swaybg.sh                                                &
+waybar -c ~/.config/waybar/for_mangowc/config                    \
+			 -s ~/.config/waybar/for_mangowc/style.css                 &
 foot --server                                                    &
 kanshi                                                           &
 dunst                                                            &
 pipewire                                                         &
-light -S 50                                                      &
 wl-paste -t text --watch clipman store --no-persist              &
-blueman-applet                                                   &
 udiskie --tray                                                   &
+blueman-applet                                                   &
 
 swayidle -w \
 	timeout 570 'notify-send -t 5000 \
@@ -23,4 +23,4 @@ swayidle -w \
 	resume 'wlr-dpms on' \
 	before-sleep 'locker_blur.sh'                                  &
 
-sleep 1 && swww-daemon                                           &
+# swww-daemon                                                      &

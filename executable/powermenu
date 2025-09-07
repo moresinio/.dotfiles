@@ -26,7 +26,7 @@ case $chosen in
         systemctl reboot
         ;;
     "$suspend")
-        exec "~/.local/bin/locker_blur.sh" && systemctl suspend
+        exec "~/.local/bin/locker_blur.sh" & systemctl suspend
         ;;
     "$hibernate")
         $lock && systemctl hibernate

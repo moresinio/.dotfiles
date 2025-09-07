@@ -14,8 +14,6 @@ alias du='dua'
 alias s='sudo -s'
 alias N='sudo -E nnn -H'
 alias ht='htop'
-alias xr='xbps-query -Rs'
-alias xs='xbps-query -s'
 
 starship init fish | source
 
@@ -25,6 +23,10 @@ export NNN_BMS='d:~/Documents;D:~/Downloads/'
 # export PATH="$PATH:/usr/local/bin"
 export PATH="$PATH:/home/rengoku/.cargo/bin"
 export PATH="$PATH:/home/rengoku/.local/bin"
+
+
+source ~/.cache/hellwal/variablesfish.fish
+bash ~/.cache/hellwal/terminal.sh
 
 function mark_prompt_start --on-event fish_prompt
     echo -en "\e]133;A\e\\"

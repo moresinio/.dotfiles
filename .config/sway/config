@@ -119,9 +119,9 @@ exec_always {
 }
 #######
 
-gaps inner 0
+gaps inner 3
 smart_gaps on
-smart_borders on
+smart_borders off
 
 ######### Off titlebar #########
  default_floating_border none
@@ -159,10 +159,14 @@ for_window [title="Enter name of file to save to…"] floating enable, resize se
 # hide_edge_borders smart
 
 # for swayfx
-# corner_radius 3
+ corner_radius 8
 # blur enable
 # shadows enable
-
+# layer_effects "waybar" {
+#     blur enable;
+#     blur_xray enable;
+#     blur_ignore_transparent enable;
+# }
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.
 # Despite the name, also works for non-floating windows.

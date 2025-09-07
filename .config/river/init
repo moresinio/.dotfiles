@@ -1,5 +1,5 @@
 #!/bin/sh
-source ~/.cache/wal/colors-river.sh
+source ~/.cache/hellwal/river.sh
 #######################################################################
 #######################################################################
 riverctl map normal Super Return spawn foot

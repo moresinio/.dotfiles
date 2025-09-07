@@ -20,16 +20,16 @@ case $chosen in
 				exec "~/.local/bin/locker_blur.sh"
         ;;    
     "$power_off")
-        loginctl poweroff
+        systemctl poweroff
         ;;
     "$reboot")
-        loginctl reboot
+        systemctl reboot
         ;;
     "$suspend")
-        exec "~/.local/bin/locker_blur.sh" && loginctl suspend
+        $lock & sleep 2 & systemctl suspend
         ;;
     "$hibernate")
-        $lock && loginctl hibernate
+        $lock & sleep 2 & systemctl hibernate
         ;;
     "$log_out")
         loginctl terminate-session "${XDG_SESSION_ID-}"

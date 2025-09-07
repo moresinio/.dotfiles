@@ -2,7 +2,7 @@
 
 set +e
 
-wllchng_swaybg.sh                                                &
+# wllchng_swaybg.sh                                                &
 waybar -c ~/.config/waybar/for_mangowc/config                    \
 			 -s ~/.config/waybar/for_mangowc/style.css                 &
 foot --server                                                    &
@@ -23,4 +23,4 @@ swayidle -w \
 	resume 'wlr-dpms on' \
 	before-sleep 'locker_blur.sh'                                  &
 
-# swww-daemon                                                      &
+swww-daemon                                                      &

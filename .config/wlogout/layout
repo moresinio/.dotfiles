@@ -6,13 +6,13 @@
 }
 {
     "label" : "shutdown",
-    "action" : "loginctl poweroff",
+    "action" : "systemctl poweroff",
 		"text" : "󰐥",
     "keybind" : "s"
 }
 {
     "label" : "reboot",
-    "action" : "loginctl reboot",
+    "action" : "systemctl reboot",
     "text" : "󰑓",
     "keybind" : "r"
 }

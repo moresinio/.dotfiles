@@ -5,7 +5,7 @@
     follow = mouse
 
     # Offset from the origin
-    offset = 20x25
+    offset = (20, 25)
 
     # Add vertical padding to the inside of the notification
     padding = 16
@@ -14,17 +14,17 @@
     horizontal_padding = 16
 
     gap_size = 4
-    corner_radius = 10
+    corner_radius = 5
 
     # The frame color and width of the notification
     frame_color = "#%%color4%%"
-    frame_width = 2
+    frame_width = 1
 
     # How long a user needs to be idle for sticky notifications
     idle_threshold = 120
 
     # Font and typography settings
-    font = NotoSansCJK-Light 11
+    font = Maple Mono NF ExtraLight 12
     alignment = center
     word_wrap = yes
 

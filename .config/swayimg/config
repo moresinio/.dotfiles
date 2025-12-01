@@ -172,7 +172,7 @@ Shift+Delete = exec rm "%"; skip_file
 # need swww!
 Shift+Return = exec swww img "%" -t random
 # need pywal!
-Shift+w = exec hellwal -i "%"
+Shift+w = exec hellwal -i "%" --neon-mode
 
 Escape = exit
 q = exit

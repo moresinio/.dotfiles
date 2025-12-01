@@ -22,7 +22,7 @@ input {
         }
 
         // Enable numlock on startup, omitting this setting disables it.
-        numlock
+  //      numlock
     }
 
     // Next sections include libinput settings.
@@ -160,7 +160,7 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
      //   off
 
-        width 1
+        width 2
         active-color "#ffc87f"
         inactive-color "#505050"
 

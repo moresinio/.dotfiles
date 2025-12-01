@@ -6,14 +6,16 @@
 	"reload_style_on_change": true,
 	"gtk-layer-shell": true,
 	"modules-left": [
-		"group/group_0",
-	//	"dwl/tags",
+		"custom/menu",
+		//	"dwl/tags",
 		"ext/workspaces",
+		"group/group_0",
 	],
 	"modules-center": [
 		"dwl/window"
 	],
 	"modules-right": [
+		"privacy",
 		"group/group_2",
 		"group/group_1",
 	],
@@ -24,7 +26,7 @@
 			"transition-right-to-left": true,
 		},
 		"modules": [
-			"custom/menu",
+			"custom/unicorn",
 			"custom/pomo",
 			"custom/gammastep",
 		],
@@ -73,31 +75,76 @@
 		"on-click": "bash ~/.config/waybar/scripts/gammastep/gamma_dec.sh",
 		"on-click-middle": "bash ~/.config/waybar/scripts/gammastep/gamma_toggle.sh"
 	},
+	"custom/unicorn": {
+		"format": "󱗃 ",
+		"tooltip": true,
+		"tooltip-format": "",
+		"on-click": "",
+		"on-click-right": "",
+	},
 	"custom/menu": {
 		"format": "  ",
 		"tooltip": true,
-		"tooltip-format": "VOID",
-		"on-click": "fuzzel -a top-left --x-margin=11 --y-margin=11 --no-exit-on-keyboard-focus-loss",
+		"tooltip-format": "",
+		"on-click": "fuzzel -a top-left --x-margin=11 --y-margin=11 ",
 		"on-click-right": "",
 	},
-	"dwl/tags": {
-	},
+	"dwl/tags": {},
 	"ext/workspaces": {
 		"format": "{icon}",
 		"ignore-hidden": true,
 		"on-click": "activate",
 		"on-click-right": "deactivate",
+		"on-scroll-up": "mmsg -d viewtoleft_have_client",
+		"on-scroll-down": "mmsg -d viewtoright_have_client",
 		"sort-by-id": true,
 	},
 	"dwl/window": {
 		"format": "{title}",
-		"on-click-right": "mmsg -d killclient",
+		"on-click": "mmsg -d switch_proportion_preset",
+		"on-click-middle": "mmsg -d killclient",
+		"on-scroll-down": "mmsg -d focusstack,next",
+		"on-scroll-up": "mmsg -d focusstack,previous",
 		"max-length": 40,
 		"rewrite": {
 			"(.*) - Mozilla Firefox": "🌎 $1",
 			"(.*) - nvim": " $1",
 			"(.*) - fish": " [$1]"
 		}
+	},
+	"privacy": {
+		"icon-spacing": 4,
+		"icon-size": 18,
+		"transition-duration": 250,
+		"expand": true,
+		"modules": [
+			{
+				"type": "screenshare",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			},
+			{
+				"type": "audio-out",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			},
+			{
+				"type": "audio-in",
+				"tooltip": true,
+				"tooltip-icon-size": 24
+			}
+		],
+		"ignore-monitor": true,
+		"ignore": [
+			{
+				"type": "audio-in",
+				"name": "cava"
+			},
+			{
+				"type": "screenshare",
+				"name": "obs"
+			}
+		]
 	},
 	"custom/pipewire": {
 		"tooltip": false,

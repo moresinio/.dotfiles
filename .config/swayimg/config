@@ -170,7 +170,7 @@ i = info
 Shift+Delete = exec rm "%"; skip_file
 
 # need swww!
-Shift+Return = exec swww img "%" -t random
+Shift+Return = exec awww img "%" -t random
 # need pywal!
 Shift+w = exec hellwal -i "%" --neon-mode
 
@@ -213,7 +213,7 @@ r = reload
 i = info
 Shift+Delete = exec rm "%"; skip_file
 # need swww!
-Shift+Return = exec swww img "%" -t random
+Shift+Return = exec awww img "%" -t random
 Escape = exit
 q = exit
 # Mouse related

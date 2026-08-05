@@ -12,7 +12,7 @@ pipewire                                                         &
 wl-paste -t text --watch clipman store --no-persist              &
 udiskie --tray                                                   &
 blueman-applet                                                   &
-swww-daemon                                                      &
+awww-daemon                                                      &
 
 # swayidle -w \
 # 	timeout 570 'notify-send -t 5000 \

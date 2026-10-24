@@ -3,12 +3,13 @@
 set +e
 
 # wllchng_swaybg.sh                                                &
-waybar -c ~/.config/waybar/for_mangowc/config.jsonc                    \
-			 -s ~/.config/waybar/for_mangowc/style.css                 &
+# waybar -c ~/.config/waybar/for_mangowc/config.jsonc                    \
+#			 -s ~/.config/waybar/for_mangowc/style.css                 &
 foot --server                                                    &
+mangobar                                                           &
 kanshi                                                           &
 dunst                                                            &
-pipewire                                                         &
+# pipewire                                                         &
 wl-paste -t text --watch clipman store --no-persist              &
 udiskie --tray                                                   &
 blueman-applet                                                   &

@@ -12,7 +12,7 @@
 		"group/group_0",
 	],
 	"modules-center": [
-		"dwl/window"
+		"mango/window"
 	],
 	"modules-right": [
 		"privacy",
@@ -54,6 +54,15 @@
 			"tray",
 			"clock",
 		],
+	},
+	"mango/window": {
+		"format": "{title}",
+		"rewrite": {
+			"(.*) - Mozilla Firefox": "🌎 $1",
+			"(.*) - zsh": "> [$1]"
+		},
+		"icon": true,
+		"icon-size": 20
 	},
 	//https://crates.io/crates/pomodoro-cli/1.2.1
 	"custom/pomo": {
